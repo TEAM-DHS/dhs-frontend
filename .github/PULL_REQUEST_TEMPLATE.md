@@ -1,10 +1,3 @@
----
-name: Custom PR Template
-about: Describe the purpose of this pull request.
-title: "#날짜 제목"
-labels: feature
----
-
 ## 📌 작업사항
 
 <!-- 개조식으로 작성해주세요 -->
