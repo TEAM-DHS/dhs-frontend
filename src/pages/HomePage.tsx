@@ -1,9 +1,11 @@
-import React from "react";
+import NavBar from "../components/_common/NavBar";
+import TopFive from "../components/HomePage/TopFive";
 
 const HomePage = () => {
   return (
     <>
-      <h1 className="text-mainBlue text-sm font-regular">테스트</h1>
+      <NavBar />
+      <TopFive />
     </>
   );
 };
