@@ -2,11 +2,19 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      // 1280 ~ : none
+      // 768 ~ 1279 : laptop
+      laptop: { max: "1279px" },
+      // ~ 767 : mobile
+      mobile: { max: "767px" },
+    },
     extend: {
       colors: {
         mainBlue: "#185ADB",
         lightBlue: "#B1CCFF",
         vibrantBlue: "#27A3FF",
+        darkBlue: "#292D32",
         blueGray: "#CEDAF3",
         darkGray: "#7C7C7C",
         lightGray: "#E1E1E1",
@@ -26,5 +34,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
