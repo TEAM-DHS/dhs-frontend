@@ -7,7 +7,7 @@ const PlainNavBar = () => {
   return (
     <Logo
       width="150"
-      className="flex-shrink-0 cursor-pointer ml-[39px] mt-[13px]"
+      className="flex-shrink-0 cursor-pointer ml-[50px] mt-[10px]"
       onClick={() => nav("/")}
     />
   );
