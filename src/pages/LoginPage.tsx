@@ -13,7 +13,7 @@ const LoginPage = () => {
   return (
     <>
       <PlainNavBar />
-      <div className="flex flex-col mt-[80px] ml-[97px] mr-[97px]  items-center md:flex-row md:justify-between md:items-start">
+      <div className="flex flex-col mt-[100px] ml-[12%] mr-[12%] items-center md:flex-row md:justify-between md:items-start">
         <div className="hidden md:block">
           <p className="font-thin text-[20px] mb-4">
             동아리 공연부터 과 행사와 축제까지
@@ -28,7 +28,7 @@ const LoginPage = () => {
           <img src={line} className="w-[386px] mt-[40px] mb-[20px]" />
           <TextInput />
           <PasswordInput />
-          <button className="w-[386px] h-[68px] bg-mainBlue color-white text-white rounded-[12px] cursor-pointer mt-[24px]">
+          <button className="w-[386px] h-[68px] bg-mainBlue color-white text-white rounded-[12px] cursor-pointer mt-[24px] text-smTitle">
             로그인하기
           </button>
           <div className="flex items-center mt-[60px]">
