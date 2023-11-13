@@ -20,7 +20,6 @@ const TopFive = () => {
     <div className="relative w-full h-[550px] mobile:h-auto bg-darkBlue bg-gradient-to-b from-transparent to-mainBlue/50">
       <Swiper
         spaceBetween={30}
-        centeredSlides={true}
         autoplay={{
           delay: 95000,
           disableOnInteraction: false,
@@ -29,9 +28,10 @@ const TopFive = () => {
           clickable: true,
         }}
         navigation={true}
+        loop={true}
         modules={[Autoplay, Pagination, Navigation]}
         onSlideChange={(currentIndex: any) => setIndex(currentIndex.snapIndex)}
-        className="mySwiper h-[550px] mobile:h-auto"
+        className="h-[550px] mobile:h-auto"
       >
         {topfiveData.map(item => (
           <SwiperSlide key={item.id}>
