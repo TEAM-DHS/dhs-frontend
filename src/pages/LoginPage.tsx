@@ -13,8 +13,12 @@ const LoginPage = () => {
   return (
     <>
       <PlainNavBar />
-      <div className="flex flex-col mt-[100px] ml-[8%] mr-[12%] items-center md:flex-row md:justify-between md:items-start">
-        <div className="hidden md:block">
+      <div
+        className="mt-[100px] ml-[8%] mr-[12%] flex justify-between items-start
+      mobile:flex mobile:flex-col mobile:items-center mobile:ml-auto mobile:mr-auto
+      "
+      >
+        <div className="block mobile:hidden">
           <p className="font-thin text-[20px] mb-4">
             동아리 공연부터 과 행사와 축제까지
           </p>

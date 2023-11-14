@@ -8,7 +8,6 @@ module.exports = {
       laptop: { max: "1279px" },
       // ~ 767 : mobile
       mobile: { max: "767px" },
-      md: "768px",
     },
     extend: {
       colors: {

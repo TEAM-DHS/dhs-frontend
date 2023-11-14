@@ -15,8 +15,12 @@ const SignUpPage = () => {
   return (
     <>
       <PlainNavBar />
-      <div className="flex flex-col mt-[100px] ml-[8%] mr-[12%] items-center md:flex-row md:justify-between md:items-start">
-        <div className="hidden md:block">
+      <div
+        className="mt-[100px] ml-[8%] mr-[12%] flex justify-between items-start
+      mobile:flex mobile:flex-col mobile:items-center mobile:ml-auto mobile:mr-auto
+      "
+      >
+        <div className="block mobile:hidden">
           <p className="font-thin text-[20px] mb-4">
             동아리 공연부터 과 행사와 축제까지
           </p>
@@ -28,7 +32,7 @@ const SignUpPage = () => {
         <div>
           <img
             src={message}
-            className="w-[142px] md:absolute md:ml-[120px] md:mt-[-40px]"
+            className="w-[142px] absolute ml-[120px] mt-[-40px]"
           />
           <img src={kakaoSignUp} className="w-[386px] cursor-pointer" />
           <img src={line2} className="w-[386px] mt-[40px] mb-[20px]" />
