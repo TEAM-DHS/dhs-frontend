@@ -11,3 +11,21 @@ interface TopFiveType {
     progressRate: number;
   };
 }
+
+interface EventPreviewType {
+  programId: number;
+  title: string;
+  thumbnail: string;
+  category: string;
+  content: string;
+  isOpen: boolean;
+  remainingDays: number;
+  goal: {
+    targetNumber: number;
+    registrationNumber: number;
+    progressRate: number;
+  };
+  hasLike: boolean;
+}
+
+interface EventDetailType {}
