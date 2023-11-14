@@ -19,6 +19,7 @@ module.exports = {
         darkGray: "#7C7C7C",
         lightGray: "#E1E1E1",
         warningRed: "#F96353",
+        slateBlack: "#404040",
       },
       fontFamily: {
         bold: ["LINESeedKR-Bd", "sans"],
