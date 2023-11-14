@@ -27,7 +27,7 @@ const Header = () => {
           </div>
           <div
             className="font-regular text-smTitle cursor-pointer whitespace-nowrap"
-            onClick={() => nav(isLogin ? "/" : "/")}
+            onClick={() => nav(isLogin ? "/mypage?category=heart" : "/login")}
           >
             {isLogin ? "마이페이지" : "로그인"}
           </div>
