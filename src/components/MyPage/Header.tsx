@@ -2,11 +2,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 
-import { categoryData } from "../../utils/data/categoryData";
+import { myPageCategory } from "../../utils/data/myPageCategory";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
 
-const NavBar = () => {
+const Header = () => {
   const nav = useNavigate();
   const location = useLocation();
   const isLogin = useRecoilValue<boolean>(isLoginState);
@@ -34,9 +34,9 @@ const NavBar = () => {
         </div>
       </div>
       <div className="w-[calc(100%-100px)] flex pt-[18px] pl-[12px] mb-[-2px]">
-        {categoryData.map(item => (
+        {myPageCategory.map(item => (
           <div
-            className={`w-[36px] flex justify-center mx-[8px] pb-[10px] text-smTitle cursor-pointer whitespace-nowrap ${
+            className={`w-auto flex justify-center ml-[10px] mr-[10px] pb-[10px] text-smTitle cursor-pointer whitespace-nowrap ${
               `${location.pathname}${location.search}` === item.path
                 ? `font-bold border-b-[3px] border-mainBlue text-mainBlue`
                 : `font-regular text-black`
@@ -52,4 +52,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Header;
