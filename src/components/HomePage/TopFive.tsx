@@ -35,19 +35,19 @@ const TopFive = () => {
       >
         {topfiveData.map(item => (
           <SwiperSlide key={item.id}>
-            <div className="w-[79%] mobile:w-full relative mobile:px-[80px] flex gap-[45px] mobile:flex-col mobile:items-center mobile:mt-[120px] mobile:gap-[20px]">
-              <div className="flex flex-col relative">
-                <div className="w-[200px] h-[266px] overflow-hidden mobile:w-[300px] mobile:h-[400px]">
+            <div className="w-[79%] mobile:w-full relative mobile:px-[18%] flex gap-[45px] mobile:flex-col mobile:items-center mobile:mt-[120px] mobile:gap-[20px]">
+              <div className="flex flex-col relative mobile:items-center">
+                <div className="w-[200px] h-[266px] overflow-hidden mobile:w-[60vw] mobile:h-[80vw]">
                   <img
                     src={item.thumbnailImage}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="w-[60px] h-[60px] top-[-12px] right-[-16px] absolute rounded-full flex justify-center items-center bg-mainBlue font-bold text-[20px] text-white">
+                <div className="w-[60px] h-[60px] top-[-12px] right-[-16px] absolute rounded-full flex justify-center items-center bg-mainBlue font-bold text-[20px] text-white mobile:hidden">
                   인기
                 </div>
                 <div
-                  className="w-[200px] mobile:w-[300px] h-[44px] rounded-[8px] mt-[10px] flex justify-center items-center bg-mainBlue text-white font-bold text-p cursor-pointer"
+                  className="w-[200px] mobile:w-[60vw] h-[44px] rounded-[8px] mt-[10px] flex justify-center items-center bg-mainBlue text-white font-bold text-p cursor-pointer"
                   onClick={() => nav(`/detail/${item.id}`)}
                 >
                   참가 신청하기
@@ -55,7 +55,7 @@ const TopFive = () => {
               </div>
               <div className="h-[320px] flex flex-col justify-between mobile:h-auto">
                 <div className="flex flex-col">
-                  <div className="font-bold text-lgTitle text-white leading-tight line-clamp-2 mt-[20px]">
+                  <div className="font-bold text-lgTitle text-white leading-tight line-clamp-2 mobile:line-clamp-3 mt-[20px]">
                     {item.title}
                   </div>
                   <div className="font-regular text-mdTitle text-white mt-[16px]">
@@ -65,12 +65,12 @@ const TopFive = () => {
                     {item.description}
                   </div>
                 </div>
-                <div className="flex mobile:flex-col items-center mobile:items-start mobile:pt-[50px] mobile:pb-[30px] font-regular text-smTitle text-white">
+                <div className="flex mobile:flex-col items-center mobile:items-start mobile:pt-[50px] mobile:pb-[60px] font-regular text-smTitle text-white">
                   <div>신청 마감까지</div>
                   <div className="font-bold text-[24px] ml-[7px] mobile:ml-0">{`D-${item.remainingDays}`}</div>
                 </div>
               </div>
-              <div className="absolute bottom-[-70px] right-[-20px] mobile:bottom-[20px] mobile:right-[80px] flex flex-col items-end gap-[10px]">
+              <div className="absolute bottom-[-70px] right-[-20px] mobile:bottom-[50px] mobile:right-[80px] flex flex-col items-end gap-[10px]">
                 <div className="w-[70px] h-[70px]">
                   <ProgressProvider
                     endRate={item.goal.progressRate}
