@@ -6,7 +6,11 @@ import { myPageCategory } from "../../utils/data/myPageCategory";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
 
-const Header = () => {
+interface isCategoryProps {
+  isCategory?: boolean;
+}
+
+const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
   const nav = useNavigate();
   const location = useLocation();
   const isLogin = useRecoilValue<boolean>(isLoginState);
@@ -33,21 +37,27 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="w-[calc(100%-100px)] flex pt-[18px] pl-[12px] mb-[-2px]">
-        {myPageCategory.map(item => (
-          <div
-            className={`w-auto flex justify-center ml-[10px] mr-[10px] pb-[10px] text-smTitle cursor-pointer whitespace-nowrap ${
-              `${location.pathname}${location.search}` === item.path
-                ? `font-bold border-b-[3px] border-mainBlue text-mainBlue`
-                : `font-regular text-black`
-            }`}
-            onClick={() => nav(item.path)}
-            key={item.id}
-          >
-            {item.text}
-          </div>
-        ))}
-      </div>
+      {isCategory ? (
+        <div className="w-[calc(100%-100px)] flex pt-[18px] pl-[12px] mb-[-2px]">
+          {myPageCategory.map(item => (
+            <div
+              className={`w-auto flex justify-center ml-[10px] mr-[10px] pb-[10px] text-smTitle cursor-pointer whitespace-nowrap ${
+                `${location.pathname}${location.search}` === item.path
+                  ? `font-bold border-b-[3px] border-mainBlue text-mainBlue`
+                  : `font-regular text-black`
+              }`}
+              onClick={() => nav(item.path)}
+              key={item.id}
+            >
+              {item.text}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mr-auto ml-[62px] mt-[18px] mb-[9px] text-smTitle font-bold">
+          신청자 목록
+        </div>
+      )}
     </div>
   );
 };

@@ -19,12 +19,23 @@ const EventItem = ({
   isRegist,
 }: Props) => {
   const nav = useNavigate();
+
+  const navigateDetail = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    nav(`/detail/${programId}`);
+  };
+
+  const navigateRegister = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    nav(`/register/${programId}`);
+  };
+
   return (
     <div
       className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] onecol:w-full${
         isRegist ? " items-end h-[265px]" : ""
       }`}
-      onClick={() => nav(`/detail/${programId}`)}
+      onClick={navigateDetail}
     >
       <div className="flex gap-[20px]">
         <div className="w-[140px] h-[185px] flex-shrink-0 relative">
@@ -93,7 +104,7 @@ const EventItem = ({
       {isRegist && (
         <div
           className="flex items-center gap-[6px] mt-[16px] cursor-pointer"
-          onClick={() => nav(`/path/${programId}`)}
+          onClick={navigateRegister}
         >
           <div className="font-regular text-p text-black">신청자 조회하기</div>
           <ArrowCircleIcon />

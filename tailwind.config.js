@@ -35,6 +35,7 @@ module.exports = {
         lgTitle: "38px",
         mdTitle: "22px",
         smTitle: "18px",
+        md: "16px",
         p: "14px",
         sm: "12px",
       },

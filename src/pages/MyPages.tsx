@@ -12,7 +12,7 @@ const MyPage = () => {
 
   return (
     <>
-      <Header />
+      <Header isCategory={true} />
       {category === "heart" ? (
         <LikedList />
       ) : category === "created" ? (
