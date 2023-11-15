@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import NavBar from "../components/_common/NavBar";
+import CategoryNavBar from "../components/_common/CategoryNavBar";
 import ListSection from "../components/ListPage/ListSection";
 
 import { useRecoilState, useResetRecoilState } from "recoil";
@@ -22,7 +22,7 @@ const ListPage = () => {
   }, [searchParams]);
   return (
     <>
-      <NavBar />
+      <CategoryNavBar />
       <ListSection />
     </>
   );

@@ -17,7 +17,7 @@ const TopFive = () => {
   const nav = useNavigate();
   const [index, setIndex] = useState(0);
   return (
-    <div className="relative w-full h-[550px] mobile:h-auto bg-darkBlue bg-gradient-to-b from-transparent to-mainBlue/50">
+    <div className="relative w-full h-[550px] mobile:h-auto bg-darkBlue bg-gradient-to-b from-transparent to-mainBlue/50 mt-[126px]">
       <Swiper
         spaceBetween={30}
         autoplay={{

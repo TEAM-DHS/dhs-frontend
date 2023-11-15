@@ -1,4 +1,4 @@
-import NavBar from "../components/_common/NavBar";
+import CategoryNavBar from "../components/_common/CategoryNavBar";
 import TopFive from "../components/HomePage/TopFive";
 import SearchSection from "../components/HomePage/SearchSection";
 import ListSection from "../components/HomePage/ListSection";
@@ -6,7 +6,7 @@ import ListSection from "../components/HomePage/ListSection";
 const HomePage = () => {
   return (
     <>
-      <NavBar />
+      <CategoryNavBar />
       <TopFive />
       <SearchSection />
       <ListSection />
