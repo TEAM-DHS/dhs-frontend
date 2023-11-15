@@ -7,7 +7,7 @@ type categoryItemType = {
 export const categoryData: categoryItemType[] = [
   {
     id: 0,
-    text: "홈",
+    text: "전체",
     path: "/",
   },
   {

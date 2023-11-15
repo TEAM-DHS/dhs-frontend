@@ -44,7 +44,7 @@ const NavBar = () => {
             onClick={() => nav(item.path)}
             key={item.id}
           >
-            {item.text}
+            {item.text === "전체" ? "홈" : item.text}
           </div>
         ))}
       </div>
