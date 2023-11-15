@@ -12,6 +12,13 @@ interface TopFiveType {
   };
 }
 
+interface EventFilterType {
+  search: string;
+  sort: "new" | "liked" | "imm";
+  category: string;
+  page: number;
+}
+
 interface EventPreviewType {
   programId: number;
   title: string;

@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 
-import { categoryData } from "../../utils/data/categoryData";
+import { categoryData } from "../../utils/data/filterData";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
 
