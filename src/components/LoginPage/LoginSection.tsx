@@ -3,7 +3,7 @@ import line from "../../assets/Login/line.png";
 import TextInput from "./IdInput";
 import PasswordInput from "./PasswordInput";
 import Button from "./Button";
-import Navigate from "../../pages/Navigate";
+import Navigate from "./Navigate";
 
 const LoginSection = () => {
   return (
