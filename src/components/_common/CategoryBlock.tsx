@@ -11,12 +11,12 @@ const CategoryBlock = ({ text, clicked, onClick }: Props) => {
       } ${clicked ? "bg-lightBlue" : "bg-whiteBlue"} rounded-[5px]${
         onClick ? " cursor-pointer" : ""
       }`}
-      onClick={() => (onClick ? onClick(text) : null)}
+      onClick={onClick ? onClick : () => null}
     >
       <div
         className={`font-regular text-sm ${
           clicked ? "text-mainBlue" : "text-slateBlack"
-        } cursor-default`}
+        }${onClick ? "" : " cursor-default"}`}
       >
         {text}
       </div>
