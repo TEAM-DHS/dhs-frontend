@@ -5,6 +5,7 @@ import DetailPage from "./pages/DetailPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import MyPage from "./pages/MyPages";
+import RegisterListPage from "./pages/RegisterListPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/mypage" element={<MyPage />} />
+      <Route path="/register/:programId" element={<RegisterListPage />} />
     </Routes>
   );
 }
