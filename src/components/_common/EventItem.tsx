@@ -35,10 +35,12 @@ const EventItem = ({
       className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] onecol:w-full${
         isRegist ? " items-end h-[265px]" : ""
       }`}
-      onClick={navigateDetail}
     >
       <div className="flex gap-[20px]">
-        <div className="w-[140px] h-[185px] flex-shrink-0 relative">
+        <div
+          className="w-[140px] h-[185px] flex-shrink-0 relative"
+          onClick={navigateDetail}
+        >
           <img src={thumbnail} className="w-full h-full object-cover" />
           {!isOpen && (
             <div className="w-full h-full top-0 left-0 absolute z-10 bg-black/50 flex justify-center items-center">
@@ -55,18 +57,28 @@ const EventItem = ({
               stroke={hasLike ? "transparent" : "#B1CCFF"}
               fill={hasLike ? "#185ADB" : "#ffffff"}
               className="cursor-pointer"
+              onClick={() => alert("좋아요 기능")}
             />
           </div>
-          <div className="font-bold text-smTitle text-slateBlack my-[13px] leading-tight line-clamp-3">
+          <div
+            className="font-bold text-smTitle text-slateBlack my-[13px] leading-tight line-clamp-3 cursor-default hover:cursor-pointer"
+            onClick={navigateDetail}
+          >
             {title}
           </div>
-          <div className="font-regular text-p text-darkGray leading-tight line-clamp-3">
+          <div
+            className="font-regular text-p text-darkGray leading-tight line-clamp-3 cursor-default"
+            onClick={navigateDetail}
+          >
             {content}
           </div>
         </div>
       </div>
       {goal && (
-        <div className="w-full flex flex-col mt-[16px]">
+        <div
+          className="w-full flex flex-col mt-[16px]"
+          onClick={navigateDetail}
+        >
           <div className="flex justify-between items-center mb-[10px]">
             <div className="flex items-center gap-[6px]">
               <div

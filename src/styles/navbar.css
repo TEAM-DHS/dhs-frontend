@@ -1,0 +1,39 @@
+.navbar {
+  width: 100%;
+  min-height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #e1e1e1;
+  padding-top: 10px;
+}
+
+@keyframes show {
+  from {
+    margin-top: -80px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+.fade-in {
+  margin-top: 0;
+  animation: show 0.8s;
+}
+
+@keyframes disappear {
+  from {
+    margin-top: 0px;
+  }
+  to {
+    margin-top: -80px;
+  }
+}
+.fade-out {
+  margin-top: -80px;
+  animation: disappear 0.5s;
+}
