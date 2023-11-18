@@ -25,7 +25,7 @@ const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
         <div className="h-[50px] flex gap-[36px] items-center mt-[10px]">
           <div
             className="font-regular text-smTitle cursor-pointer whitespace-nowrap"
-            onClick={() => nav("/")}
+            onClick={() => nav("/created")}
           >
             행사 등록하기
           </div>
