@@ -9,7 +9,7 @@ interface Props extends EventPreviewType {
 const EventItem = ({
   programId,
   title,
-  thumbnail,
+  thumbnailImage,
   category,
   content,
   isOpen,
@@ -41,7 +41,7 @@ const EventItem = ({
           className="w-[140px] h-[185px] flex-shrink-0 relative"
           onClick={navigateDetail}
         >
-          <img src={thumbnail} className="w-full h-full object-cover" />
+          <img src={thumbnailImage} className="w-full h-full object-cover" />
           {!isOpen && (
             <div className="w-full h-full top-0 left-0 absolute z-10 bg-black/50 flex justify-center items-center">
               <div className="font-regular text-smTitle text-white text-center leading-tight">
@@ -89,7 +89,7 @@ const EventItem = ({
                 {goal.progressRate + "%"}
               </div>
               <div className="font-regular text-sm text-darkGray mt-[5px]">
-                {"(" + goal.registrationNumber + "/" + goal.targetNumber + ")"}
+                {"(" + goal.registrantNumber + "/" + goal.targetNumber + ")"}
               </div>
             </div>
             <div className="flex items-center gap-[5px] mt-[5px]">
