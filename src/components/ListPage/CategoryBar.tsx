@@ -31,7 +31,7 @@ const CategoryBar = () => {
     <div className="w-auto flex flex-wrap gap-[10px]">
       {categoryData.map(item => (
         <CategoryBlock
-          text={item.text}
+          text={item.params}
           clicked={
             item.id === 0
               ? categoryFilter.length === 0

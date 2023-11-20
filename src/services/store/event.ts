@@ -1,8 +1,12 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
-export const categoryNavBarState = atom<string>({
+const { persistAtom } = recoilPersist();
+
+export const categoryNavBarState = atom<CategoryType>({
   key: "categoryNavBarState",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const categoryFilterState = atom<string[]>({

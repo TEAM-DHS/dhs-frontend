@@ -9,5 +9,7 @@ const useCategoryText = (type: string) =>
     ? "주점"
     : type === "etc"
     ? "기타"
+    : type === ""
+    ? "전체"
     : "-";
 export default useCategoryText;
