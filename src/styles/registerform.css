@@ -1,0 +1,67 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.MuiInputBase-root {
+  height: 35px !important;
+  border-radius: 6px !important;
+}
+.MuiFormLabel-root {
+  font-family: LINESeedKR-Rg, sans !important;
+  font-size: 14px !important;
+  color: #9ca3af !important;
+  transform: none !important;
+  left: 12px !important;
+  height: 35px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.MuiInputLabel-shrink {
+  opacity: 0 !important;
+}
+fieldset legend {
+  width: 0 !important;
+}
+
+.MuiInputBase-input {
+  font-family: LINESeedKR-Rg, sans !important;
+  font-size: 14px !important;
+  color: black !important;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-width: 1px !important;
+}
+.MuiInputAdornment-root .MuiButtonBase-root {
+  width: 30px !important;
+  height: 30px !important;
+}
+.MuiButtonBase-root > svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.MuiPopper-root {
+  margin-top: 5px !important;
+}
+.MuiPaper-root {
+  border-radius: 10px !important;
+}
+.MuiDateCalendar-root div,
+.MuiDateCalendar-root span {
+  font-family: LINESeedKR-Rg, sans !important;
+}
+.MuiDateCalendar-root .Mui-selected {
+  background-color: #185adb !important;
+}
+
+label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -10,7 +10,7 @@ import SortBar from "./SortBar";
 const ListSection = () => {
   const filter = useRecoilValue(filterState);
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center pt-[126px]">
       <div className="mobile:w-[calc(100%-40px)] pt-[30px]">
         <SearchBar isListPage={true} />
       </div>
