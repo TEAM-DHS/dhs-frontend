@@ -21,7 +21,7 @@ const TopFive = () => {
       <Swiper
         spaceBetween={30}
         autoplay={{
-          delay: 95000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{

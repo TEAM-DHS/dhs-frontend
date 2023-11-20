@@ -18,7 +18,7 @@ const RegisterPage = () => {
     if (currentDetail)
       setInfo({
         isRegistered: currentDetail.member.hasRegistration,
-        isHost: true,
+        isHost: currentDetail.member.isHost,
         title: currentDetail.program.title,
         imageUrl: currentDetail.program.contentImages[0].url,
         category: currentDetail.program.category,
