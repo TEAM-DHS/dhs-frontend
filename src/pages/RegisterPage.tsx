@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { eventDetailData } from "../utils/data/eventData";
 
 import PlainNavBar from "../components/_common/PlainNavBar";
@@ -7,6 +7,7 @@ import InfoSection from "../components/RegisterPage/InfoSection";
 import FormSection from "../components/RegisterPage/FormSection";
 
 const RegisterPage = () => {
+  const nav = useNavigate();
   const { id } = useParams();
   const [currentDetail, setCurrentDetail] = useState<EventDetailType>();
   const [info, setInfo] = useState<EventRegisterInfoType>();
@@ -17,7 +18,7 @@ const RegisterPage = () => {
     if (currentDetail)
       setInfo({
         isRegistered: currentDetail.member.hasRegistration,
-        isHost: currentDetail.member.isHost,
+        isHost: true,
         title: currentDetail.program.title,
         imageUrl: currentDetail.program.contentImages[0].url,
         category: currentDetail.program.category,
@@ -29,6 +30,17 @@ const RegisterPage = () => {
         depositInfo: currentDetail.program.depositInfo,
       });
   }, [currentDetail]);
+  useEffect(() => {
+    if (info) {
+      if (info.isHost) {
+        alert("접근 불가능한 페이지입니다.");
+        nav(-1);
+      } else if (info.isRegistered) {
+        alert("이미 신청한 행사입니다.");
+        nav(-1);
+      }
+    }
+  }, [info]);
   return (
     <>
       <PlainNavBar isToMy={true} />
