@@ -1,4 +1,4 @@
-type CategoryType = "" | "show" | "exhibition" | "pub" | "academic" | "etc";
+type CategoryType = "" | "PLAY" | "EXHIBIT" | "BAR" | "ACADEMIC" | "ETC";
 
 interface TopFiveType {
   id: number;

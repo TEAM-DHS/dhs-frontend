@@ -58,7 +58,11 @@ const FormSection = () => {
 
   const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(registerForm);
+    // Post
+    console.log({
+      ...registerForm,
+      depositAmount: `${registerForm.depositAmount!.toLocaleString()}원`,
+    });
   };
 
   return (
