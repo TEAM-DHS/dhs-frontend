@@ -11,7 +11,7 @@ type Prop = {
 const Notice = ({ title, content, createdDate, name }: Prop) => {
   const noticeContent = useParagraph(content);
   return (
-    <div className="max-w-[600px] mt-[20px] flex flex-col gap-[40px]">
+    <div className="max-w-[600px] mobile:max-w-full mt-[20px] flex flex-col gap-[40px]">
       <div className="flex flex-col gap-[5px] ml-[5px]">
         <div className="font-bold text-black text-smTitle">{name}</div>
         <div className="font-regular text-darkGray text-p">
