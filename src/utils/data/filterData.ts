@@ -2,7 +2,7 @@ export type categoryItemType = {
   id: number;
   text: string;
   path: string;
-  params: "" | "show" | "exhibition" | "pub" | "academic" | "etc";
+  params: CategoryType;
 };
 export const categoryData: categoryItemType[] = [
   {

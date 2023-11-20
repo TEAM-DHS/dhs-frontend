@@ -1,7 +1,9 @@
+type CategoryType = "" | "show" | "exhibition" | "pub" | "academic" | "etc";
+
 interface TopFiveType {
   id: number;
   title: string;
-  category: string;
+  category: CategoryType;
   description: string;
   thumbnailImage: string;
   remainingDays: number;
@@ -23,7 +25,7 @@ interface EventPreviewType {
   programId: number;
   title: string;
   thumbnailImage: string;
-  category: string;
+  category: CategoryType;
   content: string;
   isOpen: boolean;
   remainingDays: number;
@@ -40,7 +42,7 @@ interface EventRegisterInfoType {
   isHost: boolean;
   title: string;
   imageUrl: string;
-  category: string;
+  category: CategoryType;
   progressRate: number;
   remainingDays: number;
   date: string;
@@ -88,7 +90,7 @@ interface EventDetailType {
     programId: number;
     title: string;
     content: string;
-    category: string;
+    category: CategoryType;
     schedule: string;
     postalCode: string;
     location: string;
