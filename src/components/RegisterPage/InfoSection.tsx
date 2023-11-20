@@ -1,3 +1,5 @@
+import useCategoryText from "../../utils/hooks/useCategoryText";
+
 const InfoSection = ({
   title,
   imageUrl,
@@ -22,7 +24,9 @@ const InfoSection = ({
           <img src={imageUrl} className="w-full h-full object-cover" />
         </div>
         <div className="w-[calc(100%-170px)] flex flex-col mt-[4px] mobile:w-[100%]">
-          <div className="font-bold text-p text-darkGray">{category}</div>
+          <div className="font-bold text-p text-darkGray">
+            {useCategoryText(category)}
+          </div>
           <div className="font-bold text-mdTitle text-black my-[5px]">
             {title}
           </div>
