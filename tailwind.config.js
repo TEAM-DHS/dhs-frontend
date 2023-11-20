@@ -10,7 +10,7 @@ module.exports = {
       mobile: { max: "767px" },
       // ~ 1150 : item column 2
       twocol: { max: "1150px" },
-      // ~ 705 : item column 2
+      // ~ 705 : item column 1
       onecol: { max: "705px" },
     },
     extend: {

@@ -41,10 +41,14 @@ const InfoSection = ({ program, member }: EventDetailType) => {
   const subtitleClassName = "font-regular text-black text-smTitle";
 
   return (
-    <div className="w-[1160px] laptop:w-[calc(100%-100px)] flex flex-col items-center">
-      <CategoryBlock text={category} />
-      <div className="font-bold text-lgTitle mt-[20px]">{title}</div>
-      <div className="w-full flex mt-[70px] gap-[50px]">
+    <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex flex-col items-center">
+      <div className="flex flex-col items-center mobile:hidden">
+        <CategoryBlock text={category} />
+        <div className="font-bold text-lgTitle text-center mt-[20px]">
+          {title}
+        </div>
+      </div>
+      <div className="w-full flex mt-[70px] gap-[40px] mobile:flex-col mobile:mt-0">
         <div className="flex flex-col items-center gap-[15px]">
           <div className="flex items-center gap-[15px]">
             <ArrowIcon
@@ -65,7 +69,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               className=""
             >
               {contentImages.map(item => (
-                <SwiperSlide>
+                <SwiperSlide key={item.id}>
                   <img src={item.url} />
                 </SwiperSlide>
               ))}
@@ -80,13 +84,20 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               <div
                 className="w-[50px] h-[50px] rounded-[8px] overflow-hidden cursor-pointer"
                 onClick={() => swiperController(idx)}
+                key={item.id}
               >
                 <img src={item.url} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
         </div>
-        <div className="w-[calc(100%-428px)] flex flex-col justify-between pt-[4px]">
+        <div className="hidden flex-col items-center mt-[20px] mobile:flex">
+          <CategoryBlock text={category} />
+          <div className="font-bold text-lgTitle text-center leading-tight mt-[20px]">
+            {title}
+          </div>
+        </div>
+        <div className="w-[calc(100%-428px)] mobile:w-full flex flex-col justify-between pt-[4px]">
           <div className="flex flex-col">
             <div className={subtitleClassName}>신청 인원</div>
             <div className="h-[40px] flex items-end mt-[16px]">
