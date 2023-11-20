@@ -15,7 +15,7 @@ const TabSection = ({ program }: EventDetailType) => {
         ref={tabRef}
         className="w-full h-[63px] border-t-[1px] border-b-[1px] border-lightGray flex justify-center"
       >
-        <div className="w-[1160px] laptop:w-[calc(100%-100px)] h-full flex justify-start gap-[10px]">
+        <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] mobile:justify-evenly h-full flex justify-start gap-[10px]">
           {tabList.map(item => (
             <div
               className={`h-full flex items-center font-bold text-smTitle mt-[2px] px-[5px] border-b-[3px] cursor-default ${
@@ -24,10 +24,11 @@ const TabSection = ({ program }: EventDetailType) => {
                   : "border-transparent text-darkGray"
               }`}
               onClick={() => setTab(item)}
+              key={item}
             >
               {item}
               {item == "공지사항" && (
-                <div className="text-sm ml-[5px] mb-[6px]">
+                <div className="text-sm ml-[5px] mb-[3px]">
                   {program.notices.length}
                 </div>
               )}
@@ -38,9 +39,9 @@ const TabSection = ({ program }: EventDetailType) => {
       {tab === "행사 계획" ? (
         <PlanTab {...program} tabRef={tabRef} setTab={setTab} />
       ) : tab === "공지사항" ? (
-        <NoticeTab />
+        <NoticeTab {...program} />
       ) : tab === "위치" ? (
-        <LocationTab />
+        <LocationTab {...program} />
       ) : null}
     </div>
   );
