@@ -39,6 +39,28 @@ module.exports = {
         p: "14px",
         sm: "12px",
       },
+      keyframes: {
+        customShake: {
+          "0%": {
+            transform: "translate(1px, 0px)",
+          },
+          "20%": {
+            transform: "translate(-1px, 0px)",
+          },
+          "40%": {
+            transform: "translate(1px, 0px)",
+          },
+          "60%": {
+            transform: "translate(-2px, 0px)",
+          },
+          "80%": {
+            transform: "translate(-1px, 0px)",
+          },
+          "100%": {
+            transform: "translate(1px, 0px)",
+          },
+        },
+      },
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],
