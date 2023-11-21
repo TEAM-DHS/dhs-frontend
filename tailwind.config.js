@@ -60,6 +60,14 @@ module.exports = {
             transform: "translate(1px, 0px)",
           },
         },
+        modalBgShow: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        modalBlockShow: {
+          from: { opacity: 0, marginTop: "-20px" },
+          to: { opacity: 1, marginTop: 0 },
+        },
       },
     },
   },
