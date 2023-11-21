@@ -14,31 +14,31 @@ export const categoryData: categoryItemType[] = [
   {
     id: 1,
     text: "공연",
-    path: "/list?category=show",
+    path: "/list?category=PLAY",
     params: "PLAY",
   },
   {
     id: 2,
     text: "전시",
-    path: "/list?category=exhibition",
+    path: "/list?category=EXHIBIT",
     params: "EXHIBIT",
   },
   {
     id: 3,
     text: "주점",
-    path: "/list?category=pub",
+    path: "/list?category=BAR",
     params: "BAR",
   },
   {
     id: 4,
     text: "학술",
-    path: "/list?category=academic",
+    path: "/list?category=ACADEMIC",
     params: "ACADEMIC",
   },
   {
     id: 5,
     text: "기타",
-    path: "/list?category=etc",
+    path: "/list?category=ETC",
     params: "ETC",
   },
 ];
