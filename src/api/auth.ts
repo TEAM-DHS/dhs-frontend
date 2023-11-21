@@ -1,7 +1,12 @@
 import client from "./client";
 
+interface InfoType {
+  username: string;
+  password: string;
+}
+
 // 회원가입
-export const postSignup = async userInfo => {
+export const postSignup = async (userInfo: InfoType) => {
   try {
     const res = await client.post("/auth/signup", userInfo);
     return res.data;
@@ -11,7 +16,7 @@ export const postSignup = async userInfo => {
 };
 
 // 로그인
-export const postLogin = async userInfo => {
+export const postLogin = async (userInfo: InfoType) => {
   try {
     const res = await client.post("/auth/login", userInfo);
     const accessToken = res.data.accessToken;
