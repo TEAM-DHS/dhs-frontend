@@ -13,7 +13,7 @@ export default function TextInput() {
       autoComplete="off"
     >
       <TextField
-        id="standard-search"
+        id="standard-basic"
         label="아이디"
         type="search"
         variant="standard"
