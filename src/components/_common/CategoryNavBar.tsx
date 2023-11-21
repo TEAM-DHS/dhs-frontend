@@ -52,13 +52,13 @@ const CategoryNavBar = () => {
           : "navbar"
       }
     >
-      <div className="w-[calc(100%-100px)] flex justify-between items-center gap-[36px]">
+      <div className="w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex justify-between items-center gap-[36px] mobile:gap-0">
         <Logo
           width="150"
           className="flex-shrink-0 cursor-pointer"
           onClick={() => nav("/")}
         />
-        <div className="h-[50px] flex gap-[36px] items-center mt-[10px]">
+        <div className="h-[50px] flex gap-[36px] items-center mt-[10px] mobile:gap-[20px]">
           <div
             className="font-regular text-smTitle cursor-pointer whitespace-nowrap"
             onClick={() => nav("/created")}
@@ -73,7 +73,7 @@ const CategoryNavBar = () => {
           </div>
         </div>
       </div>
-      <div className="w-[calc(100%-100px)] flex pt-[18px] pl-[12px] mb-[-2px]">
+      <div className="w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex mobile:pl-0 pt-[18px] pl-[12px] mb-[-2px]">
         {categoryData.map((item: categoryItemType) => (
           <div
             className={`w-[36px] flex justify-center mx-[8px] pb-[10px] text-smTitle cursor-pointer whitespace-nowrap ${
