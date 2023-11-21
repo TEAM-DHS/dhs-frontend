@@ -26,8 +26,8 @@ const PlanTab = ({ content, notices, host, tabRef, setTab }: Props) => {
     content: useParagraph(notices.length !== 0 ? notices[0].content : ""),
   };
   return (
-    <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex mobile:flex-col-reverse justify-between gap-[80px]">
-      <div className="max-w-[600px] mobile:max-w-full flex flex-col gap-[70px]">
+    <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex middle:flex-col-reverse justify-between gap-[80px]">
+      <div className="max-w-[600px] middle:max-w-full flex flex-col gap-[70px]">
         <div className="font-bold text-mdTitle text-black">행사 소개</div>
         <div className="font-regular text-smTitle text-center text-black">
           {useParagraph(content)}
@@ -45,7 +45,7 @@ const PlanTab = ({ content, notices, host, tabRef, setTab }: Props) => {
         </div>
       </div>
       {notices.length !== 0 && (
-        <div className="p-[25px] w-[360px] h-min max-h-[500px] mobile:w-full flex flex-shrink-0 flex-col gap-[40px] mobile:gap-[20px] border-[1px] border-lightGray rounded-[5px] shadow-[0px_2px_3px_0px] shadow-black/10">
+        <div className="p-[25px] w-[360px] h-min max-h-[500px] middle:w-full flex flex-shrink-0 flex-col gap-[40px] middle:gap-[20px] border-[1px] border-lightGray rounded-[5px] shadow-[0px_2px_3px_0px] shadow-black/10">
           <div className="w-[140px] h-[28px] flex justify-center items-center gap-[5px] bg-whiteBlue rounded-[4px]">
             <NoticeIcon />
             <div className="font-bold text-[12px] text-mainBlue">
@@ -56,7 +56,7 @@ const PlanTab = ({ content, notices, host, tabRef, setTab }: Props) => {
             <div className="font-bold text-black text-smTitle text-center">
               {noticePreview.title}
             </div>
-            <div className="font-regular text-black text-smTitle text-center line-clamp-[10] mobile:line-clamp-3">
+            <div className="font-regular text-black text-smTitle text-center line-clamp-[10] middle:line-clamp-5 mobile:line-clamp-3">
               {noticePreview.content}
             </div>
           </div>

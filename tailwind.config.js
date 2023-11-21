@@ -6,8 +6,11 @@ module.exports = {
       // 1280 ~ : none
       // 768 ~ 1279 : laptop
       laptop: { max: "1279px" },
+      // 768 ~ 1024 : middle
+      middle: { max: "1024px" },
       // ~ 767 : mobile
       mobile: { max: "767px" },
+
       // ~ 1150 : item column 2
       twocol: { max: "1150px" },
       // ~ 705 : item column 1
