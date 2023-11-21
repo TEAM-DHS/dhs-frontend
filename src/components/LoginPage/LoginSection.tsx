@@ -22,7 +22,7 @@ const LoginSection = () => {
         setPassword={setPassword}
         setIsValidPassword={setIsValidPassword}
       />
-      <Button text="가입하기" isValid={isValidId} />
+      <Button text="로그인하기" isValid={isValidId} />
       <Navigate
         message="아직 계정이 없으신가요?"
         route="회원가입"
