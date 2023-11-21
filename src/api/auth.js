@@ -6,7 +6,6 @@ export const postSignup = async userInfo => {
     const res = await client.post("/auth/signup", userInfo);
     return res.data;
   } catch (err) {
-    console.log(err);
     throw err;
   }
 };

@@ -7,6 +7,7 @@ import line2 from "../../assets/Login/line2.png";
 import message from "../../assets/Login/message.png";
 import PasswordReInput from "./PasswordReInput";
 import { useState } from "react";
+import { postSignup } from "../../api/auth";
 
 const SignUpSection = () => {
   const [id, setId] = useState("");
@@ -15,6 +16,15 @@ const SignUpSection = () => {
   const [isValidId, setIsValidId] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(false);
   const [isValidRePassword, setIsValidRePassword] = useState(false);
+
+  const postSignupInfo = async () => {
+    try {
+      const res = await postSignup({ username: id, password: password });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -36,6 +46,7 @@ const SignUpSection = () => {
       <Button
         text="가입하기"
         isValid={isValidId && isValidPassword && isValidRePassword}
+        clickFn={postSignupInfo}
       />
       <Navigate
         message=" 이미 계정이 있으신가요?"
