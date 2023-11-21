@@ -19,9 +19,13 @@ const LoginSection = () => {
     try {
       const res = await postLogin({ username: id, password: password });
       console.log(res);
+      alert(`${id}님 환영합니다!`);
       navigate("/");
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
+      if (err.response.status == 403) {
+        alert("존재하지 않는 아이디입니다.");
+      }
     }
   };
 

@@ -23,6 +23,7 @@ const SignUpSection = () => {
     try {
       const res = await postSignup({ username: id, password: password });
       console.log(res);
+      alert("회원가입에 성공했습니다.");
       navigate("/login");
     } catch (err) {
       console.log(err);
