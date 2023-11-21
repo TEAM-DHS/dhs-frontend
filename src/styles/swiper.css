@@ -27,6 +27,13 @@
   align-items: center;
 }
 
+.swiper-slide img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .CircularProgressbar-text {
   font-family: LINESeedKR-Bd, sans;
   dominant-baseline: central !important;

@@ -12,6 +12,13 @@
   padding-top: 10px;
 }
 
+div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 @keyframes show {
   from {
     margin-top: -80px;

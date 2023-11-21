@@ -10,7 +10,7 @@ module.exports = {
       mobile: { max: "767px" },
       // ~ 1150 : item column 2
       twocol: { max: "1150px" },
-      // ~ 705 : item column 2
+      // ~ 705 : item column 1
       onecol: { max: "705px" },
     },
     extend: {
@@ -38,6 +38,36 @@ module.exports = {
         md: "16px",
         p: "14px",
         sm: "12px",
+      },
+      keyframes: {
+        customShake: {
+          "0%": {
+            transform: "translate(1px, 0px)",
+          },
+          "20%": {
+            transform: "translate(-1px, 0px)",
+          },
+          "40%": {
+            transform: "translate(1px, 0px)",
+          },
+          "60%": {
+            transform: "translate(-2px, 0px)",
+          },
+          "80%": {
+            transform: "translate(-1px, 0px)",
+          },
+          "100%": {
+            transform: "translate(1px, 0px)",
+          },
+        },
+        modalBgShow: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        modalBlockShow: {
+          from: { opacity: 0, marginTop: "-20px" },
+          to: { opacity: 1, marginTop: 0 },
+        },
       },
     },
   },

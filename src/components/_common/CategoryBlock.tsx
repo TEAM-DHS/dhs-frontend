@@ -1,3 +1,4 @@
+import useCategoryText from "../../utils/hooks/useCategoryText";
 type Props = {
   text: string;
   clicked?: boolean;
@@ -18,7 +19,7 @@ const CategoryBlock = ({ text, clicked, onClick }: Props) => {
           clicked ? "text-mainBlue" : "text-slateBlack"
         }${onClick ? "" : " cursor-default"}`}
       >
-        {text}
+        {useCategoryText(text)}
       </div>
     </div>
   );

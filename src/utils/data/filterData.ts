@@ -2,7 +2,7 @@ export type categoryItemType = {
   id: number;
   text: string;
   path: string;
-  params: "" | "show" | "exhibition" | "pub" | "academic" | "etc";
+  params: CategoryType;
 };
 export const categoryData: categoryItemType[] = [
   {
@@ -14,32 +14,32 @@ export const categoryData: categoryItemType[] = [
   {
     id: 1,
     text: "공연",
-    path: "/list?category=show",
-    params: "show",
+    path: "/list?category=PLAY",
+    params: "PLAY",
   },
   {
     id: 2,
     text: "전시",
-    path: "/list?category=exhibition",
-    params: "exhibition",
+    path: "/list?category=EXHIBIT",
+    params: "EXHIBIT",
   },
   {
     id: 3,
     text: "주점",
-    path: "/list?category=pub",
-    params: "pub",
+    path: "/list?category=BAR",
+    params: "BAR",
   },
   {
     id: 4,
     text: "학술",
-    path: "/list?category=academic",
-    params: "academic",
+    path: "/list?category=ACADEMIC",
+    params: "ACADEMIC",
   },
   {
     id: 5,
     text: "기타",
-    path: "/list?category=etc",
-    params: "etc",
+    path: "/list?category=ETC",
+    params: "ETC",
   },
 ];
 
