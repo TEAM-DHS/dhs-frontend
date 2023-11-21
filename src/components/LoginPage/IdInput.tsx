@@ -2,14 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { LENGTH_ERROR, TYPE_ERROR } from "../../utils/constants/errorMessage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type IdInputProps = {
   id: string;
   setId: React.Dispatch<React.SetStateAction<string>>;
+  setIsValidId: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const IdInput: React.FC<IdInputProps> = ({ id, setId }) => {
+const IdInput: React.FC<IdInputProps> = ({ id, setId, setIsValidId }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const validateId = (id: any) => {
@@ -19,10 +20,15 @@ const IdInput: React.FC<IdInputProps> = ({ id, setId }) => {
       } else if (!isNaN(id)) {
         return TYPE_ERROR;
       }
+      return true;
     }
-    return true;
   };
-  const validationMessage = validateId(id);
+
+  let validationMessage = validateId(id);
+
+  useEffect(() => {
+    validateId(id) === true ? setIsValidId(true) : setIsValidId(false);
+  }, [id]);
 
   return (
     <Box
@@ -41,7 +47,7 @@ const IdInput: React.FC<IdInputProps> = ({ id, setId }) => {
         value={id}
         onChange={e => setId(e.target.value)}
         onFocus={() => setIsFocused(true)}
-        error={validationMessage !== true}
+        error={isFocused && validationMessage !== true}
         helperText={validationMessage !== true && validationMessage}
       />
     </Box>
