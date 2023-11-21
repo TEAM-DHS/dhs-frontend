@@ -62,10 +62,12 @@ const NoticeModal = ({ closer, id }: Props) => {
       </div>
       <div className="flex gap-[40px]">
         <div
-          className={`py-[12px] px-[42px] rounded-[12px] font-bold text-p text-white ${
-            isCompleted ? "bg-mainBlue cursor-pointer" : "bg-darkGray"
-          }`}
-          onClick={isCompleted ? onSubmit : undefined}
+          className="py-[12px] px-[42px] rounded-[12px] font-bold text-p text-white bg-mainBlue cursor-pointer"
+          onClick={
+            isCompleted
+              ? onSubmit
+              : () => alert("제목과 내용을 모두 입력하였는지 확인해주세요!")
+          }
         >
           등록
         </div>
