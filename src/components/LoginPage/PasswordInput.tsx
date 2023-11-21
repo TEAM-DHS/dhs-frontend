@@ -2,7 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function PasswordInput() {
+type PasswordInputProps = {
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const PasswordInput: React.FC<PasswordInputProps> = ({
+  password,
+  setPassword,
+}) => {
   return (
     <Box
       component="form"
@@ -17,7 +25,11 @@ export default function PasswordInput() {
         label="비밀번호"
         type="password"
         variant="standard"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
       />
     </Box>
   );
-}
+};
+
+export default PasswordInput;

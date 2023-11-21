@@ -1,17 +1,21 @@
 import kakaoLogin from "../../assets/Login/kakaoLogin.png";
 import line from "../../assets/Login/line.png";
-import TextInput from "./IdInput";
+import IdInput from "./IdInput";
 import PasswordInput from "./PasswordInput";
 import Button from "./Button";
 import Navigate from "./Navigate";
+import { useState } from "react";
 
 const LoginSection = () => {
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div>
       <img src={kakaoLogin} className="w-[386px] cursor-pointer" />
       <img src={line} className="w-[386px] mt-[40px] mb-[20px]" />
-      <TextInput />
-      <PasswordInput />
+      <IdInput id={id} setId={setId} />
+      <PasswordInput password={password} setPassword={setPassword} />
       <Button text="로그인하기" />
       <Navigate
         message="아직 계정이 없으신가요?"

@@ -2,7 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function PasswordReInput() {
+type PasswordReInputProps = {
+  rePassword: string;
+  setRePassword: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const PasswordReInput: React.FC<PasswordReInputProps> = ({
+  rePassword,
+  setRePassword,
+}) => {
   return (
     <Box
       component="form"
@@ -17,7 +25,11 @@ export default function PasswordReInput() {
         label="비밀번호 재입력"
         type="password"
         variant="standard"
+        value={rePassword}
+        onChange={e => setRePassword(e.target.value)}
       />
     </Box>
   );
-}
+};
+
+export default PasswordReInput;
