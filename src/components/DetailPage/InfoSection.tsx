@@ -53,7 +53,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
             {title}
           </div>
         </div>
-        <div className="w-full flex mt-[70px] gap-[40px] mobile:flex-col mobile:mt-0">
+        <div className="w-full flex justify-center mt-[70px] gap-[60px] laptop:gap-[5%] mobile:flex-col mobile:mt-0">
           <div className="flex flex-col items-center gap-[15px]">
             <div className="flex items-center gap-[15px]">
               <ArrowIcon
@@ -102,7 +102,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               {title}
             </div>
           </div>
-          <div className="w-[calc(100%-428px)] mobile:w-full flex flex-col justify-between pt-[4px]">
+          <div className="max-w-[410px] mobile:w-full flex flex-col justify-between pt-[4px]">
             <div className="flex flex-col">
               <div className={subtitleClassName}>신청 인원</div>
               <div className="h-[40px] flex items-end mt-[16px]">
