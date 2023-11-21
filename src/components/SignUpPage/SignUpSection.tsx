@@ -14,19 +14,7 @@ const SignUpSection = () => {
   const [rePassword, setRePassword] = useState("");
   const [isValidId, setIsValidId] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(false);
-
-  // useEffect(() => {
-  //   if (
-  //     id.length > 0 &&
-  //     password.length > 0 &&
-  //     rePassword.length > 0 &&
-  //     password === rePassword
-  //   ) {
-  //     setIsValid(true);
-  //   } else {
-  //     setIsValid(false);
-  //   }
-  // }, [id, password, rePassword]);
+  const [isValidRePassword, setIsValidRePassword] = useState(false);
 
   return (
     <div>
@@ -39,8 +27,16 @@ const SignUpSection = () => {
         setPassword={setPassword}
         setIsValidPassword={setIsValidPassword}
       />
-      <PasswordReInput rePassword={rePassword} setRePassword={setRePassword} />
-      <Button text="가입하기" isValid={isValidId && isValidPassword} />
+      <PasswordReInput
+        rePassword={rePassword}
+        setRePassword={setRePassword}
+        setIsValidRePassword={setIsValidRePassword}
+        password={password}
+      />
+      <Button
+        text="가입하기"
+        isValid={isValidId && isValidPassword && isValidRePassword}
+      />
       <Navigate
         message=" 이미 계정이 있으신가요?"
         route="로그인"
