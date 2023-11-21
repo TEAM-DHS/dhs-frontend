@@ -162,7 +162,7 @@ export const eventDetailData: EventDetailType = {
   member: {
     hasLike: true,
     hasRegistration: false,
-    isHost: false,
+    isHost: true,
   },
   otherPrograms: [
     {
