@@ -8,6 +8,7 @@ import message from "../../assets/Login/message.png";
 import PasswordReInput from "./PasswordReInput";
 import { useState } from "react";
 import { postSignup } from "../../api/auth";
+import { useNavigate } from "react-router-dom";
 
 const SignUpSection = () => {
   const [id, setId] = useState("");
@@ -16,11 +17,13 @@ const SignUpSection = () => {
   const [isValidId, setIsValidId] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(false);
   const [isValidRePassword, setIsValidRePassword] = useState(false);
+  const navigate = useNavigate();
 
   const postSignupInfo = async () => {
     try {
       const res = await postSignup({ username: id, password: password });
       console.log(res);
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }
