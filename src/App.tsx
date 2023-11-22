@@ -10,6 +10,7 @@ import SignUpPage from "./pages/SignUpPage";
 import MyPage from "./pages/MyPages";
 import RegisterListPage from "./pages/RegisterListPage";
 import CreatedPage from "./pages/CreatedPage";
+import LoadingPage from "./pages/LoadingPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/detail/:id" element={<DetailPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/loading" element={<LoadingPage />} />
       {/* 로그인 상태일 때만 접근 가능 (현재 로그인 상태 항상 true) */}
       <Route element={<AuthRoute login={true} />}>
         <Route path="/detail/:id/register" element={<RegisterPage />} />

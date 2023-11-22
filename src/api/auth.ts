@@ -5,6 +5,11 @@ interface InfoType {
   password: string;
 }
 
+interface KaKaoOAuthType {
+  redirectUri: string;
+  code: string;
+}
+
 // 회원가입
 export const postSignup = async (userInfo: InfoType) => {
   try {
@@ -32,6 +37,18 @@ export const postLogout = async () => {
   try {
     const res = await client.post("/auth/logout");
     localStorage.deleteItem("authtoken");
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// 카카오 회원가입
+export const postKakaoSignUp = async (codeInfo: KaKaoOAuthType) => {
+  try {
+    const res = await client.post("/oauth/kakao", codeInfo);
+    const accessToken = res.data.accessToken;
+    localStorage.setItem("authtoken", accessToken);
     return res.data;
   } catch (err) {
     throw err;
