@@ -26,3 +26,14 @@ export const postLogin = async (userInfo: InfoType) => {
     throw err;
   }
 };
+
+// 로그아웃
+export const postLogout = async () => {
+  try {
+    const res = await client.post("/auth/logout");
+    localStorage.deleteItem("authtoken");
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
