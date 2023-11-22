@@ -21,6 +21,7 @@ const LoginSection = () => {
       console.log(res);
       alert(`${id}님 환영합니다!`);
       navigate("/");
+      window.location.reload();
     } catch (err: any) {
       console.log(err);
       if (err.response.status == 403) {

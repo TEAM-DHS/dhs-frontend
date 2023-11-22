@@ -1,7 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-
 import { ReactComponent as Logo } from "../../assets/logo.svg";
-
 import { myPageCategory } from "../../utils/data/myPageCategory";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";

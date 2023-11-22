@@ -20,6 +20,7 @@ const LoadingPage = () => {
       try {
         const res = await postKakaoSignUp(req);
         navigate("/");
+        window.location.reload();
       } catch (err) {
         console.log(err);
       }
