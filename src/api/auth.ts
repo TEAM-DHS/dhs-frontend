@@ -24,7 +24,7 @@ export const postSignup = async (userInfo: InfoType) => {
 export const postLogin = async (userInfo: InfoType) => {
   try {
     const res = await client.post("/auth/login", userInfo);
-    const accessToken = res.data.accessToken;
+    const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
     localStorage.setItem("authtoken", accessToken);
     return res.data;
   } catch (err) {
@@ -47,7 +47,7 @@ export const postLogout = async () => {
 export const postKakaoSignUp = async (codeInfo: KaKaoOAuthType) => {
   try {
     const res = await client.post("/oauth/kakao", codeInfo);
-    const accessToken = res.data.accessToken;
+    const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
     localStorage.setItem("authtoken", accessToken);
     return res.data;
   } catch (err) {
