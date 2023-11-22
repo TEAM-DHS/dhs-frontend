@@ -22,6 +22,7 @@ const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
         console.log(res);
         alert("로그아웃 되었습니다.");
         nav("/");
+        window.location.reload();
       }
     } catch (err) {
       console.log(err);

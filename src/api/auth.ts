@@ -36,7 +36,7 @@ export const postLogin = async (userInfo: InfoType) => {
 export const postLogout = async () => {
   try {
     const res = await client.post("/auth/logout");
-    localStorage.deleteItem("authtoken");
+    localStorage.removeItem("authtoken");
     return res.data;
   } catch (err) {
     throw err;

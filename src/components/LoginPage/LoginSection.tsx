@@ -24,9 +24,6 @@ const LoginSection = () => {
       window.location.reload();
     } catch (err: any) {
       console.log(err);
-      if (err.response.status == 403) {
-        alert("존재하지 않는 아이디입니다.");
-      }
     }
   };
 
