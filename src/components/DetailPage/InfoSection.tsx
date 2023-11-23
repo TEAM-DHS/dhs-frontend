@@ -5,6 +5,7 @@ import { ReactComponent as HeartIcon } from "../../assets/heart.svg";
 import CategoryBlock from "../_common/CategoryBlock";
 import Modal from "../_common/Modal";
 import NoticeModal from "./NoticeModal";
+import useHeart from "../../utils/hooks/useHeart";
 import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -28,6 +29,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
     isOpen,
   } = program;
   const { isHost, hasRegistration, hasLike } = member;
+  const { state, toggle } = useHeart(programId, hasLike);
 
   const [noticeModal, setNoticeModal] = useState<boolean>(false);
 
@@ -98,11 +100,11 @@ const InfoSection = ({ program, member }: EventDetailType) => {
           </div>
           <div className="hidden flex-col items-center mt-[20px] mobile:flex">
             <CategoryBlock text={category} />
-            <div className="font-bold text-lgTitle text-center leading-tight mt-[20px]">
+            <div className="font-bold text-lgTitle text-center leading-tight my-[20px]">
               {title}
             </div>
           </div>
-          <div className="max-w-[410px] mobile:w-full flex flex-col justify-between pt-[4px]">
+          <div className="max-w-[410px] mobile:max-w-full flex flex-col justify-between pt-[4px]">
             <div className="flex flex-col">
               <div className={subtitleClassName}>신청 인원</div>
               <div className="h-[40px] flex items-end mt-[16px]">
@@ -114,13 +116,16 @@ const InfoSection = ({ program, member }: EventDetailType) => {
                   {goal.progressRate + "%"}
                 </div>
               </div>
-              <div className={subtitleClassName + " mt-[20px]"}>행사 날짜</div>
+              <div className={subtitleClassName + " mt-[20px]"}>행사 일정</div>
               <div className="font-regular text-lgTitle">
-                {new Date(schedule).getFullYear() +
-                  "." +
-                  new Date(schedule).getMonth() +
-                  "." +
-                  new Date(schedule).getDate()}
+                {new Date(deadline).toLocaleString("ko", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}
               </div>
             </div>
             <div className="w-full border-b-[1px] border-lightGray my-[25px]" />
@@ -136,14 +141,21 @@ const InfoSection = ({ program, member }: EventDetailType) => {
                   " text-darkGray flex items-center gap-[8px] flex-wrap"
                 }
               >
-                {"~ " + new Date(deadline).toLocaleString()}
+                {"~ " +
+                  new Date(deadline).toLocaleString("ko", {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                  })}
                 <div className="text-mainBlue text-[10px] py-[4px] px-[12px] bg-whiteBlue border-[1px] border-lightBlue rounded-[5px] flex-shrink-0">
                   {remainingDays + "일 남음"}
                 </div>
               </div>
               <div className={subtitleClassName}>가격</div>
               <div className={subtitleClassName + " text-darkGray"}>
-                {price}
+                {price.includes("원")
+                  ? price
+                  : `${Number(price).toLocaleString()}원`}
               </div>
               <div className={subtitleClassName}>장소</div>
               <div className={subtitleClassName + " text-darkGray"}>
@@ -153,9 +165,9 @@ const InfoSection = ({ program, member }: EventDetailType) => {
             <div className="w-full flex gap-[16px]">
               <div className="w-[70px] h-[70px] rounded-[5px] flex flex-shrink-0 flex-col justify-center items-center border-[1px] border-lightGray cursor-pointer">
                 <HeartIcon
-                  stroke={hasLike ? "transparent" : "#B1CCFF"}
-                  fill={hasLike ? "#185ADB" : "#ffffff"}
-                  onClick={() => alert("좋아요 기능")}
+                  stroke={state ? "transparent" : "#B1CCFF"}
+                  fill={state ? "#185ADB" : "#ffffff"}
+                  onClick={toggle}
                 />
                 <div className="font-regular text-sm">{likeNumber}</div>
               </div>

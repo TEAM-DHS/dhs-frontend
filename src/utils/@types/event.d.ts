@@ -1,4 +1,5 @@
 type CategoryType = "" | "PLAY" | "EXHIBIT" | "BAR" | "ACADEMIC" | "ETC";
+type SortType = "NEW" | "POPULAR" | "DEADLINE";
 
 interface TopFiveType {
   id: number;
@@ -15,8 +16,8 @@ interface TopFiveType {
 }
 
 interface EventFilterType {
-  search: string;
-  sort: "new" | "liked" | "imm";
+  keyword: string;
+  sort: SortType;
   category: string;
   page: number;
 }
@@ -69,8 +70,8 @@ interface EventRegisterDataType {
 }
 interface EventRegisterFormType {
   depositorName: string;
-  depositAmount: number | undefined;
-  depositDate: Date | null;
+  depositAmount: number | undefined | string;
+  depositDate: Date | null | string;
   registrantName: string;
   registrantPhone: string;
   refundBank: string;

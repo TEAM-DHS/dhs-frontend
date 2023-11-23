@@ -46,22 +46,22 @@ export const categoryData: categoryItemType[] = [
 type sortItemType = {
   id: number;
   text: "최신순" | "인기순" | "마감 임박순";
-  params: "new" | "liked" | "imm";
+  params: SortType;
 };
 export const sortData: sortItemType[] = [
   {
     id: 0,
     text: "최신순",
-    params: "new",
+    params: "NEW",
   },
   {
     id: 1,
     text: "인기순",
-    params: "liked",
+    params: "POPULAR",
   },
   {
     id: 2,
     text: "마감 임박순",
-    params: "imm",
+    params: "DEADLINE",
   },
 ];

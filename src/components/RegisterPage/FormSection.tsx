@@ -1,9 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "../../styles/registerform.css";
 import { eventRegisterData } from "../../utils/data/eventData";
 import { DateTimePicker } from "@mui/x-date-pickers";
 
+import { postProgramRegister } from "../../api/program";
+
 const FormSection = () => {
+  const { id } = useParams();
+  const nav = useNavigate();
   const [registerForm, setRegisterForm] = useState<EventRegisterFormType>({
     depositorName: "",
     depositAmount: undefined,
@@ -43,12 +48,12 @@ const FormSection = () => {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target) {
       const { name, value } = event.target;
-      if (name === "depositAmount") {
+      if (name === "depositAmount")
         setRegisterForm({
           ...registerForm,
           [name]: Number(value),
         });
-      } else
+      else
         setRegisterForm({
           ...registerForm,
           [name]: value,
@@ -58,11 +63,13 @@ const FormSection = () => {
 
   const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Post
-    console.log({
+    postProgramRegister(Number(id), {
       ...registerForm,
       depositAmount: `${registerForm.depositAmount!.toLocaleString()}원`,
-    });
+      depositDate: String(registerForm.depositDate),
+    })
+      .then(res => nav(-1))
+      .catch(err => console.log(err));
   };
 
   return (
@@ -78,14 +85,14 @@ const FormSection = () => {
       </div>
       <div className="w-full grid grid-cols-[1fr_3fr] gap-y-[63px] mobile:grid-cols-[1fr] mobile:gap-y-[20px]">
         {eventRegisterData.map((section: EventRegisterDataType) => (
-          <>
+          <React.Fragment key={section.title}>
             <div className="font-bold text-md text-black flex mobile:text-[18px]">
               {section.title}
               <div className="font-bold text-sm text-mainBlue ml-[3px]">*</div>
             </div>
             <div className="grid grid-cols-[90px_1fr] gap-y-[12px] mobile:mb-[50px]">
               {section.input.map(el => (
-                <>
+                <React.Fragment key={el.key}>
                   <div className="h-[35px] flex items-center font-bold text-md text-slateBlack">
                     {el.text}
                   </div>
@@ -97,7 +104,7 @@ const FormSection = () => {
                         newValue &&
                         setRegisterForm({
                           ...registerForm,
-                          depositDate: new Date(newValue),
+                          depositDate: new Date(newValue).toISOString(),
                         })
                       }
                       ampm={false}
@@ -162,10 +169,10 @@ const FormSection = () => {
                       className="h-[35px] px-[12px] border-[1px] border-lightGray rounded-[6px] outline-none font-regular text-p text-black focus:border-mainBlue focus:shadow-[0.2px_0.2px_1px_1px] focus:shadow-mainBlue/20 focus:invalid:shadow-warningRed/20 invalid:border-warningRed focus:invalid:border-warningRed invalid:animate-[customShake_0.3s_2]"
                     />
                   )}
-                </>
+                </React.Fragment>
               ))}
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
       <div className="flex items-center mt-[60px] mobile:w-full mobile:ml-[10px]">

@@ -18,12 +18,12 @@ const SearchBar = ({ isFlexWithSort, isListPage }: Props) => {
     if (input === "") alert("검색어를 입력해주세요.");
     else {
       if (inputRef.current) inputRef.current.blur();
-      setFilter(prev => ({ ...prev, search: input }));
+      setFilter(prev => ({ ...prev, keyword: input }));
     }
   };
   const onClear = () => {
     setInput("");
-    setFilter(prev => ({ ...prev, search: "" }));
+    setFilter(prev => ({ ...prev, keyword: "" }));
   };
 
   return (

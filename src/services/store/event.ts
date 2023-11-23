@@ -17,8 +17,8 @@ export const categoryFilterState = atom<string[]>({
 export const filterState = atom<EventFilterType>({
   key: "filterState",
   default: {
-    search: "",
-    sort: "new",
+    keyword: "",
+    sort: "NEW",
     category: "",
     page: 0,
   },
