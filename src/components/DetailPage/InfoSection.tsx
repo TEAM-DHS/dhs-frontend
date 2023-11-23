@@ -5,6 +5,7 @@ import { ReactComponent as HeartIcon } from "../../assets/heart.svg";
 import CategoryBlock from "../_common/CategoryBlock";
 import Modal from "../_common/Modal";
 import NoticeModal from "./NoticeModal";
+import useHeart from "../../utils/hooks/useHeart";
 import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -28,6 +29,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
     isOpen,
   } = program;
   const { isHost, hasRegistration, hasLike } = member;
+  const { state, toggle } = useHeart(programId, hasLike);
 
   const [noticeModal, setNoticeModal] = useState<boolean>(false);
 
@@ -153,9 +155,9 @@ const InfoSection = ({ program, member }: EventDetailType) => {
             <div className="w-full flex gap-[16px]">
               <div className="w-[70px] h-[70px] rounded-[5px] flex flex-shrink-0 flex-col justify-center items-center border-[1px] border-lightGray cursor-pointer">
                 <HeartIcon
-                  stroke={hasLike ? "transparent" : "#B1CCFF"}
-                  fill={hasLike ? "#185ADB" : "#ffffff"}
-                  onClick={() => alert("좋아요 기능")}
+                  stroke={state ? "transparent" : "#B1CCFF"}
+                  fill={state ? "#185ADB" : "#ffffff"}
+                  onClick={toggle}
                 />
                 <div className="font-regular text-sm">{likeNumber}</div>
               </div>

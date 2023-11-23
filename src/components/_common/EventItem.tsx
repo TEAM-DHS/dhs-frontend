@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import CategoryBlock from "./CategoryBlock";
+import useHeart from "../../utils/hooks/useHeart";
 import { ReactComponent as HeartIcon } from "../../assets/heart.svg";
 import { ReactComponent as ArrowCircleIcon } from "../../assets/My/arrow_circle_right.svg";
 
@@ -30,6 +31,8 @@ const EventItem = ({
     nav(`/register/${programId}`);
   };
 
+  const { state, toggle } = useHeart(programId, hasLike);
+
   return (
     <div
       className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] onecol:w-full${
@@ -54,10 +57,10 @@ const EventItem = ({
           <div className="flex justify-between">
             <CategoryBlock text={category} />
             <HeartIcon
-              stroke={hasLike ? "transparent" : "#B1CCFF"}
-              fill={hasLike ? "#185ADB" : "#ffffff"}
+              stroke={state ? "transparent" : "#B1CCFF"}
+              fill={state ? "#185ADB" : "#ffffff"}
               className="cursor-pointer"
-              onClick={() => alert("좋아요 기능")}
+              onClick={toggle}
             />
           </div>
           <div
