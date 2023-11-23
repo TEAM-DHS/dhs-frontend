@@ -11,9 +11,9 @@ const ListSection = () => {
     <div className="w-full flex flex-col items-center">
       <div className="w-[calc(100%-100px)] flex pb-[20px]">
         <div className="font-regular text-p text-darkGray">
-          {filter.search === ""
+          {filter.keyword === ""
             ? `총 ${eventData.length}개의 행사`
-            : `'${filter.search}' 검색 결과 ${eventData.length}개`}
+            : `'${filter.keyword}' 검색 결과 ${eventData.length}개`}
         </div>
       </div>
       <div className="w-[calc(100%-100px)] flex flex-wrap gap-[30px] pb-[100px] mobile:w-[calc(100%-40px)]">
