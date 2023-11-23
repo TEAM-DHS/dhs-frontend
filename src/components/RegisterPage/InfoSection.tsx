@@ -14,11 +14,10 @@ const InfoSection = ({
 }: EventRegisterInfoType) => {
   const infoBox = [
     {
-      text: "날짜",
+      text: "일정",
       content: new Date(date).toLocaleString("ko", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
+        hour: "numeric",
+        minute: "numeric",
         weekday: "short",
         year: "numeric",
         month: "long",

@@ -116,7 +116,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
                   {goal.progressRate + "%"}
                 </div>
               </div>
-              <div className={subtitleClassName + " mt-[20px]"}>행사 날짜</div>
+              <div className={subtitleClassName + " mt-[20px]"}>행사 일정</div>
               <div className="font-regular text-lgTitle">
                 {new Date(deadline).toLocaleString("ko", {
                   year: "numeric",
