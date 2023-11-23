@@ -22,7 +22,6 @@ const SignUpSection = () => {
   const postSignupInfo = async () => {
     try {
       const res = await postSignup({ username: id, password: password });
-      console.log(res);
       alert("회원가입에 성공했습니다.");
       navigate("/login");
     } catch (err) {
@@ -30,10 +29,20 @@ const SignUpSection = () => {
     }
   };
 
+  const loginHandler = () => {
+    const link = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
+
+    window.location.href = link;
+  };
+
   return (
     <div>
       <img src={message} className="w-[142px] absolute ml-[120px] mt-[-40px]" />
-      <img src={kakaoSignUp} className="w-[386px] cursor-pointer" />
+      <img
+        src={kakaoSignUp}
+        className="w-[386px] cursor-pointer"
+        onClick={loginHandler}
+      />
       <img src={line2} className="w-[386px] mt-[40px] mb-[20px]" />
       <IdInput id={id} setId={setId} setIsValidId={setIsValidId} />
       <PasswordInput

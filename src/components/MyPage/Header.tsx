@@ -1,10 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-
 import { ReactComponent as Logo } from "../../assets/logo.svg";
-
 import { myPageCategory } from "../../utils/data/myPageCategory";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
+import { postLogout } from "../../api/auth";
 
 interface isCategoryProps {
   isCategory?: boolean;
@@ -14,6 +13,22 @@ const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
   const nav = useNavigate();
   const location = useLocation();
   const isLogin = useRecoilValue<boolean>(isLoginState);
+
+  const postLogOut = async () => {
+    try {
+      const confirmed = window.confirm("로그아웃 하시겠습니까?");
+      if (confirmed) {
+        const res = await postLogout();
+        console.log(res);
+        alert("로그아웃 되었습니다.");
+        nav("/");
+        window.location.reload();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="bg-white flex flex-col items-center pt-[10px] border-b-[1px] border-lightGray">
       <div className="w-[calc(100%-100px)] flex justify-between items-center gap-[36px]">
@@ -31,9 +46,9 @@ const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
           </div>
           <div
             className="font-regular text-smTitle cursor-pointer whitespace-nowrap"
-            onClick={() => nav(isLogin ? "/mypage?category=heart" : "/login")}
+            onClick={() => (isLogin ? postLogOut() : nav("/login"))}
           >
-            {isLogin ? "마이페이지" : "로그인"}
+            {isLogin ? "로그아웃" : "로그인"}
           </div>
         </div>
       </div>

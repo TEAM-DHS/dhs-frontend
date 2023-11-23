@@ -21,17 +21,25 @@ const LoginSection = () => {
       console.log(res);
       alert(`${id}님 환영합니다!`);
       navigate("/");
+      window.location.reload();
     } catch (err: any) {
       console.log(err);
-      if (err.response.status == 403) {
-        alert("존재하지 않는 아이디입니다.");
-      }
     }
+  };
+
+  const loginHandler = () => {
+    const link = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
+
+    window.location.href = link;
   };
 
   return (
     <div>
-      <img src={kakaoLogin} className="w-[386px] cursor-pointer" />
+      <img
+        src={kakaoLogin}
+        className="w-[386px] cursor-pointer"
+        onClick={loginHandler}
+      />
       <img src={line} className="w-[386px] mt-[40px] mb-[20px]" />
       <IdInput id={id} setId={setId} setIsValidId={setIsValidId} />
       <PasswordInput
