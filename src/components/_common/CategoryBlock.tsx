@@ -1,10 +1,12 @@
 import useCategoryText from "../../utils/hooks/useCategoryText";
 type Props = {
   text: string;
+  useHook?: boolean;
   clicked?: boolean;
   onClick?: (item: any) => void;
 };
-const CategoryBlock = ({ text, clicked, onClick }: Props) => {
+const CategoryBlock = ({ text, useHook, clicked, onClick }: Props) => {
+  const altText = useCategoryText(text);
   return (
     <div
       className={`px-[20px] py-[5px] flex-shrink-0 border-[1px] border-${
@@ -19,7 +21,7 @@ const CategoryBlock = ({ text, clicked, onClick }: Props) => {
           clicked ? "text-mainBlue" : "text-slateBlack"
         }${onClick ? "" : " cursor-default"}`}
       >
-        {useCategoryText(text)}
+        {useHook ? altText : text}
       </div>
     </div>
   );
