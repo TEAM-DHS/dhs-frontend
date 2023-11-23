@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import CategoryNavBar from "../components/_common/CategoryNavBar";
-import ListSection from "../components/ListPage/ListSection";
+import ListSection from "../components/HomePage/ListSection";
 
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { filterState } from "../services/store/event";
@@ -23,7 +23,7 @@ const ListPage = () => {
   return (
     <>
       <CategoryNavBar />
-      <ListSection />
+      <ListSection isCategory={true} />
     </>
   );
 };
