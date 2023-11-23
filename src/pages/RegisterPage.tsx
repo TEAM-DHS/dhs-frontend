@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { getProgramDetail } from "../api/program";
 import { eventDetailData } from "../utils/data/eventData";
 
 import PlainNavBar from "../components/_common/PlainNavBar";
@@ -9,10 +10,13 @@ import FormSection from "../components/RegisterPage/FormSection";
 const RegisterPage = () => {
   const nav = useNavigate();
   const { id } = useParams();
-  const [currentDetail, setCurrentDetail] = useState<EventDetailType>();
+  const [currentDetail, setCurrentDetail] =
+    useState<EventDetailType>(eventDetailData);
   const [info, setInfo] = useState<EventRegisterInfoType>();
   useEffect(() => {
-    setCurrentDetail(eventDetailData);
+    getProgramDetail(Number(id))
+      .then(res => setCurrentDetail(res))
+      .catch(err => console.log(err));
   }, []);
   useEffect(() => {
     if (currentDetail)

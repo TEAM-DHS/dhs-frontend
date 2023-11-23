@@ -1,3 +1,4 @@
+import React from "react";
 import useCategoryText from "../../utils/hooks/useCategoryText";
 
 const InfoSection = ({
@@ -12,9 +13,25 @@ const InfoSection = ({
   depositInfo,
 }: EventRegisterInfoType) => {
   const infoBox = [
-    { text: "날짜", content: new Date(date).toLocaleString() },
+    {
+      text: "날짜",
+      content: new Date(date).toLocaleString("ko", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        weekday: "short",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    },
     { text: "장소", content: location },
-    { text: "가격", content: price },
+    {
+      text: "가격",
+      content: price.includes("원")
+        ? price
+        : `${Number(price).toLocaleString()}원`,
+    },
     { text: "입금처", content: depositInfo },
   ];
   return (
@@ -38,12 +55,12 @@ const InfoSection = ({
           </div>
           <div className="w-full min-h-[180px] grid grid-cols-[1fr_3fr] items-stretch mt-[16px] border-[1px] border-lightGray rounded-[8px] py-[16px] px-[24px]">
             {infoBox.map(item => (
-              <>
+              <React.Fragment key={item.text}>
                 <div className="font-bold flex items-center">{item.text}</div>
                 <div className="font-regular flex items-center">
                   {item.content}
                 </div>
-              </>
+              </React.Fragment>
             ))}
           </div>
         </div>

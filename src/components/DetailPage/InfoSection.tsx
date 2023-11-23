@@ -100,11 +100,11 @@ const InfoSection = ({ program, member }: EventDetailType) => {
           </div>
           <div className="hidden flex-col items-center mt-[20px] mobile:flex">
             <CategoryBlock text={category} />
-            <div className="font-bold text-lgTitle text-center leading-tight mt-[20px]">
+            <div className="font-bold text-lgTitle text-center leading-tight my-[20px]">
               {title}
             </div>
           </div>
-          <div className="max-w-[410px] mobile:w-full flex flex-col justify-between pt-[4px]">
+          <div className="max-w-[410px] mobile:max-w-full flex flex-col justify-between pt-[4px]">
             <div className="flex flex-col">
               <div className={subtitleClassName}>신청 인원</div>
               <div className="h-[40px] flex items-end mt-[16px]">
@@ -122,6 +122,9 @@ const InfoSection = ({ program, member }: EventDetailType) => {
                   year: "numeric",
                   month: "numeric",
                   day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
                 })}
               </div>
             </div>
