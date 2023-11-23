@@ -1,6 +1,11 @@
 import Question from "./Question";
 
-const Photos = () => {
+interface Photos {
+  images: string[];
+  setImages: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const Photos = (data: Photos) => {
   return (
     <>
       <Question title=" 행사와 관련된 사진들을 첨부해주세요." />

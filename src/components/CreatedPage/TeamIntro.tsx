@@ -1,7 +1,12 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const TeamIntro = () => {
+interface TeamIntroType {
+  hostDescription: string;
+  setHostDescription: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const TeamIntro = (data: TeamIntroType) => {
   const [text, setText] = useState("");
   return (
     <>

@@ -1,7 +1,33 @@
 import client from "./client";
 import useInfiniteScroll from "../utils/hooks/useInfiniteScroll";
 
+interface ProgramType {
+  title: string;
+  category: string;
+  schedule: string;
+  location: string;
+  postalCode: string;
+  deadline: string;
+  targetNumber: number;
+  content: string;
+  depositAccount: string;
+  depositBank: string;
+  depositName: string;
+  price: number;
+  hostName: string;
+  hostDescription: string;
+  images: string[];
+}
+
 // post program
+export const postProgram = async (data: ProgramType) => {
+  try {
+    const res = await client.post("/programs", data);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
 
 // get program list
 type GetProgramType = {

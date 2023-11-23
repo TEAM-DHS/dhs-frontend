@@ -1,7 +1,12 @@
 import Question from "./Question";
 import { categoryData } from "../../utils/data/filterData";
 
-const Category = () => {
+interface CategoryType {
+  category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Category = (data: CategoryType) => {
   return (
     <>
       <Question title="어떤 행사를 계획 중이신가요?" />

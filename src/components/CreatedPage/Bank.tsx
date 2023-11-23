@@ -1,7 +1,16 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const Bank = () => {
+interface BankType {
+  depositAccount: string;
+  setDepositAccount: React.Dispatch<React.SetStateAction<string>>;
+  depositBank: string;
+  setDepositBank: React.Dispatch<React.SetStateAction<string>>;
+  depositName: string;
+  setDepositName: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Bank = (data: BankType) => {
   const [name, setName] = useState("");
   const [bank, setBank] = useState("");
   const [num, setNum] = useState("");

@@ -1,7 +1,12 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const TeamName = () => {
+interface TeamNameType {
+  hostName: string;
+  setHostName: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const TeamName = (data: TeamNameType) => {
   const [text, setText] = useState("");
 
   return (

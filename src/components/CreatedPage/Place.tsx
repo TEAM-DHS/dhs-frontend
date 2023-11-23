@@ -1,6 +1,13 @@
 import Question from "./Question";
 
-const Place = () => {
+interface PlaceType {
+  postalCode: string;
+  setPostalCode: React.Dispatch<React.SetStateAction<string>>;
+  location: string;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Place = (data: PlaceType) => {
   return (
     <>
       <Question title="장소를 입력해주세요." />

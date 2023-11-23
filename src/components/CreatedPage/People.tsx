@@ -1,7 +1,12 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const People = () => {
+interface PeopleType {
+  targetNumber: number;
+  setTargetNumber: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const People = (data: PeopleType) => {
   const [num, setNum] = useState(0);
 
   return (

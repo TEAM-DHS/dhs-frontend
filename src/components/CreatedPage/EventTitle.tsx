@@ -1,7 +1,12 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const EventTitle = () => {
+interface EventTitleType {
+  title: string;
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const EventTitle = (data: EventTitleType) => {
   const [text, setText] = useState("");
 
   return (

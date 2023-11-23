@@ -1,7 +1,12 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const Price = () => {
+interface PriceType {
+  price: number;
+  setPrice: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Price = (data: PriceType) => {
   const [num, setNum] = useState(0);
 
   return (

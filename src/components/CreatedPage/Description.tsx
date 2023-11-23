@@ -1,7 +1,12 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const Description = () => {
+interface DescriptionType {
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Description = (data: DescriptionType) => {
   const [text, setText] = useState("");
   return (
     <>
