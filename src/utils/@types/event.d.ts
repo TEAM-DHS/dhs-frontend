@@ -70,8 +70,8 @@ interface EventRegisterDataType {
 }
 interface EventRegisterFormType {
   depositorName: string;
-  depositAmount: number | undefined;
-  depositDate: Date | null;
+  depositAmount: number | undefined | string;
+  depositDate: Date | null | string;
   registrantName: string;
   registrantPhone: string;
   refundBank: string;

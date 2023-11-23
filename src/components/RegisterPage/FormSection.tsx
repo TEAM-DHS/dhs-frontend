@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "../../styles/registerform.css";
 import { eventRegisterData } from "../../utils/data/eventData";
 import { DateTimePicker } from "@mui/x-date-pickers";
 
+import { postProgramRegister } from "../../api/program";
+
 const FormSection = () => {
+  const { id } = useParams();
   const [registerForm, setRegisterForm] = useState<EventRegisterFormType>({
     depositorName: "",
     depositAmount: undefined,
@@ -58,11 +62,13 @@ const FormSection = () => {
 
   const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Post
-    console.log({
+    postProgramRegister(Number(id), {
       ...registerForm,
       depositAmount: `${registerForm.depositAmount!.toLocaleString()}원`,
-    });
+      depositDate: String(registerForm.depositDate),
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   return (
