@@ -118,11 +118,11 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               </div>
               <div className={subtitleClassName + " mt-[20px]"}>행사 날짜</div>
               <div className="font-regular text-lgTitle">
-                {new Date(schedule).getFullYear() +
-                  "." +
-                  new Date(schedule).getMonth() +
-                  "." +
-                  new Date(schedule).getDate()}
+                {new Date(deadline).toLocaleString("ko", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                })}
               </div>
             </div>
             <div className="w-full border-b-[1px] border-lightGray my-[25px]" />
@@ -138,14 +138,21 @@ const InfoSection = ({ program, member }: EventDetailType) => {
                   " text-darkGray flex items-center gap-[8px] flex-wrap"
                 }
               >
-                {"~ " + new Date(deadline).toLocaleString()}
+                {"~ " +
+                  new Date(deadline).toLocaleString("ko", {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                  })}
                 <div className="text-mainBlue text-[10px] py-[4px] px-[12px] bg-whiteBlue border-[1px] border-lightBlue rounded-[5px] flex-shrink-0">
                   {remainingDays + "일 남음"}
                 </div>
               </div>
               <div className={subtitleClassName}>가격</div>
               <div className={subtitleClassName + " text-darkGray"}>
-                {price}
+                {price.includes("원")
+                  ? price
+                  : `${Number(price).toLocaleString()}원`}
               </div>
               <div className={subtitleClassName}>장소</div>
               <div className={subtitleClassName + " text-darkGray"}>

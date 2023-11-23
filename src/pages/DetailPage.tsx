@@ -6,10 +6,15 @@ import InfoSection from "../components/DetailPage/InfoSection";
 import TabSection from "../components/DetailPage/TabSection";
 import OtherSection from "../components/DetailPage/OtherSection";
 
+import { getProgramDetail } from "../api/program";
+
 const DetailPage = () => {
   const { id } = useParams();
   const [currentDetail, setCurrentDetail] = useState<EventDetailType>();
   useEffect(() => {
+    getProgramDetail(Number(id))
+      .then(res => setCurrentDetail(res))
+      .catch(err => console.log(err));
     setCurrentDetail(eventDetailData);
   }, []);
   return (
