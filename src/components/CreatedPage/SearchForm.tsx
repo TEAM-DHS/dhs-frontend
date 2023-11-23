@@ -31,7 +31,17 @@ const SearchForm = () => {
   const [hostName, setHostName] = useState("");
   const [hostDescription, setHostDescription] = useState("");
   const [images, setImages] = useState<string[]>([]);
-  // 썸네일 없음, 개인정보 동의
+
+  // // 썸네일 없음, 개인정보 동의
+  // console.log(title);
+  // console.log(content);
+  // console.log(schedule);
+  // console.log(deadline);
+  // console.log(targetNumber);
+  // console.log(price);
+  // console.log(hostDescription);
+  // console.log(hostName);
+  console.log(images)
 
   return (
     <div className="bg-white flex flex-col w-[506px] mr-auto ml-auto">

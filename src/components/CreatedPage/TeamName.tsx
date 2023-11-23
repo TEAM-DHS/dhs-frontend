@@ -1,14 +1,11 @@
 import Question from "./Question";
-import { useState } from "react";
 
 interface TeamNameType {
   hostName: string;
   setHostName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TeamName = (data: TeamNameType) => {
-  const [text, setText] = useState("");
-
+const TeamName = ({ hostName, setHostName }: TeamNameType) => {
   return (
     <>
       <Question title="팀 이름을 입력해주세요." />
@@ -17,12 +14,12 @@ const TeamName = (data: TeamNameType) => {
         style={{ outline: "none" }}
         maxLength={29}
         onChange={e => {
-          setText(e.target.value);
+          setHostName(e.target.value);
         }}
-        value={text}
+        value={hostName}
       />
       <div className="text-neutral-500 text-right text-xs leading-4  mt-3.5 self-end">
-        {text.length}/30
+        {hostName.length}/30
       </div>
     </>
   );

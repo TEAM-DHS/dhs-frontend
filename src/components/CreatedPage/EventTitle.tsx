@@ -1,14 +1,11 @@
 import Question from "./Question";
-import { useState } from "react";
 
 interface EventTitleType {
   title: string;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const EventTitle = (data: EventTitleType) => {
-  const [text, setText] = useState("");
-
+const EventTitle = ({ title, setTitle }: EventTitleType) => {
   return (
     <>
       <Question title="행사의 제목을 입력해주세요." />
@@ -17,12 +14,12 @@ const EventTitle = (data: EventTitleType) => {
         style={{ outline: "none" }}
         maxLength={29}
         onChange={e => {
-          setText(e.target.value);
+          setTitle(e.target.value);
         }}
-        value={text}
+        value={title}
       />
       <div className="text-neutral-500 text-right text-xs leading-4  mt-3.5 self-end">
-        {text.length}/30
+        {title.length}/30
       </div>
     </>
   );
