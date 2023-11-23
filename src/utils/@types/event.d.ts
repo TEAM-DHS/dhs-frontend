@@ -1,4 +1,5 @@
 type CategoryType = "" | "PLAY" | "EXHIBIT" | "BAR" | "ACADEMIC" | "ETC";
+type SortType = "NEW" | "POPULAR" | "DEADLINE";
 
 interface TopFiveType {
   id: number;
@@ -15,8 +16,8 @@ interface TopFiveType {
 }
 
 interface EventFilterType {
-  search: string;
-  sort: "new" | "liked" | "imm";
+  keyword: string;
+  sort: SortType;
   category: string;
   page: number;
 }
