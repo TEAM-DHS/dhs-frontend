@@ -94,3 +94,13 @@ export const getProgramLiked = async () => {
     throw err;
   }
 };
+
+// get program created
+export const getProgramCreated = async () => {
+  try {
+    const res = await client.get(`/programs/created`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};

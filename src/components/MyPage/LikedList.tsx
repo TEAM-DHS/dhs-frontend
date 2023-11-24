@@ -1,27 +1,10 @@
 import EventItem from "../_common/EventItem";
-import { eventData } from "../../utils/data/eventData";
 import EmptyMessage from "./EmptyMessage";
 import { useState, useEffect } from "react";
 import { getProgramLiked } from "../../api/program";
 
-interface dataType {
-  programId: number;
-  title: string;
-  category: "" | "PLAY" | "EXHIBIT" | "BAR" | "ACADEMIC" | "ETC";
-  thumbnailImage: string;
-  remainingDays: number;
-  isOpen: boolean;
-  goal: {
-    targetNumber: number;
-    registrantNumber: number;
-    progressRate: number;
-  };
-  content: string;
-  hasLike: boolean;
-}
-
 const LikedList = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<EventPreviewType[]>([]);
 
   useEffect(() => {
     getLikedData();
@@ -41,7 +24,7 @@ const LikedList = () => {
     <>
       {data ? (
         <div className="w-[calc(100%-100px)] ml-auto mr-auto flex flex-wrap gap-[30px] mobile:w-[calc(100%-40px)] mt-[5%]">
-          {data.map((item: dataType) => (
+          {data.map(item => (
             <EventItem {...item} key={item.programId} />
           ))}
         </div>
