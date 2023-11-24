@@ -18,8 +18,7 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    // accept: "image/*", // 이미지만 허용
-    multiple: true, // 여러 개 파일 업로드 허용
+    multiple: true,
   });
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -43,7 +42,7 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
   return (
     <>
       <Question title="행사와 관련된 사진들을 첨부해주세요." />
-      {images.length === 0 ? (
+      {images.slice(1).length === 0 ? (
         <div
           {...getRootProps()}
           className="border self-center flex w-[506px] max-w-full flex-col items-center mt-5 pt-9 pb-11 px-5 rounded-lg border-dashed border-neutral-200"
@@ -52,7 +51,6 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
             {...getInputProps()}
             ref={inputRef}
             style={{ display: "none" }}
-            onChange={handleFileChange}
           />
           <div className="flex w-[158px] max-w-full flex-col items-stretch">
             <img
@@ -74,7 +72,7 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
       ) : (
         <div>
           <ul>
-            {images.map((image, index) => (
+            {images.slice(1).map((image, index) => (
               <li key={index}>
                 <img
                   src={image}

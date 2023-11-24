@@ -6,14 +6,19 @@ interface EndDateType {
 }
 
 const EndDate = ({ deadline, setDeadline }: EndDateType) => {
+  const ConvertAndSaveDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let convertedDate = e.target.value + ":00";
+    setDeadline(convertedDate);
+  };
+
   return (
     <>
       <Question title="신청 마감 날짜를 입력해주세요." />
       <input
-        type="date"
+        type="datetime-local"
         className="leading-5 border w-[100%] items-center mt-6 px-5 py-3 rounded-3xl border-solid border-neutral-200 outline-none"
         value={deadline}
-        onChange={e => setDeadline(e.target.value)}
+        onChange={e => ConvertAndSaveDate(e)}
       />
     </>
   );

@@ -14,6 +14,7 @@ import Place from "./Place";
 import PersonalInfo from "./PersonalInfo";
 import EventDate from "./EventDate";
 import { useState } from "react";
+import { postProgram } from "../../api/program";
 
 const SearchForm = () => {
   const [title, setTitle] = useState("");
@@ -31,8 +32,8 @@ const SearchForm = () => {
   const [hostName, setHostName] = useState("");
   const [hostDescription, setHostDescription] = useState("");
   const [images, setImages] = useState<string[]>([]);
+  const [agree, setAgree] = useState(false);
 
-  // // 썸네일 없음, 개인정보 동의
   // console.log(title);
   // console.log(content);
   // console.log(schedule);
@@ -41,18 +42,44 @@ const SearchForm = () => {
   // console.log(price);
   // console.log(hostDescription);
   // console.log(hostName);
-  console.log(images)
+  // console.log(images);
+  // console.log(depositAccount);
+  // console.log(depositBank);
+  // console.log(depositName);
+  // console.log(category);
+  // console.log(location);
+  // console.log(postalCode);
+
+  const postProgramInfo = () => {
+    const res = postProgram({
+      title: title,
+      category: category,
+      schedule: schedule,
+      location: location,
+      postalCode: postalCode,
+      deadline: deadline,
+      targetNumber: targetNumber,
+      content: content,
+      depositAccount: depositAccount,
+      depositBank: depositBank,
+      depositName: depositName,
+      price: price,
+      hostName: hostName,
+      hostDescription: hostDescription,
+      images: images,
+    });
+
+    console.log(res);
+  };
 
   return (
     <div className="bg-white flex flex-col w-[506px] mr-auto ml-auto">
       <Introduction />
-      {/* 보완 */}
       <Category category={category} setCategory={setCategory} />
       <EventDate schedule={schedule} setSchedule={setSchedule} />
       <EventTitle title={title} setTitle={setTitle} />
       <Description content={content} setContent={setContent} />
-      <Thumbnail />
-      {/* 보완 */}
+      <Thumbnail images={images} setImages={setImages} />
       <Photos images={images} setImages={setImages} />
       <TeamName hostName={hostName} setHostName={setHostName} />
       <TeamIntro
@@ -77,7 +104,10 @@ const SearchForm = () => {
         setPostalCode={setPostalCode}
       />
       <PersonalInfo />
-      <button className="text-white text-smTitle font-regular leading-6 bg-blue-700 w-[100%] mt-24 mb-36 px-5 py-7 rounded-xl text-center">
+      <button
+        className="text-white text-smTitle font-regular leading-6 bg-blue-700 w-[100%] mt-24 mb-36 px-5 py-7 rounded-xl text-center"
+        onClick={postProgramInfo}
+      >
         등록하기
       </button>
     </div>
