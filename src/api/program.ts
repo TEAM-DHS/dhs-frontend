@@ -104,3 +104,13 @@ export const getProgramCreated = async () => {
     throw err;
   }
 };
+
+// get program registered
+export const getProgramRegistered = async () => {
+  try {
+    const res = await client.get(`/programs/registered`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
