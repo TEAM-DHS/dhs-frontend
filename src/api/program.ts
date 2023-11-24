@@ -84,3 +84,13 @@ export const postProgramRegister = async (
     throw err;
   }
 };
+
+// get program liked
+export const getProgramLiked = async () => {
+  try {
+    const res = await client.get(`/programs/liked`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
