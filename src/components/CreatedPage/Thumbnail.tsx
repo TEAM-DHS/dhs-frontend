@@ -1,5 +1,5 @@
+import React, { useRef } from "react";
 import Question from "./Question";
-import { useRef } from "react";
 
 interface Photos {
   images: string[];
@@ -10,10 +10,11 @@ const Thumbnail: React.FC<Photos> = ({ images, setImages }) => {
   const handleImageUpload = () => {
     if (imgRef.current && imgRef.current.files) {
       const file = imgRef.current.files[0];
+
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        setImages(prevImg => [reader.result as string, ...prevImg]);
+        setImages([reader.result as string]);
       };
     }
   };

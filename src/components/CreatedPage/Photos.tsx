@@ -8,19 +8,6 @@ interface Photos {
 }
 
 const Photos: React.FC<Photos> = ({ images, setImages }) => {
-  const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
-      const newImages = acceptedFiles.map(file => URL.createObjectURL(file));
-      setImages(prevImages => [...prevImages, ...newImages]);
-    },
-    [setImages],
-  );
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    multiple: true,
-  });
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   const openFilePicker = () => {
@@ -30,27 +17,32 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = event.target.files;
-    if (selectedFiles) {
-      const newImages = Array.from(selectedFiles).map(file =>
+    const selectedImages = event.target.files;
+    if (selectedImages) {
+      const newImageURLs = Array.from(selectedImages).map(file =>
         URL.createObjectURL(file),
       );
-      setImages(prevImages => [...prevImages, ...newImages]);
+      setImages(prevImages => [...prevImages, ...newImageURLs]);
     }
+  };
+
+  const removeImage = (index: number) => {
+    const updatedImages = images.filter((_, i) => i !== index);
+    setImages(updatedImages);
   };
 
   return (
     <>
       <Question title="행사와 관련된 사진들을 첨부해주세요." />
-      {images.slice(1).length === 0 ? (
-        <div
-          {...getRootProps()}
-          className="border self-center flex w-[506px] max-w-full flex-col items-center mt-5 pt-9 pb-11 px-5 rounded-lg border-dashed border-neutral-200"
-        >
+      {images.length === 0 ? (
+        <div className="border self-center flex w-[506px] max-w-full flex-col items-center mt-5 pt-9 pb-11 px-5 rounded-lg border-dashed border-neutral-200">
           <input
-            {...getInputProps()}
+            type="file"
+            accept="image/*"
             ref={inputRef}
             style={{ display: "none" }}
+            onChange={handleFileChange}
+            multiple
           />
           <div className="flex w-[158px] max-w-full flex-col items-stretch">
             <img
@@ -71,17 +63,23 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
         </div>
       ) : (
         <div>
-          <ul>
-            {images.slice(1).map((image, index) => (
-              <li key={index}>
+          <div className="flex mt-6">
+            {images.map((image, index) => (
+              <div key={index} className="flex mr-2">
+                <button
+                  onClick={() => removeImage(index)}
+                  className="bg-white absolute rounded-[100%] pt-[1px] pb-[2px] pr-[10px] pl-[10px] mt-1 ml-1"
+                >
+                  x
+                </button>
                 <img
                   src={image}
                   alt={`uploaded-${index}`}
-                  style={{ width: "100px" }}
+                  className="w-[150px] h-[150px] rounded-md"
                 />
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </>

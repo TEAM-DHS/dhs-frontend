@@ -15,6 +15,7 @@ import PersonalInfo from "./PersonalInfo";
 import EventDate from "./EventDate";
 import { useState } from "react";
 import { postProgram } from "../../api/program";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
   const [title, setTitle] = useState("");
@@ -33,43 +34,75 @@ const SearchForm = () => {
   const [hostDescription, setHostDescription] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [agree, setAgree] = useState(false);
+  const [thumbNail, setThumbNail] = useState<string[]>([]);
 
-  // console.log(title);
-  // console.log(content);
-  // console.log(schedule);
-  // console.log(deadline);
-  // console.log(targetNumber);
-  // console.log(price);
-  // console.log(hostDescription);
-  // console.log(hostName);
-  // console.log(images);
-  // console.log(depositAccount);
-  // console.log(depositBank);
-  // console.log(depositName);
-  // console.log(category);
-  // console.log(location);
-  // console.log(postalCode);
+  const navigate = useNavigate();
+
+  // 썸네일이랑 이미지 형식 다름!
 
   const postProgramInfo = () => {
-    const res = postProgram({
-      title: title,
-      category: category,
-      schedule: schedule,
-      location: location,
-      postalCode: postalCode,
-      deadline: deadline,
-      targetNumber: targetNumber,
-      content: content,
-      depositAccount: depositAccount,
-      depositBank: depositBank,
-      depositName: depositName,
-      price: price,
-      hostName: hostName,
-      hostDescription: hostDescription,
-      images: images,
-    });
+    if (
+      !title ||
+      !category ||
+      !schedule ||
+      !location ||
+      !postalCode ||
+      !deadline ||
+      !targetNumber ||
+      !content ||
+      !depositAccount ||
+      !depositBank ||
+      !depositName ||
+      !price ||
+      !hostName ||
+      !hostDescription ||
+      images.length === 0
+    ) {
+      alert("내용을 모두 입력해주세요.");
+    } else {
+      if (!agree) {
+        alert("개인정보 수집 동의를 체크해주세요.");
+      } else {
+        const res = {
+          title: title,
+          category: category,
+          schedule: schedule,
+          location: location,
+          postalCode: postalCode,
+          deadline: deadline,
+          targetNumber: targetNumber,
+          content: content,
+          depositAccount: depositAccount,
+          depositBank: depositBank,
+          depositName: depositName,
+          price: price,
+          hostName: hostName,
+          hostDescription: hostDescription,
+          images: [...thumbNail, ...images],
+        };
+        console.log(res);
+        alert("등록이 완료되었습니다.");
+        navigate("/mypage?category=created");
+      }
+    }
 
-    console.log(res);
+    // const res = postProgram({
+    //   title: title,
+    //   category: category,
+    //   schedule: schedule,
+    //   location: location,
+    //   postalCode: postalCode,
+    //   deadline: deadline,
+    //   targetNumber: targetNumber,
+    //   content: content,
+    //   depositAccount: depositAccount,
+    //   depositBank: depositBank,
+    //   depositName: depositName,
+    //   price: price,
+    //   hostName: hostName,
+    //   hostDescription: hostDescription,
+    //   images: [...thumbNail, ...images],
+    // });
   };
 
   return (
@@ -79,7 +112,7 @@ const SearchForm = () => {
       <EventDate schedule={schedule} setSchedule={setSchedule} />
       <EventTitle title={title} setTitle={setTitle} />
       <Description content={content} setContent={setContent} />
-      <Thumbnail images={images} setImages={setImages} />
+      <Thumbnail images={thumbNail} setImages={setThumbNail} />
       <Photos images={images} setImages={setImages} />
       <TeamName hostName={hostName} setHostName={setHostName} />
       <TeamIntro
@@ -103,7 +136,7 @@ const SearchForm = () => {
         postalCode={postalCode}
         setPostalCode={setPostalCode}
       />
-      <PersonalInfo />
+      <PersonalInfo agree={agree} setAgree={setAgree} />
       <button
         className="text-white text-smTitle font-regular leading-6 bg-blue-700 w-[100%] mt-24 mb-36 px-5 py-7 rounded-xl text-center"
         onClick={postProgramInfo}

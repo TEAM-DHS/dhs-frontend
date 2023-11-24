@@ -50,7 +50,7 @@ const Place = ({
             <div className="bg-white w-96 h-[575px] p-4 rounded-2xl shadow-md overflow-y-auto relative">
               <button
                 onClick={() => setPopupVisible(false)}
-                className="text-[28px] md:text-xl w-[42rem] ml-auto border-none cursor-pointer"
+                className="text-[28px] md:text-xl ml-auto border-none cursor-pointer"
               >
                 x
               </button>
