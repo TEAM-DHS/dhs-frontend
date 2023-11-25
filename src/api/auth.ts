@@ -1,4 +1,6 @@
 import client from "./client";
+import axios from "axios";
+import { updateAuthHeader } from ".";
 
 interface InfoType {
   username: string;
@@ -58,11 +60,15 @@ export const postKakaoSignUp = async (codeInfo: KaKaoOAuthType) => {
 // post refresh token
 export const postRefreshToken = async () => {
   try {
-    const res = await client.post("/auth/refresh-token");
-    const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
-    localStorage.setItem("authtoken", accessToken);
-    return res.data;
-  } catch (err) {
-    throw err;
+    const url = "/auth/refresh-token";
+    const authToken = localStorage.getItem("authtoken");
+
+    const headers = authToken ? { Authorization: authToken } : {};
+    const response = await client.post(url, null, { headers });
+
+    console.log("재발급", response);
+    return response;
+  } catch (error) {
+    throw error;
   }
 };

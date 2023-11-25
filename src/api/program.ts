@@ -1,5 +1,6 @@
 import client from "./client";
 import useInfiniteScroll from "../utils/hooks/useInfiniteScroll";
+import apiClient from ".";
 
 interface ProgramType {
   title: string;
@@ -114,7 +115,7 @@ export const postProgramRegister = async (
 // get program liked
 export const getProgramLiked = async (page: number) => {
   try {
-    const res = await client.get(`/programs/liked`, {
+    const res = await apiClient.get(`/programs/liked`, {
       params: {
         page: page,
       },
