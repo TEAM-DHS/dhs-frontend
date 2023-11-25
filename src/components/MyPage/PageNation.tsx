@@ -42,11 +42,18 @@ const PageNation = ({
     }
   }, [currentPage]);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   const handleNextPage = () => {
     if (currentPage < totalPages - 1) {
       setCurrentPage(prevPage => {
         return prevPage + 1;
       });
+      scrollToTop();
     }
   };
 
@@ -55,12 +62,13 @@ const PageNation = ({
       setCurrentPage(prevPage => {
         return prevPage - 1;
       });
+      scrollToTop();
     }
   };
 
   return (
     <div className="flex items-center justify-center mb-[10rem] mt-[5rem] text-[22px]">
-      <button onClick={handlePrevPage} className="mr-6 ">
+      <button onClick={handlePrevPage} className="mr-8 ">
         {"<"}
       </button>
       {pageNumbers.map((page, i) => (
@@ -73,7 +81,7 @@ const PageNation = ({
           {page}
         </p>
       ))}
-      <button onClick={handleNextPage} className="ml-6 ">
+      <button onClick={handleNextPage} className="ml-8 ">
         {">"}
       </button>
     </div>
