@@ -11,8 +11,10 @@ interface isCategoryProps {
 
 const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
   const nav = useNavigate();
-  const location = useLocation();
   const isLogin = useRecoilValue<boolean>(isLoginState);
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const category = params.get("category");
 
   const postLogOut = async () => {
     try {
@@ -57,7 +59,7 @@ const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
           {myPageCategory.map(item => (
             <div
               className={`w-auto flex justify-center ml-[10px] mr-[10px] pb-[10px] text-smTitle cursor-pointer whitespace-nowrap ${
-                `${location.pathname}${location.search}` === item.path
+                `${category}` === item.category
                   ? `font-bold border-b-[3px] border-mainBlue text-mainBlue`
                   : `font-regular text-black`
               }`}
