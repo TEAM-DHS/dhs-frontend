@@ -41,6 +41,7 @@ const CategoryBar = () => {
             item.id === 0 ? resetCategory() : toggleCategory(item)
           }
           key={item.id}
+          useHook={true}
         />
       ))}
     </div>

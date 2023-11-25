@@ -1,3 +1,4 @@
+import { RefObject } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryBlock from "./CategoryBlock";
 import useHeart from "../../utils/hooks/useHeart";
@@ -6,6 +7,7 @@ import { ReactComponent as ArrowCircleIcon } from "../../assets/My/arrow_circle_
 
 interface Props extends EventPreviewType {
   isRegist?: boolean;
+  refObject?: RefObject<HTMLDivElement>;
 }
 const EventItem = ({
   programId,
@@ -18,6 +20,7 @@ const EventItem = ({
   goal,
   hasLike,
   isRegist,
+  refObject,
 }: Props) => {
   const nav = useNavigate();
 
@@ -38,6 +41,7 @@ const EventItem = ({
       className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] onecol:w-full${
         isRegist ? " items-end h-[265px]" : ""
       }`}
+      ref={refObject ? refObject : undefined}
     >
       <div className="flex gap-[20px]">
         <div
