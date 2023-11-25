@@ -1,6 +1,4 @@
-import client from "./client";
-import axios from "axios";
-import { updateAuthHeader } from ".";
+import apiClient from ".";
 
 interface InfoType {
   username: string;
@@ -15,7 +13,7 @@ interface KaKaoOAuthType {
 // post signup
 export const postSignup = async (userInfo: InfoType) => {
   try {
-    const res = await client.post("/auth/signup", userInfo);
+    const res = await apiClient.post("/auth/signup", userInfo);
     return res.data;
   } catch (err) {
     throw err;
@@ -25,7 +23,7 @@ export const postSignup = async (userInfo: InfoType) => {
 // post login
 export const postLogin = async (userInfo: InfoType) => {
   try {
-    const res = await client.post("/auth/login", userInfo);
+    const res = await apiClient.post("/auth/login", userInfo);
     const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
     localStorage.setItem("authtoken", accessToken);
     return res.data;
@@ -37,7 +35,7 @@ export const postLogin = async (userInfo: InfoType) => {
 // post logout
 export const postLogout = async () => {
   try {
-    const res = await client.post("/auth/logout");
+    const res = await apiClient.post("/auth/logout");
     localStorage.removeItem("authtoken");
     return res.data;
   } catch (err) {
@@ -48,7 +46,7 @@ export const postLogout = async () => {
 // oauth kakao
 export const postKakaoSignUp = async (codeInfo: KaKaoOAuthType) => {
   try {
-    const res = await client.post("/oauth/kakao", codeInfo);
+    const res = await apiClient.post("/oauth/kakao", codeInfo);
     const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
     localStorage.setItem("authtoken", accessToken);
     return res.data;
@@ -64,7 +62,7 @@ export const postRefreshToken = async () => {
     const authToken = localStorage.getItem("authtoken");
 
     const headers = authToken ? { Authorization: authToken } : {};
-    const response = await client.post(url, null, { headers });
+    const response = await apiClient.post(url, null, { headers });
 
     console.log("재발급", response);
     return response;
