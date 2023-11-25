@@ -1,0 +1,40 @@
+/* swiper css custom */
+
+:root {
+  --swiper-theme-color: #ffffff !important;
+  --swiper-pagination-bullet-inactive-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ) !important;
+  --swiper-navigation-size: 30px;
+  --swiper-pagination-bullet-horizontal-gap: 7px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  padding: 0 30px;
+}
+
+.swiper-pagination {
+  bottom: 12px !important;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.CircularProgressbar-text {
+  font-family: LINESeedKR-Bd, sans;
+  dominant-baseline: central !important;
+}

@@ -1,9 +1,15 @@
-import React from "react";
+import CategoryNavBar from "../components/_common/CategoryNavBar";
+import TopFive from "../components/HomePage/TopFive";
+import SearchSection from "../components/HomePage/SearchSection";
+import ListSection from "../components/HomePage/ListSection";
 
 const HomePage = () => {
   return (
     <>
-      <h1 className="text-mainBlue text-sm font-regular">테스트</h1>
+      <CategoryNavBar />
+      <TopFive />
+      <SearchSection />
+      <ListSection />
     </>
   );
 };
