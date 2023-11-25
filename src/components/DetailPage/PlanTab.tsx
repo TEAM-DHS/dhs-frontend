@@ -17,7 +17,7 @@ type Props = {
 
 type NoticePreviewType = {
   title: string;
-  content: ReactElement;
+  content: ReactElement | string;
 };
 
 const PlanTab = ({ content, notices, host, tabRef, setTab }: Props) => {

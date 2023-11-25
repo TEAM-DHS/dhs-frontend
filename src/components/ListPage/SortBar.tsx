@@ -1,4 +1,3 @@
-import React from "react";
 import { sortData } from "../../utils/data/filterData";
 import { useRecoilState } from "recoil";
 import { filterState } from "../../services/store/event";
@@ -16,7 +15,7 @@ const SortBar = () => {
   return (
     <div className="flex items-center">
       {sortData.map(item => (
-        <div className="flex items-center">
+        <div className="flex items-center" key={item.id}>
           {item.id !== 0 && <div className={barClassName}>|</div>}
           <div
             className={className(item.params)}

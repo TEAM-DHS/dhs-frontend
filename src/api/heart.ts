@@ -19,13 +19,3 @@ export const postHeart = async (programId: number) => {
     throw err;
   }
 };
-
-// delete heart
-export const deleteHeart = async (programId: number) => {
-  try {
-    const res = await client.delete(`/hearts/${programId}`);
-    return res.data;
-  } catch (err) {
-    throw err;
-  }
-};

@@ -29,6 +29,16 @@ export const postProgram = async (data: ProgramType) => {
   }
 };
 
+// get popular program (top five)
+export const getProgramTopFive = async () => {
+  try {
+    const res = await client.get("/programs/popular");
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 // get program list
 type GetProgramType = {
   page: number;
@@ -66,6 +76,22 @@ export const useProgramList = (filter: EventFilterType) => {
 export const getProgramDetail = async (programId: number) => {
   try {
     const res = await client.get(`/programs/${programId}`);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// post program notice
+export const postProgramNotice = async (
+  programId: number,
+  notice: {
+    title: string;
+    content: string;
+  },
+) => {
+  try {
+    const res = await client.post(`/programs/${programId}/notice`, notice);
     return res.data;
   } catch (err) {
     throw err;

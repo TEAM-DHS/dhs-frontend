@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useCategoryText from "../../utils/hooks/useCategoryText";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,22 +13,23 @@ import "react-circular-progressbar/dist/styles.css";
 import ProgressProvider from "./ProgressProvider";
 
 import { topfiveData } from "../../utils/data/topfiveData";
+import { getProgramTopFive } from "../../api/program";
 
 interface Props extends TopFiveType {
   index: number;
 }
 const TopItem = ({
-  id,
+  programId,
   thumbnailImage,
   title,
   category,
-  description,
+  content,
   remainingDays,
   goal,
   index,
 }: Props) => {
   const nav = useNavigate();
-  const itemCategory = useCategoryText(category);
+  // const itemCategory = useCategoryText(category);
   return (
     <div className="w-[79%] mobile:w-full relative mobile:px-[18%] flex gap-[45px] mobile:flex-col mobile:items-center mobile:mt-[120px] mobile:gap-[20px]">
       <div className="flex flex-col relative mobile:items-center">
@@ -40,21 +41,21 @@ const TopItem = ({
         </div>
         <div
           className="w-[200px] mobile:w-[60vw] h-[44px] rounded-[8px] mt-[10px] flex justify-center items-center bg-mainBlue text-white font-bold text-p cursor-pointer"
-          onClick={() => nav(`/detail/${id}`)}
+          onClick={() => nav(`/detail/${programId}`)}
         >
           참가 신청하기
         </div>
       </div>
-      <div className="h-[320px] flex flex-col justify-between mobile:h-auto">
+      <div className="h-[320px] flex flex-col justify-between mobile:w-full mobile:h-auto">
         <div className="flex flex-col">
           <div className="font-bold text-lgTitle text-white leading-tight line-clamp-2 mobile:line-clamp-3 mt-[20px]">
             {title}
           </div>
           <div className="font-regular text-mdTitle text-white mt-[16px]">
-            {itemCategory}
+            {category}
           </div>
           <div className="font-regular text-p text-white mt-[16px] line-clamp-4">
-            {description}
+            {content}
           </div>
         </div>
         <div className="flex mobile:flex-col items-center mobile:items-start mobile:pt-[50px] mobile:pb-[60px] font-regular text-smTitle text-white">
@@ -90,7 +91,15 @@ const TopItem = ({
 };
 
 const TopFive = () => {
+  const [topFiveList, setTopFiveList] = useState<TopFiveType[]>([]);
+  useEffect(() => {
+    getProgramTopFive()
+      .then(res => setTopFiveList(res))
+      .catch(err => console.log(err));
+  }, []);
+
   const [index, setIndex] = useState<number>(0);
+
   return (
     <div className="relative w-full h-[550px] mobile:h-auto bg-darkBlue bg-gradient-to-b from-transparent to-mainBlue/50 mt-[126px]">
       <Swiper
@@ -108,8 +117,8 @@ const TopFive = () => {
         onSlideChange={(currentIndex: any) => setIndex(currentIndex.snapIndex)}
         className="h-[550px] mobile:h-auto"
       >
-        {topfiveData.map(item => (
-          <SwiperSlide key={item.id}>
+        {topFiveList.map(item => (
+          <SwiperSlide key={item.programId}>
             <TopItem {...item} index={index} />
           </SwiperSlide>
         ))}

@@ -48,9 +48,15 @@ const NoticeTab = ({ host, notices }: Props) => {
         </div>
       </div>
       <div className="flex flex-col gap-[70px]">
-        {notices.map((item: EventNoticeType) => (
-          <Notice {...item} name={host.name} key={item.noticeId} />
-        ))}
+        {notices.length === 0 ? (
+          <div className="font-regular text-smTitle text-slateBlack mt-[50px]">
+            아직 공지사항이 없습니다.
+          </div>
+        ) : (
+          notices.map((item: EventNoticeType) => (
+            <Notice {...item} name={host.name} key={item.noticeId} />
+          ))
+        )}
       </div>
     </div>
   );

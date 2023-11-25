@@ -49,8 +49,10 @@ const useInfiniteScroll = ({
         : fetch(pageParam),
     {
       getNextPageParam: data => {
-        const pageInfo = data.data.data.pageInfo;
-        return pageInfo.pageNum < pageInfo.totalPages
+        const pageInfo = data.data.pageInfo;
+        return pageInfo.totalPages === 1
+          ? undefined
+          : pageInfo.pageNum < pageInfo.totalPages - 1
           ? pageInfo.pageNum + 1
           : undefined;
       },
