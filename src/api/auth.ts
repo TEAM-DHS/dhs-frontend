@@ -56,3 +56,13 @@ export const postKakaoSignUp = async (codeInfo: KaKaoOAuthType) => {
 };
 
 // post refresh token
+export const postRefreshToken = async () => {
+  try {
+    const res = await client.post("/auth/refresh-token");
+    const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
+    localStorage.setItem("authtoken", accessToken);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};

@@ -82,7 +82,7 @@ const SearchForm = () => {
         };
         console.log(res);
         alert("등록이 완료되었습니다.");
-        navigate("/mypage?category=created");
+        navigate("/mypage?category=created&page=0");
       }
     }
 

@@ -23,6 +23,7 @@ const CreatedList = () => {
       const d = res.programs;
       setData(d);
       setTotalPages(res.pageInfo.totalPages);
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
