@@ -14,16 +14,37 @@ interface ProgramType {
   depositAccount: string;
   depositBank: string;
   depositName: string;
-  price: number;
+  price: string;
   hostName: string;
   hostDescription: string;
-  images: string[];
+}
+
+interface ImgType {
+  images: File[];
 }
 
 // post program
-export const postProgram = async (data: ProgramType) => {
+export const postProgram = async ({
+  data,
+  images,
+}: {
+  data: ProgramType;
+  images: ImgType;
+}) => {
   try {
-    const res = await client.post("/programs", data);
+    const formData = new FormData();
+
+    images.images.forEach((image, index) => {
+      formData.append(`image${index + 1}`, image);
+    });
+
+    formData.append("data", JSON.stringify(data));
+
+    const res = await client.post("/programs", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return res.data;
   } catch (err) {
     throw err;

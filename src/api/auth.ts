@@ -69,6 +69,7 @@ export const postRefreshToken = async () => {
     console.log("재발급", response);
     return response;
   } catch (error) {
+    console.log("재발급오류", error);
     throw error;
   }
 };

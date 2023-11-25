@@ -12,11 +12,10 @@ apiClient.interceptors.response.use(
   },
   async function (error) {
     const originalRequest = error.config;
-    if (error.response.status === 403 && !originalRequest._retry) {
-      originalRequest._retry = true;
+    if (error.response.status === 403) {
       try {
         const res = await postRefreshToken();
-        console.log("응답", res);
+        console.log("응닫받은거", res);
         const newAccessToken = res.data.accessToken;
         const grantType = res.data.grantType;
 
