@@ -11,15 +11,17 @@ interface isCategoryProps {
 
 const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
   const nav = useNavigate();
-  const location = useLocation();
   const isLogin = useRecoilValue<boolean>(isLoginState);
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const category = params.get("category");
 
   const postLogOut = async () => {
     try {
       const confirmed = window.confirm("로그아웃 하시겠습니까?");
       if (confirmed) {
         const res = await postLogout();
-        console.log(res);
+        console.log(res, "로그아웃");
         alert("로그아웃 되었습니다.");
         nav("/");
         window.location.reload();
@@ -57,7 +59,7 @@ const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
           {myPageCategory.map(item => (
             <div
               className={`w-auto flex justify-center ml-[10px] mr-[10px] pb-[10px] text-smTitle cursor-pointer whitespace-nowrap ${
-                `${location.pathname}${location.search}` === item.path
+                `${category}` === item.category
                   ? `font-bold border-b-[3px] border-mainBlue text-mainBlue`
                   : `font-regular text-black`
               }`}

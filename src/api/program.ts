@@ -1,7 +1,33 @@
 import client from "./client";
 import useInfiniteScroll from "../utils/hooks/useInfiniteScroll";
 
+interface ProgramType {
+  title: string;
+  category: string;
+  schedule: string;
+  location: string;
+  postalCode: string;
+  deadline: string;
+  targetNumber: number;
+  content: string;
+  depositAccount: string;
+  depositBank: string;
+  depositName: string;
+  price: number;
+  hostName: string;
+  hostDescription: string;
+  images: string[];
+}
+
 // post program
+export const postProgram = async (data: ProgramType) => {
+  try {
+    const res = await client.post("/programs", data);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
 
 // get program list
 type GetProgramType = {
@@ -53,6 +79,76 @@ export const postProgramRegister = async (
 ) => {
   try {
     const res = await client.post(`/programs/${programId}`, info);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// get program liked
+export const getProgramLiked = async (page: number) => {
+  try {
+    const res = await client.get(`/programs/liked`, {
+      params: {
+        page: page,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// get program created
+export const getProgramCreated = async (page: number) => {
+  try {
+    const res = await client.get(`/programs/created`, {
+      params: {
+        page: page,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// get program registered
+export const getProgramRegistered = async (page: number) => {
+  try {
+    const res = await client.get(`/programs/registered`, {
+      params: {
+        page: page,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// get program registrators
+export const getProgramRegistrators = async (programId: number) => {
+  try {
+    const res = await client.get(`/programs/${programId}/registrations`, {
+      params: {
+        programId: programId,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// patch program close
+export const patchProgramClosed = async (programId: number) => {
+  try {
+    const res = await client.patch(`/programs/${programId}/closed`, {
+      params: {
+        programId: programId,
+      },
+    });
     return res.data;
   } catch (err) {
     throw err;

@@ -1,15 +1,25 @@
+import React, { useRef } from "react";
 import Question from "./Question";
-import { useState } from "react";
 
-const Thumbnail = () => {
-  const [image, setImage] = useState<File | null>(null);
+interface Photos {
+  images: string[];
+  setImages: React.Dispatch<React.SetStateAction<string[]>>;
+}
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedImage = e.target.files?.[0]; // null이 아닌 경우에만 접근
-    if (selectedImage) {
-      setImage(selectedImage);
+const Thumbnail: React.FC<Photos> = ({ images, setImages }) => {
+  const handleImageUpload = () => {
+    if (imgRef.current && imgRef.current.files) {
+      const file = imgRef.current.files[0];
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setImages([reader.result as string]);
+      };
     }
   };
+
+  const imgRef = useRef<HTMLInputElement | null>(null);
 
   return (
     <>
@@ -22,10 +32,11 @@ const Thumbnail = () => {
             accept="image/*"
             className="hidden"
             onChange={handleImageUpload}
+            ref={imgRef}
           />
         </label>
       </div>
-      {image && (
+      {images[0] && (
         <div className="text-neutral-500 text-right text-xs leading-4 mt-3.5 self-end">
           이미지가 성공적으로 업로드되었습니다.
         </div>

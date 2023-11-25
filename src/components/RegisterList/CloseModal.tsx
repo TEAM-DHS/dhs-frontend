@@ -1,8 +1,26 @@
+import { patchProgramClosed } from "../../api/program";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 interface CloseModalProps {
   setIsClose: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CloseModal: React.FC<CloseModalProps> = ({ setIsClose }) => {
+  const { programId } = useParams();
+  const nav = useNavigate();
+
+  const patchClosed = async () => {
+    try {
+      const res = await patchProgramClosed(Number(programId));
+      console.log(res);
+      alert("행사가 마감되었습니다.");
+      nav(-1);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       <div
@@ -11,7 +29,10 @@ const CloseModal: React.FC<CloseModalProps> = ({ setIsClose }) => {
       >
         <p className="text-[20px] mb-12">정말 행사를 마감하시겠어요?</p>
         <div className="flex gap-7">
-          <button className="bg-mainBlue rounded-[12px] flex pl-[40px]  pr-[40px] pt-[8px] pb-[8px] items-center text-white font-regular font-bold">
+          <button
+            className="bg-mainBlue rounded-[12px] flex pl-[40px]  pr-[40px] pt-[8px] pb-[8px] items-center text-white font-regular font-bold"
+            onClick={patchClosed}
+          >
             확인
           </button>
           <button
