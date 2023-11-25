@@ -36,7 +36,7 @@ const EventItem = ({
   return (
     <div
       className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] onecol:w-full${
-        isRegist ? " items-end h-[265px]" : ""
+        isRegist ? " h-[265px]" : ""
       }`}
     >
       <div className="flex gap-[20px]">

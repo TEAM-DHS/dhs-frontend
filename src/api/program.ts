@@ -126,3 +126,17 @@ export const getProgramRegistered = async (page: number) => {
     throw err;
   }
 };
+
+// get registrators
+export const getProgramRegistrators = async (programId: number) => {
+  try {
+    const res = await client.get(`/programs/${programId}/registrations`, {
+      params: {
+        programId: programId,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};

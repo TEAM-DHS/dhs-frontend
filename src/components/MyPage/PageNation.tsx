@@ -1,39 +1,49 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getProgramLiked } from "../../api/program";
+import { getProgramCreated } from "../../api/program";
+import { getProgramRegistered } from "../../api/program";
 
 interface PageType {
   itemsPerPage: number;
   totalItems: number;
   currentPage: number;
   totalPages: number;
+  category: string;
+  getData: () => Promise<void>;
+  setData: React.Dispatch<React.SetStateAction<EventPreviewType[]>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const PageNation = ({
   itemsPerPage,
-  totalItems,
   currentPage,
   totalPages,
   setCurrentPage,
+  setData,
+  category,
+  getData,
 }: PageType) => {
   const [pageNumbers, setPageNumbers] = useState<number[]>([]);
   const nav = useNavigate();
 
   useEffect(() => {
-    setPageNumbers(
-      Array.from(
-        { length: Math.ceil(totalItems / itemsPerPage) },
-        (_, i) => i + 1,
-      ),
-    );
-  }, [totalItems, itemsPerPage]);
+    setPageNumbers(Array.from({ length: totalPages }, (_, i) => i + 1));
+  }, [totalPages, itemsPerPage]);
 
   useEffect(() => {
-    nav(`/mypage?category=heart&page=${currentPage}`);
+    getData();
+    if (category === "heart") {
+      nav(`/mypage?category=heart&page=${currentPage}`);
+    } else if (category === "created") {
+      nav(`/mypage?category=created&page=${currentPage}`);
+    } else if (category === "register") {
+      nav(`/mypage?category=registered&page=${currentPage}`);
+    }
   }, [currentPage]);
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
+    if (currentPage < totalPages - 1) {
       setCurrentPage(prevPage => {
         return prevPage + 1;
       });
@@ -41,7 +51,7 @@ const PageNation = ({
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       setCurrentPage(prevPage => {
         return prevPage - 1;
       });
@@ -57,7 +67,7 @@ const PageNation = ({
         <p
           key={i}
           className={`mr-3 ml-3 text-[20px] ${
-            page === currentPage ? "text-mainBlue font-bold" : ""
+            page === currentPage + 1 ? "text-mainBlue font-bold" : ""
           }`}
         >
           {page}

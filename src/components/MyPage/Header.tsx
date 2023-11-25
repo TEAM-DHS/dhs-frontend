@@ -21,7 +21,7 @@ const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
       const confirmed = window.confirm("로그아웃 하시겠습니까?");
       if (confirmed) {
         const res = await postLogout();
-        console.log(res);
+        console.log(res, "로그아웃");
         alert("로그아웃 되었습니다.");
         nav("/");
         window.location.reload();

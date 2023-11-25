@@ -209,7 +209,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 14,
     title: "새로운 이벤트 9",
-    thumbnailImage: "https://example.com/image9.jpg",
+    thumbnailImage: "",
     category: "ETC",
     content: "이벤트 설명입니다.",
     isOpen: true,
