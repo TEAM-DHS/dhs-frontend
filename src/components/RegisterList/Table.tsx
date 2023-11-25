@@ -28,8 +28,6 @@ interface TableProps {
 const Table: React.FC<TableProps> = data => {
   const [isClose, setIsClose] = useState(false);
 
-  console.log(data);
-
   return (
     <>
       {isClose && <CloseModal setIsClose={setIsClose} />}
@@ -46,11 +44,16 @@ const Table: React.FC<TableProps> = data => {
           </h3>
           <table className="w-[100%]">
             <thead>
-              {registerCategory.map(category => (
-                <th className="text-darkGray pr-auto pl-auto text-p pb-[20px] pt-[5px]">
-                  {category}
-                </th>
-              ))}
+              <tr>
+                {registerCategory.map((category, i) => (
+                  <th
+                    className="text-darkGray pr-auto pl-auto text-p pb-[20px] pt-[5px]"
+                    key={i}
+                  >
+                    {category}
+                  </th>
+                ))}
+              </tr>
             </thead>
             <tbody>
               {data.data.map(item => (

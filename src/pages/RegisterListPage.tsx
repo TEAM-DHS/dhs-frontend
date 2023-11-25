@@ -1,5 +1,4 @@
 import Header from "../components/MyPage/Header";
-import { registerData } from "../utils/data/registerData";
 import EmptyMessage from "../components/MyPage/EmptyMessage";
 import { useParams } from "react-router-dom";
 import Table from "../components/RegisterList/Table";

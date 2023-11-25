@@ -127,10 +127,24 @@ export const getProgramRegistered = async (page: number) => {
   }
 };
 
-// get registrators
+// get program registrators
 export const getProgramRegistrators = async (programId: number) => {
   try {
     const res = await client.get(`/programs/${programId}/registrations`, {
+      params: {
+        programId: programId,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// patch program close
+export const patchProgramClosed = async (programId: number) => {
+  try {
+    const res = await client.patch(`/programs/${programId}/closed`, {
       params: {
         programId: programId,
       },
