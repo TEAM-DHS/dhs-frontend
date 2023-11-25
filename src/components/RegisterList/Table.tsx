@@ -1,12 +1,34 @@
 import List from "./List";
 import { registerCategory } from "../../utils/data/registerData";
-import { registerData } from "../../utils/data/registerData";
 import CloseButton from "./CloseButton";
 import CloseModal from "./CloseModal";
 import { useState } from "react";
 
-const Table = () => {
+interface ListType {
+  name: string;
+  phone: string;
+  payment: {
+    check: boolean;
+    name: string;
+    date: string;
+    price: string;
+  };
+  refund: {
+    status: string;
+    bank: string;
+    account: string;
+    name: string;
+  };
+}
+
+interface TableProps {
+  data: ListType[];
+}
+
+const Table: React.FC<TableProps> = data => {
   const [isClose, setIsClose] = useState(false);
+
+  console.log(data);
 
   return (
     <>
@@ -31,7 +53,7 @@ const Table = () => {
               ))}
             </thead>
             <tbody>
-              {registerData.map(item => (
+              {data.data.map(item => (
                 <List {...item} key={item.name} />
               ))}
             </tbody>

@@ -4,7 +4,7 @@ import EmptyMessage from "../components/MyPage/EmptyMessage";
 import { useParams } from "react-router-dom";
 import Table from "../components/RegisterList/Table";
 import { useEffect, useState } from "react";
-import { getProgramRegistered } from "../api/program";
+import { getProgramRegistrators } from "../api/program";
 
 interface ListType {
   name: string;
@@ -30,8 +30,7 @@ const RegisterListPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await getProgramRegistered(Number(programId));
-        console.log(res);
+        const res = await getProgramRegistrators(Number(programId));
         setData(res);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -43,7 +42,11 @@ const RegisterListPage = () => {
   return (
     <>
       <Header />
-      {data ? <Table /> : <EmptyMessage message="신청자가 없습니다!" />}
+      {data ? (
+        <Table data={data} />
+      ) : (
+        <EmptyMessage message="신청자가 없습니다!" />
+      )}
     </>
   );
 };

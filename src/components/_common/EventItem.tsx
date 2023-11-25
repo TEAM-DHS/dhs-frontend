@@ -118,7 +118,7 @@ const EventItem = ({
       )}
       {isRegist && (
         <div
-          className="flex items-center gap-[6px] mt-[16px] cursor-pointer"
+          className="flex items-center justify-end gap-[6px] mt-[16px] cursor-pointer"
           onClick={navigateRegister}
         >
           <div className="font-regular text-p text-black">신청자 조회하기</div>
