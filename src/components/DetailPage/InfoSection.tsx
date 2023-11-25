@@ -163,11 +163,13 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               </div>
             </div>
             <div className="w-full flex gap-[16px]">
-              <div className="w-[70px] h-[70px] rounded-[5px] flex flex-shrink-0 flex-col justify-center items-center border-[1px] border-lightGray cursor-pointer">
+              <div
+                className="w-[70px] h-[70px] rounded-[5px] flex flex-shrink-0 flex-col justify-center items-center border-[1px] border-lightGray cursor-pointer"
+                onClick={toggle}
+              >
                 <HeartIcon
                   stroke={state ? "transparent" : "#B1CCFF"}
                   fill={state ? "#185ADB" : "#ffffff"}
-                  onClick={toggle}
                 />
                 <div className="font-regular text-sm">{likeNumber}</div>
               </div>

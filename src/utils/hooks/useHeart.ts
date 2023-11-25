@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { postHeart, deleteHeart } from "../../api/heart";
+import { postHeart } from "../../api/heart";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
 
@@ -21,21 +21,12 @@ const useHeart = (programId: number, hasLiked: boolean) => {
     if (typeof hasLiked !== "boolean") return;
     if (trigger === 0) return;
     if (isLogin) {
-      if (state) {
-        deleteHeart(id)
-          .then(res => {
-            console.log(res.data);
-            setState(!state);
-          })
-          .catch(err => console.log(err));
-      } else {
-        postHeart(id)
-          .then(res => {
-            console.log(res.data);
-            setState(!state);
-          })
-          .catch(err => console.log(err));
-      }
+      postHeart(id)
+        .then(res => {
+          console.log(res);
+          setState(!state);
+        })
+        .catch(err => console.log(err));
     } else {
       alert("로그인 후 사용하실 수 있습니다.");
       nav("/login");
