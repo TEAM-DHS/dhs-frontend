@@ -89,7 +89,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 6,
     title: "새로운 이벤트 1",
-    thumbnailImage: "https://example.com/image1.jpg",
+    thumbnailImage: "",
     category: "ETC",
     content: "이벤트 설명입니다.",
     isOpen: true,
@@ -104,7 +104,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 7,
     title: "새로운 이벤트 2",
-    thumbnailImage: "https://example.com/image2.jpg",
+    thumbnailImage: "",
     category: "PLAY",
     content: "이벤트 설명입니다.",
     isOpen: true,
@@ -119,7 +119,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 8,
     title: "새로운 이벤트 3",
-    thumbnailImage: "https://example.com/image3.jpg",
+    thumbnailImage: "",
     category: "BAR",
     content: "이벤트 설명입니다.",
     isOpen: true,
@@ -134,7 +134,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 9,
     title: "새로운 이벤트 4",
-    thumbnailImage: "https://example.com/image4.jpg",
+    thumbnailImage: "",
     category: "EXHIBIT",
     content: "이벤트 설명입니다.",
     isOpen: true,
@@ -149,7 +149,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 10,
     title: "새로운 이벤트 5",
-    thumbnailImage: "https://example.com/image5.jpg",
+    thumbnailImage: "",
     category: "ETC",
     content: "이벤트 설명입니다.",
     isOpen: true,
@@ -164,7 +164,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 11,
     title: "새로운 이벤트 6",
-    thumbnailImage: "https://example.com/image6.jpg",
+    thumbnailImage: "",
     category: "PLAY",
     content: "이벤트 설명입니다.",
     isOpen: true,
@@ -179,7 +179,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 12,
     title: "새로운 이벤트 7",
-    thumbnailImage: "https://example.com/image7.jpg",
+    thumbnailImage: "",
     category: "BAR",
     content: "이벤트 설명입니다.",
     isOpen: true,
@@ -194,7 +194,7 @@ export const eventData: EventPreviewType[] = [
   {
     programId: 13,
     title: "새로운 이벤트 8",
-    thumbnailImage: "https://example.com/image8.jpg",
+    thumbnailImage: "",
     category: "EXHIBIT",
     content: "이벤트 설명입니다.",
     isOpen: true,
