@@ -1,4 +1,5 @@
-import { useState, useEffect, MouseEventHandler } from "react";
+import { useState, MouseEventHandler } from "react";
+import { postProgramNotice } from "../../api/program";
 
 type Props = {
   closer: MouseEventHandler<HTMLDivElement | SVGSVGElement>;
@@ -21,7 +22,12 @@ const NoticeModal = ({ closer, id }: Props) => {
   };
 
   const onSubmit = () => {
-    console.log(id, noticeForm.title, noticeForm.content);
+    postProgramNotice(id, {
+      title: noticeForm.title,
+      content: noticeForm.content,
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   const inputClassName =

@@ -46,6 +46,22 @@ export const getProgramDetail = async (programId: number) => {
   }
 };
 
+// post program notice
+export const postProgramNotice = async (
+  programId: number,
+  notice: {
+    title: string;
+    content: string;
+  },
+) => {
+  try {
+    const res = await client.post(`/programs/${programId}/notice`, notice);
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 // post program register
 export const postProgramRegister = async (
   programId: number,
