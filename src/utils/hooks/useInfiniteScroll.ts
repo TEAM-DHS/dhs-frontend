@@ -52,7 +52,7 @@ const useInfiniteScroll = ({
         const pageInfo = data.data.pageInfo;
         return pageInfo.totalPages === 1
           ? undefined
-          : pageInfo.pageNum < pageInfo.totalPages
+          : pageInfo.pageNum < pageInfo.totalPages - 1
           ? pageInfo.pageNum + 1
           : undefined;
       },

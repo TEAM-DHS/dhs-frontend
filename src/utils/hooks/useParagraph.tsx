@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 const urlReg = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
 const altURL = (sentence: string) =>
   urlReg.test(sentence) ? (
@@ -16,13 +18,19 @@ const useParagraph = (content: string) => {
     <>
       {content.includes("\n") ? (
         content.split("\n").map((line, idx) => (
-          <span key={idx} className="break-all">
-            {line.split(" ").map(sentence => altURL(sentence))}
+          <span key={idx + line} className="break-all">
+            {line.split(" ").map((sentence, idx) => (
+              <Fragment key={sentence + idx}>{altURL(sentence)}</Fragment>
+            ))}
             <br />
           </span>
         ))
       ) : (
-        <span>{content.split(". ").map(sentence => altURL(sentence))}</span>
+        <span>
+          {content.split(". ").map((sentence, idx) => (
+            <Fragment key={sentence + idx}>{altURL(sentence)}</Fragment>
+          ))}
+        </span>
       )}
     </>
   );

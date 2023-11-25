@@ -43,15 +43,17 @@ const ListSection = ({ isCategory }: Props) => {
         )}
         {isCategory && <SortBar />}
       </div>
-      <div className="w-[calc(100%-100px)] flex flex-wrap gap-[30px] pb-[100px] mobile:w-[calc(100%-40px)]">
+      <div className="w-[calc(100%-100px)] min-h-[100svh] flex flex-wrap gap-[30px] pb-[100px] mobile:w-[calc(100%-40px)]">
         {/* {eventData.map(item => (
           <EventItem {...item} key={item.programId} />
         ))} */}
         {data &&
           data.pages.map(page =>
             page.data.programs.length === 0 ? (
-              <div>
-                <div>검색 결과가 없습니다</div>
+              <div className="py-[30px] w-full flex justify-center">
+                <div className="font-regular text-smTitle text-slateBlack">
+                  검색 결과가 없습니다.
+                </div>
               </div>
             ) : (
               page.data.programs.map((item: EventPreviewType, idx: number) =>
