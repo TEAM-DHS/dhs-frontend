@@ -35,7 +35,7 @@ export const useProgramList = (filter: EventFilterType) => {
   const { pageLastItemRef, data, isFetching, hasNextPage, fetchNextPage } =
     useInfiniteScroll({
       queryKey: ["programList", filter],
-      initialPage: 1,
+      // initialPage: 1,
       fetch: getProgram,
       fetchParams: { filter: filter },
       onIntersect: async (entry, observer) => {
