@@ -1,8 +1,11 @@
 import Question from "./Question";
-import { useState } from "react";
 
-const TeamIntro = () => {
-  const [text, setText] = useState("");
+interface TeamIntroType {
+  hostDescription: string;
+  setHostDescription: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const TeamIntro = ({ hostDescription, setHostDescription }: TeamIntroType) => {
   return (
     <>
       <Question title="우리 팀에 대해 소개해주세요." />
@@ -11,12 +14,12 @@ const TeamIntro = () => {
         style={{ outline: "none" }}
         maxLength={499}
         onChange={e => {
-          setText(e.target.value);
+          setHostDescription(e.target.value);
         }}
-        value={text}
+        value={hostDescription}
       />
       <div className="text-neutral-500 text-right text-xs leading-4  mt-3.5 self-end">
-        {text.length}/500
+        {hostDescription.length}/500
       </div>
     </>
   );

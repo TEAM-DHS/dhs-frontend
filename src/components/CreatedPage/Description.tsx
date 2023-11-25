@@ -1,8 +1,12 @@
 import Question from "./Question";
 import { useState } from "react";
 
-const Description = () => {
-  const [text, setText] = useState("");
+interface DescriptionType {
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Description = ({ content, setContent }: DescriptionType) => {
   return (
     <>
       <Question title="행사에 대해 자세히 소개해주세요." />
@@ -11,12 +15,12 @@ const Description = () => {
         style={{ outline: "none" }}
         maxLength={499}
         onChange={e => {
-          setText(e.target.value);
+          setContent(e.target.value);
         }}
-        value={text}
+        value={content}
       />
       <div className="text-neutral-500 text-right text-xs leading-4  mt-3.5 self-end">
-        {text.length}/500
+        {content.length}/500
       </div>
     </>
   );

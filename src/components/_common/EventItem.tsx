@@ -39,7 +39,7 @@ const EventItem = ({
   return (
     <div
       className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] onecol:w-full${
-        isRegist ? " items-end h-[265px]" : ""
+        isRegist ? " h-[265px]" : ""
       }`}
       ref={refObject ? refObject : undefined}
     >
@@ -121,13 +121,14 @@ const EventItem = ({
         </div>
       )}
       {isRegist && (
-        <div
-          className="flex items-center gap-[6px] mt-[16px] cursor-pointer"
+        <button
+          className="flex items-center justify-end gap-[6px] mt-[16px] cursor-pointer"
           onClick={navigateRegister}
+          disabled={!isOpen}
         >
           <div className="font-regular text-p text-black">신청자 조회하기</div>
           <ArrowCircleIcon />
-        </div>
+        </button>
       )}
     </div>
   );

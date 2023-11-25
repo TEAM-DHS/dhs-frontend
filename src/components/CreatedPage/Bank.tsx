@@ -1,11 +1,22 @@
 import Question from "./Question";
-import { useState } from "react";
 
-const Bank = () => {
-  const [name, setName] = useState("");
-  const [bank, setBank] = useState("");
-  const [num, setNum] = useState("");
+interface BankType {
+  depositAccount: string;
+  setDepositAccount: React.Dispatch<React.SetStateAction<string>>;
+  depositBank: string;
+  setDepositBank: React.Dispatch<React.SetStateAction<string>>;
+  depositName: string;
+  setDepositName: React.Dispatch<React.SetStateAction<string>>;
+}
 
+const Bank = ({
+  depositAccount,
+  setDepositAccount,
+  depositBank,
+  setDepositBank,
+  depositName,
+  setDepositName,
+}: BankType) => {
   return (
     <>
       <Question title="예금주, 은행명, 계좌번호를 입력해주세요." />
@@ -13,20 +24,20 @@ const Bank = () => {
         <input
           className="text-neutral-500 leading-5 border grow items-center px-5 py-3 rounded-3xl border-solid border-neutral-200 outline-none text-center w-5"
           placeholder="예금주"
-          value={name}
-          onChange={e => setName(e.target.value)}
+          value={depositName}
+          onChange={e => setDepositName(e.target.value)}
         />
         <input
           className="text-neutral-500 leading-5 border grow items-center px-5 py-3 rounded-3xl border-solid border-neutral-200 outline-none text-center w-5"
           placeholder="은행명"
-          value={bank}
-          onChange={e => setBank(e.target.value)}
+          value={depositBank}
+          onChange={e => setDepositBank(e.target.value)}
         />
         <input
           className="text-neutral-500 leading-5 border grow items-center px-5 py-3 rounded-3xl border-solid border-neutral-200 outline-none text-center w-5"
           placeholder="계좌번호"
-          value={num}
-          onChange={e => setNum(e.target.value)}
+          value={depositAccount}
+          onChange={e => setDepositAccount(e.target.value)}
         />
       </div>
     </>

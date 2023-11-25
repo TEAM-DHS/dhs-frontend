@@ -1,16 +1,18 @@
 import Question from "./Question";
-import { useState } from "react";
 
-const PersonalInfo = () => {
-  const [checked, setChecked] = useState(false);
+interface PersonalInfoType {
+  agree: boolean;
+  setAgree: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const PersonalInfo = ({ agree, setAgree }: PersonalInfoType) => {
   return (
     <>
       <Question title="개인정보 수집 동의서 " />
       <div className="flex w-[291px] items-stretch gap-2.5 mt-6">
         <input
-          checked={checked}
-          onChange={e => setChecked(e.target.checked)}
+          checked={agree}
+          onChange={e => setAgree(e.target.checked)}
           type="checkbox"
           className="border flex w-[20px] shrink-0 h-[20px] flex-col rounded-md border-solid border-neutral-200"
         />

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import CreatedList from "../components/MyPage/CreatedList";
 import LikedList from "../components/MyPage/LikedList";
 import RegisteredList from "../components/MyPage/RegisteredList";
+import { useEffect } from "react";
 
 const MyPage = () => {
   const { search } = useLocation();

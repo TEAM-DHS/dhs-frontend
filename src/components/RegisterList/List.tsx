@@ -1,8 +1,8 @@
 type PaymentType = {
-  status: string;
+  check: boolean;
   name: string;
   date: string;
-  price: number;
+  price: string;
 };
 
 type RefundType = {
@@ -33,7 +33,9 @@ const List: React.FC<ListPropsType> = ({ name, phone, payment, refund }) => {
         <td className="pb-[17px] pt-[17px] text-center">{refund.name}</td>
         <td className="pb-[17px] pt-[17px] text-center">{refund.bank}</td>
         <td className="pb-[17px] pt-[17px] text-center">{refund.account}</td>
-        <td className="pb-[17px] pt-[17px] text-center">{payment.status}</td>
+        <td className="pb-[17px] pt-[17px] text-center">
+          {payment.check ? "확인" : "미확인"}
+        </td>
         <td className="pb-[17px] pt-[17px] text-center">{refund.status}</td>
       </tr>
     </>
