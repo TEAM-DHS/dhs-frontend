@@ -2,10 +2,10 @@ type CategoryType = "" | "PLAY" | "EXHIBIT" | "BAR" | "ACADEMIC" | "ETC";
 type SortType = "NEW" | "POPULAR" | "DEADLINE";
 
 interface TopFiveType {
-  id: number;
+  programId: number;
   title: string;
   category: CategoryType;
-  description: string;
+  content: string;
   thumbnailImage: string;
   remainingDays: number;
   goal: {
