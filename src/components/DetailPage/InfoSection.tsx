@@ -175,7 +175,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               </div>
               <div
                 className={`w-[calc(100%-86px)] h-[70px] rounded-[12px] flex justify-center items-center ${
-                  hasRegistration ? "bg-darkGray" : "bg-mainBlue"
+                  !isHost && hasRegistration ? "bg-darkGray" : "bg-mainBlue"
                 } font-bold text-smTitle text-white${
                   hasRegistration ? "" : " cursor-pointer"
                 } `}
