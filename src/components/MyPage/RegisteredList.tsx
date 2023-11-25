@@ -12,7 +12,7 @@ const RegisteredList = () => {
 
   const getRegisteredData = async () => {
     try {
-      const res = await getProgramRegistered();
+      const res = await getProgramRegistered(1);
       setData(res);
       console.log(res);
     } catch (err) {

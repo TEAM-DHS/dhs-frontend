@@ -86,9 +86,13 @@ export const postProgramRegister = async (
 };
 
 // get program liked
-export const getProgramLiked = async () => {
+export const getProgramLiked = async (page: number) => {
   try {
-    const res = await client.get(`/programs/liked`);
+    const res = await client.get(`/programs/liked`, {
+      params: {
+        page: page,
+      },
+    });
     return res.data;
   } catch (err) {
     throw err;
@@ -96,9 +100,13 @@ export const getProgramLiked = async () => {
 };
 
 // get program created
-export const getProgramCreated = async () => {
+export const getProgramCreated = async (page: number) => {
   try {
-    const res = await client.get(`/programs/created`);
+    const res = await client.get(`/programs/created`, {
+      params: {
+        page: page,
+      },
+    });
     return res.data;
   } catch (err) {
     throw err;
@@ -106,9 +114,13 @@ export const getProgramCreated = async () => {
 };
 
 // get program registered
-export const getProgramRegistered = async () => {
+export const getProgramRegistered = async (page: number) => {
   try {
-    const res = await client.get(`/programs/registered`);
+    const res = await client.get(`/programs/registered`, {
+      params: {
+        page: page,
+      },
+    });
     return res.data;
   } catch (err) {
     throw err;

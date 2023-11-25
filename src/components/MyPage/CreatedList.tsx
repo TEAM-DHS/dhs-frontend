@@ -12,7 +12,7 @@ const CreatedList = () => {
 
   const getCreatedData = async () => {
     try {
-      const res = await getProgramCreated();
+      const res = await getProgramCreated(1);
       setData(res);
       console.log(res);
     } catch (err) {
