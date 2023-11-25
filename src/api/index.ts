@@ -30,8 +30,8 @@ apiClient.interceptors.response.use(
         return axios(originalRequest);
       } catch (err) {
         console.log("토큰 재발급 실패 ", err);
-        // localStorage.removeItem("authtoken"); // 토큰 삭제
-        // window.location.href = `/login`;
+        localStorage.removeItem("authtoken"); // 토큰 삭제
+        window.location.href = `/login`;
       }
     }
     return Promise.reject(error);
