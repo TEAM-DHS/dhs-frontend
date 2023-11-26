@@ -1,26 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProgramLiked } from "../../api/program";
-import { getProgramCreated } from "../../api/program";
-import { getProgramRegistered } from "../../api/program";
-
-interface PageType {
-  itemsPerPage: number;
-  totalItems: number;
-  currentPage: number;
-  totalPages: number;
-  category: string;
-  getData: () => Promise<void>;
-  setData: React.Dispatch<React.SetStateAction<EventPreviewType[]>>;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-}
 
 const PageNation = ({
   itemsPerPage,
   currentPage,
   totalPages,
   setCurrentPage,
-  setData,
   category,
   getData,
 }: PageType) => {
@@ -66,20 +51,25 @@ const PageNation = ({
     }
   };
 
+  const handlePageClick = (selectedPage: number) => {
+    setCurrentPage(selectedPage-1);
+  };
+
   return (
     <div className="flex items-center justify-center mb-[10rem] mt-[5rem] text-[22px]">
       <button onClick={handlePrevPage} className="mr-8 ">
         {"<"}
       </button>
       {pageNumbers.map((page, i) => (
-        <p
+        <button
           key={i}
           className={`mr-3 ml-3 text-[20px] ${
             page === currentPage + 1 ? "text-mainBlue font-bold" : ""
           }`}
+          onClick={() => handlePageClick(page)}
         >
           {page}
-        </p>
+        </button>
       ))}
       <button onClick={handleNextPage} className="ml-8 ">
         {">"}

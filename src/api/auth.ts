@@ -64,7 +64,6 @@ export const postRefreshToken = async () => {
     const headers = authToken ? { Authorization: authToken } : {};
     const response = await apiClient.post(url, null, { headers });
 
-    // console.log("재발급", response);
     return response;
   } catch (error) {
     console.log("재발급오류", error);

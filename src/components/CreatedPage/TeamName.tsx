@@ -1,10 +1,5 @@
 import Question from "./Question";
 
-interface TeamNameType {
-  hostName: string;
-  setHostName: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const TeamName = ({ hostName, setHostName }: TeamNameType) => {
   return (
     <>

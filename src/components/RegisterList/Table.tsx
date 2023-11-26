@@ -4,28 +4,7 @@ import CloseButton from "./CloseButton";
 import CloseModal from "./CloseModal";
 import { useState } from "react";
 
-interface ListType {
-  name: string;
-  phone: string;
-  payment: {
-    check: boolean;
-    name: string;
-    date: string;
-    price: string;
-  };
-  refund: {
-    status: string;
-    bank: string;
-    account: string;
-    name: string;
-  };
-}
-
-interface TableProps {
-  data: ListType[];
-}
-
-const Table: React.FC<TableProps> = data => {
+const Table = (data: TableProps) => {
   const [isClose, setIsClose] = useState(false);
 
   return (

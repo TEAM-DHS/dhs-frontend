@@ -1,10 +1,4 @@
 import Question from "./Question";
-import { useState } from "react";
-
-interface PriceType {
-  price: string;
-  setPrice: React.Dispatch<React.SetStateAction<string>>;
-}
 
 const Price = ({ price, setPrice }: PriceType) => {
   return (

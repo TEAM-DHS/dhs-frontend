@@ -2,18 +2,13 @@ import { patchProgramClosed } from "../../api/program";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-interface CloseModalProps {
-  setIsClose: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const CloseModal: React.FC<CloseModalProps> = ({ setIsClose }) => {
+const CloseModal = ({ setIsClose }: CloseModalProps) => {
   const { programId } = useParams();
   const nav = useNavigate();
 
   const patchClosed = async () => {
     try {
       const res = await patchProgramClosed(Number(programId));
-      console.log(res);
       alert("행사가 마감되었습니다.");
       nav(-1);
     } catch (err) {

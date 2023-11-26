@@ -4,19 +4,12 @@ import TextField from "@mui/material/TextField";
 import { PASSWORD_MISMATCH_ERROR } from "../../utils/constants/errorMessage";
 import { useState, useEffect } from "react";
 
-type PasswordReInputProps = {
-  rePassword: string;
-  setRePassword: React.Dispatch<React.SetStateAction<string>>;
-  setIsValidRePassword: React.Dispatch<React.SetStateAction<boolean>>;
-  password: string;
-};
-
-const PasswordReInput: React.FC<PasswordReInputProps> = ({
+const PasswordReInput = ({
   rePassword,
   setRePassword,
   setIsValidRePassword,
   password,
-}) => {
+}: PasswordReInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const validateRePassword = (password: any, rePassword: any) => {

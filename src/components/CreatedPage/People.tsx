@@ -1,10 +1,4 @@
 import Question from "./Question";
-import { useState } from "react";
-
-interface PeopleType {
-  targetNumber: number;
-  setTargetNumber: React.Dispatch<React.SetStateAction<number>>;
-}
 
 const People = ({ targetNumber, setTargetNumber }: PeopleType) => {
   return (

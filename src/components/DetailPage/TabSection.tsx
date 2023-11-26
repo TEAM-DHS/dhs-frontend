@@ -10,7 +10,7 @@ const TabSection = ({ program }: EventDetailType) => {
   const [tab, setTab] = useState<TabType>("행사 계획");
   const tabRef = useRef<HTMLDivElement>(null);
   return (
-    <div className="w-full flex flex-col items-center gap-[60px]">
+    <div className="w-full flex flex-col items-center gap-[60px] ">
       <div
         ref={tabRef}
         className="w-full h-[63px] border-t-[1px] border-b-[1px] border-lightGray flex justify-center"
@@ -18,7 +18,7 @@ const TabSection = ({ program }: EventDetailType) => {
         <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] mobile:justify-evenly h-full flex justify-start gap-[10px]">
           {tabList.map(item => (
             <div
-              className={`h-full flex items-center font-bold text-smTitle mt-[2px] px-[5px] border-b-[3px] cursor-default ${
+              className={`h-full flex items-center font-bold text-smTitle mt-[2px] px-[5px] border-b-[3px] cursor-default cursor-pointer ${
                 item === tab
                   ? " border-black text-black"
                   : "border-transparent text-darkGray"
