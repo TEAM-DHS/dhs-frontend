@@ -34,7 +34,7 @@ const EventItem = ({
     nav(`/register/${programId}`);
   };
 
-  const { state, toggle } = useHeart(programId, hasLike);
+  const { state, toggle } = useHeart(programId, hasLike, 0);
 
   return (
     <div
