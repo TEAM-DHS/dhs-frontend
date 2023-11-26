@@ -2,20 +2,15 @@ import React, { useRef } from "react";
 import Question from "./Question";
 
 interface Photos {
-  images: string[];
-  setImages: React.Dispatch<React.SetStateAction<string[]>>;
+  images: File[];
+  setImages: React.Dispatch<React.SetStateAction<File[]>>;
 }
 
 const Thumbnail: React.FC<Photos> = ({ images, setImages }) => {
   const handleImageUpload = () => {
     if (imgRef.current && imgRef.current.files) {
       const file = imgRef.current.files[0];
-
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setImages([reader.result as string]);
-      };
+      setImages([file]);
     }
   };
 

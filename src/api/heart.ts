@@ -1,9 +1,9 @@
-import client from "./client";
+import apiClient from ".";
 
 // get heart
 export const getHeart = async () => {
   try {
-    const res = await client.get("/hearts");
+    const res = await apiClient.get("/hearts");
     return res.data;
   } catch (err) {
     throw err;
@@ -13,7 +13,7 @@ export const getHeart = async () => {
 // post heart
 export const postHeart = async (programId: number) => {
   try {
-    const res = await client.post("/hearts", { programId: programId });
+    const res = await apiClient.post("/hearts", { programId: programId });
     return res.data;
   } catch (err) {
     throw err;

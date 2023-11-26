@@ -1,5 +1,5 @@
-import client from "./client";
 import useInfiniteScroll from "../utils/hooks/useInfiniteScroll";
+import apiClient from ".";
 
 interface ProgramType {
   title: string;
@@ -13,16 +13,37 @@ interface ProgramType {
   depositAccount: string;
   depositBank: string;
   depositName: string;
-  price: number;
+  price: string;
   hostName: string;
   hostDescription: string;
-  images: string[];
+}
+
+interface ImgType {
+  images: File[];
 }
 
 // post program
-export const postProgram = async (data: ProgramType) => {
+export const postProgram = async ({
+  data,
+  images,
+}: {
+  data: ProgramType;
+  images: ImgType;
+}) => {
   try {
-    const res = await client.post("/programs", data);
+    const formData = new FormData();
+
+    images.images.forEach((image, index) => {
+      formData.append(`image${index + 1}`, image);
+    });
+
+    formData.append("data", JSON.stringify(data));
+
+    const res = await apiClient.post("/programs", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return res.data;
   } catch (err) {
     throw err;
@@ -32,7 +53,7 @@ export const postProgram = async (data: ProgramType) => {
 // get popular program (top five)
 export const getProgramTopFive = async () => {
   try {
-    const res = await client.get("/programs/popular");
+    const res = await apiClient.get("/programs/popular");
     return res.data;
   } catch (err) {
     throw err;
@@ -46,7 +67,7 @@ type GetProgramType = {
 };
 export const getProgram = async ({ page, filter }: GetProgramType) => {
   try {
-    const res = await client.get(
+    const res = await apiClient.get(
       `/programs?page=${page}&sort=${filter.sort}${
         filter.keyword === "" ? "" : `&keyword=${filter.keyword}`
       }${filter.category === "" ? "" : `&category=${filter.category}`}`,
@@ -75,7 +96,7 @@ export const useProgramList = (filter: EventFilterType) => {
 // get program detail
 export const getProgramDetail = async (programId: number) => {
   try {
-    const res = await client.get(`/programs/${programId}`);
+    const res = await apiClient.get(`/programs/${programId}`);
     return res.data;
   } catch (err) {
     throw err;
@@ -91,7 +112,7 @@ export const postProgramNotice = async (
   },
 ) => {
   try {
-    const res = await client.post(`/programs/${programId}/notice`, notice);
+    const res = await apiClient.post(`/programs/${programId}/notice`, notice);
     return res.data;
   } catch (err) {
     throw err;
@@ -104,7 +125,7 @@ export const postProgramRegister = async (
   info: EventRegisterFormType,
 ) => {
   try {
-    const res = await client.post(`/programs/${programId}`, info);
+    const res = await apiClient.post(`/programs/${programId}`, info);
     return res.data;
   } catch (err) {
     throw err;
@@ -114,7 +135,7 @@ export const postProgramRegister = async (
 // get program liked
 export const getProgramLiked = async (page: number) => {
   try {
-    const res = await client.get(`/programs/liked`, {
+    const res = await apiClient.get(`/programs/liked`, {
       params: {
         page: page,
       },
@@ -128,7 +149,7 @@ export const getProgramLiked = async (page: number) => {
 // get program created
 export const getProgramCreated = async (page: number) => {
   try {
-    const res = await client.get(`/programs/created`, {
+    const res = await apiClient.get(`/programs/created`, {
       params: {
         page: page,
       },
@@ -142,7 +163,7 @@ export const getProgramCreated = async (page: number) => {
 // get program registered
 export const getProgramRegistered = async (page: number) => {
   try {
-    const res = await client.get(`/programs/registered`, {
+    const res = await apiClient.get(`/programs/registered`, {
       params: {
         page: page,
       },
@@ -156,7 +177,7 @@ export const getProgramRegistered = async (page: number) => {
 // get program registrators
 export const getProgramRegistrators = async (programId: number) => {
   try {
-    const res = await client.get(`/programs/${programId}/registrations`, {
+    const res = await apiClient.get(`/programs/${programId}/registrations`, {
       params: {
         programId: programId,
       },
@@ -170,7 +191,7 @@ export const getProgramRegistrators = async (programId: number) => {
 // patch program close
 export const patchProgramClosed = async (programId: number) => {
   try {
-    const res = await client.patch(`/programs/${programId}/closed`, {
+    const res = await apiClient.patch(`/programs/${programId}/closed`, {
       params: {
         programId: programId,
       },

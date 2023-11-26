@@ -29,16 +29,14 @@ const SearchForm = () => {
   const [depositAccount, setDepositAccount] = useState("");
   const [depositBank, setDepositBank] = useState("");
   const [depositName, setDepositName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [hostName, setHostName] = useState("");
   const [hostDescription, setHostDescription] = useState("");
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<File[]>([]);
   const [agree, setAgree] = useState(false);
-  const [thumbNail, setThumbNail] = useState<string[]>([]);
+  const [thumbNail, setThumbNail] = useState<File[]>([]);
 
   const navigate = useNavigate();
-
-  // 썸네일이랑 이미지 형식 다름!
 
   const postProgramInfo = () => {
     if (
@@ -87,21 +85,25 @@ const SearchForm = () => {
     }
 
     // const res = postProgram({
-    //   title: title,
-    //   category: category,
-    //   schedule: schedule,
-    //   location: location,
-    //   postalCode: postalCode,
-    //   deadline: deadline,
-    //   targetNumber: targetNumber,
-    //   content: content,
-    //   depositAccount: depositAccount,
-    //   depositBank: depositBank,
-    //   depositName: depositName,
-    //   price: price,
-    //   hostName: hostName,
-    //   hostDescription: hostDescription,
-    //   images: [...thumbNail, ...images],
+    //   data: {
+    //     title: title,
+    //     category: category,
+    //     schedule: schedule,
+    //     location: location,
+    //     postalCode: postalCode,
+    //     deadline: deadline,
+    //     targetNumber: targetNumber,
+    //     content: content,
+    //     depositAccount: depositAccount,
+    //     depositBank: depositBank,
+    //     depositName: depositName,
+    //     price: price,
+    //     hostName: hostName,
+    //     hostDescription: hostDescription,
+    //   },
+    //   images: {
+    //     images: [...thumbNail, ...images],
+    //   },
     // });
   };
 
