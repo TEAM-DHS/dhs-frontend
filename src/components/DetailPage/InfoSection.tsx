@@ -34,6 +34,7 @@ const InfoSection = ({ program, member, trigger, setTrigger }: Props) => {
   } = program;
   const { isHost, hasRegistration, hasLike } = member;
   const { state, toggle, likedNum } = useHeart(programId, hasLike, likeNumber);
+  console.log(likeNumber);
 
   const [noticeModal, setNoticeModal] = useState<boolean>(false);
 
@@ -108,7 +109,7 @@ const InfoSection = ({ program, member, trigger, setTrigger }: Props) => {
               {title}
             </div>
           </div>
-          <div className="w-[40%] max-w-[510px] mobile:max-w-full flex flex-col justify-between pt-[4px]">
+          <div className="w-[40%] max-w-[510px] mobile:w-full mobile:max-w-full flex flex-col justify-between pt-[4px]">
             <div className="flex flex-col">
               <div className={subtitleClassName}>신청 인원</div>
               <div className="h-[40px] flex items-end mt-[16px]">

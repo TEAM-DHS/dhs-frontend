@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { eventDetailData } from "../utils/data/eventData";
 import CategoryNavBar from "../components/_common/CategoryNavBar";
 import InfoSection from "../components/DetailPage/InfoSection";
 import TabSection from "../components/DetailPage/TabSection";
@@ -14,9 +13,11 @@ const DetailPage = () => {
   const [updateTrigger, setUpdateTrigger] = useState<number>(0);
   useEffect(() => {
     getProgramDetail(Number(id))
-      .then(res => setCurrentDetail(res))
+      .then(res => {
+        console.log(res.program);
+        setCurrentDetail(res);
+      })
       .catch(err => console.log(err));
-    setCurrentDetail(eventDetailData);
   }, [updateTrigger]);
   return (
     <>
