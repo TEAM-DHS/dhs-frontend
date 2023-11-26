@@ -5,16 +5,13 @@ import { postHeart } from "../../api/heart";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
 
-const useHeart = (
-  programId: number,
-  hasLiked: boolean,
-  likeNumber?: number,
-) => {
+const useHeart = (programId: number, hasLiked: boolean, likeNumber: number) => {
   const nav = useNavigate();
   const isLogin = useRecoilValue(isLoginState);
 
+  console.log(likeNumber);
   const [state, setState] = useState<boolean>(hasLiked);
-  const [likedNum, setLikedNum] = useState<number>(likeNumber ? likeNumber : 0);
+  const [likedNum, setLikedNum] = useState<number>(likeNumber);
   const [trigger, setTrigger] = useState<number>(0);
   const [id, setId] = useState<number>(0);
   useEffect(() => {
