@@ -91,8 +91,15 @@ const SearchForm = () => {
       });
       alert("등록이 완료되었습니다.");
       navigate(`/detail/${res.programId}`);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (
+        error instanceof TypeError &&
+        error.message.includes("Request failed with status 413")
+      ) {
+        alert("파일 용량이 너무 큽니다.");
+      } else {
+        console.error("An error occurred: ", error);
+      }
     }
   };
 

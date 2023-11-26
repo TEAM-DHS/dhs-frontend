@@ -317,7 +317,24 @@ interface ListType {
   };
 }
 
-interface TableProps {
+interface ListType {
+  name: string;
+  phone: string;
+  payment: {
+    check: boolean;
+    name: string;
+    date: string;
+    price: string;
+  };
+  refund: {
+    status: string;
+    bank: string;
+    account: string;
+    name: string;
+  };
+}
+
+interface TableProps{
   data: ListType[];
 }
 
@@ -327,3 +344,4 @@ type PasswordReInputProps = {
   setIsValidRePassword: React.Dispatch<React.SetStateAction<boolean>>;
   password: string;
 };
+

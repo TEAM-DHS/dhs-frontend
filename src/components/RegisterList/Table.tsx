@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const Table = (data: TableProps) => {
   const [isClose, setIsClose] = useState(false);
+  const amount = localStorage.getItem("amount")
 
   return (
     <>
@@ -19,7 +20,7 @@ const Table = (data: TableProps) => {
           }}
         >
           <h3 className="font-bold mb-[20px]">
-            총 <span className="text-mainBlue">5</span>명
+            총 <span className="text-mainBlue">{amount}</span>명
           </h3>
           <table className="w-[100%]">
             <thead>
