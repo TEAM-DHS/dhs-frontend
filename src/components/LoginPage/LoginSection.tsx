@@ -18,7 +18,6 @@ const LoginSection = () => {
   const postLoginInfo = async () => {
     try {
       const res = await postLogin({ username: id, password: password });
-      console.log(res);
       alert(`${id}님 환영합니다!`);
       navigate("/");
       window.location.reload();
