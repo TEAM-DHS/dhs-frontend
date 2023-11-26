@@ -31,7 +31,11 @@ const EventItem = ({
 
   const navigateRegister = (event: React.MouseEvent) => {
     event.stopPropagation();
-    nav(`/register/${programId}`);
+    if(!isOpen){
+      alert('종료된 행사입니다.')
+    }else{
+      nav(`/register/${programId}`);
+    }
   };
 
   const { state, toggle } = useHeart(programId, hasLike);
@@ -119,7 +123,6 @@ const EventItem = ({
         <button
           className="flex items-center justify-end gap-[6px] mt-[16px] cursor-pointer"
           onClick={navigateRegister}
-          disabled={!isOpen}
         >
           <div className="font-regular text-p text-black">신청자 조회하기</div>
           <ArrowCircleIcon />
