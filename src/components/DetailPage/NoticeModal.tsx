@@ -2,7 +2,7 @@ import { useState, MouseEventHandler } from "react";
 import { postProgramNotice } from "../../api/program";
 
 type Props = {
-  closer: MouseEventHandler<HTMLDivElement | SVGSVGElement>;
+  closer: () => void;
   id: number;
 };
 const NoticeModal = ({ closer, id }: Props) => {
@@ -26,7 +26,10 @@ const NoticeModal = ({ closer, id }: Props) => {
       title: noticeForm.title,
       content: noticeForm.content,
     })
-      .then(res => console.log(res))
+      .then(res => {
+        alert("공지가 등록되었습니다.");
+        closer();
+      })
       .catch(err => console.log(err));
   };
 
