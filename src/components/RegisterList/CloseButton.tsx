@@ -1,7 +1,3 @@
-interface CloseButtonProps {
-  setIsClose: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 const CloseButton: React.FC<CloseButtonProps> = ({ setIsClose }) => {
   return (
     <button

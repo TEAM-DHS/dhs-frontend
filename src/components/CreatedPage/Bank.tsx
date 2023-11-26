@@ -1,14 +1,5 @@
 import Question from "./Question";
 
-interface BankType {
-  depositAccount: string;
-  setDepositAccount: React.Dispatch<React.SetStateAction<string>>;
-  depositBank: string;
-  setDepositBank: React.Dispatch<React.SetStateAction<string>>;
-  depositName: string;
-  setDepositName: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const Bank = ({
   depositAccount,
   setDepositAccount,

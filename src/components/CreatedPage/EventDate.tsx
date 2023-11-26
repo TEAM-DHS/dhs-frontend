@@ -1,10 +1,5 @@
 import Question from "./Question";
 
-interface EventDateType {
-  schedule: string;
-  setSchedule: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const EventDate = ({ schedule, setSchedule }: EventDateType) => {
   const ConvertAndSaveDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     let convertedDate = e.target.value + ":00";

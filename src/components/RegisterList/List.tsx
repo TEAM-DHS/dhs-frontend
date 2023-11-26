@@ -1,25 +1,4 @@
-type PaymentType = {
-  check: boolean;
-  name: string;
-  date: string;
-  price: string;
-};
-
-type RefundType = {
-  status: string;
-  bank: string;
-  account: string;
-  name: string;
-};
-
-type ListPropsType = {
-  name: string;
-  phone: string;
-  payment: PaymentType;
-  refund: RefundType;
-};
-
-const List: React.FC<ListPropsType> = ({ name, phone, payment, refund }) => {
+const List = ({ name, phone, payment, refund }: ListPropsType) => {
   return (
     <>
       <tr className="pr-auto pl-auto text-p border-t border-gray-300">

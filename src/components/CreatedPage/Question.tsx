@@ -1,8 +1,4 @@
-interface QuestionProps {
-  title: string;
-}
-
-const Question: React.FC<QuestionProps> = ({ title }) => {
+const Question = ({ title }: QuestionType) => {
   return (
     <div className="text-xl leading-7 font-regular mt-[50px]">
       <span>{title}</span>

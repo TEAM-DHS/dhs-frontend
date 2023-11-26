@@ -1,10 +1,5 @@
 import Question from "./Question";
 
-interface PersonalInfoType {
-  agree: boolean;
-  setAgree: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 const PersonalInfo = ({ agree, setAgree }: PersonalInfoType) => {
   return (
     <>

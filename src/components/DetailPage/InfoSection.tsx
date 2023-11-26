@@ -55,9 +55,9 @@ const InfoSection = ({ program, member }: EventDetailType) => {
             {title}
           </div>
         </div>
-        <div className="w-full flex justify-center mt-[70px] gap-[60px] laptop:gap-[5%] mobile:flex-col mobile:mt-0">
-          <div className="flex flex-col items-center gap-[15px]">
-            <div className="flex items-center gap-[15px]">
+        <div className="w-full flex justify-center mt-[70px] gap-[12%] laptop:gap-[10%] mobile:flex-col mobile:mt-0">
+          <div className="flex flex-col items-center gap-[25px]">
+            <div className="flex items-center gap-[30px]">
               <ArrowIcon
                 style={{ transform: "rotate(180deg)" }}
                 cursor="pointer"
@@ -104,7 +104,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               {title}
             </div>
           </div>
-          <div className="max-w-[410px] mobile:max-w-full flex flex-col justify-between pt-[4px]">
+          <div className="w-[40%] max-w-[510px] mobile:max-w-full flex flex-col justify-between pt-[4px]">
             <div className="flex flex-col">
               <div className={subtitleClassName}>신청 인원</div>
               <div className="h-[40px] flex items-end mt-[16px]">
