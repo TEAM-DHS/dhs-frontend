@@ -1,10 +1,5 @@
 import Question from "./Question";
 
-interface EventTitleType {
-  title: string;
-  setTitle: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const EventTitle = ({ title, setTitle }: EventTitleType) => {
   return (
     <>

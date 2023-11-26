@@ -2,13 +2,6 @@ import Question from "./Question";
 import DaumPostcode from "react-daum-postcode";
 import { useState } from "react";
 
-interface PlaceType {
-  postalCode: string;
-  setPostalCode: React.Dispatch<React.SetStateAction<string>>;
-  location: string;
-  setLocation: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const Place = ({
   postalCode,
   setPostalCode,

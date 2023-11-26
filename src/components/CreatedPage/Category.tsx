@@ -1,12 +1,7 @@
 import Question from "./Question";
 import { categoryData } from "../../utils/data/filterData";
 
-interface CategoryType {
-  category: string;
-  setCategory: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Category = ({ category, setCategory }: CategoryType) => {
+const Category = ({ category, setCategory }: EventCategoryType) => {
   const handleButtonClick = (value: string) => {
     setCategory(value);
   };
@@ -18,7 +13,9 @@ const Category = ({ category, setCategory }: CategoryType) => {
         {categoryData.slice(1).map((item, i) => (
           <button
             className={`font-regular whitespace-nowrap border grow items-center px-5 py-2 rounded-3xl border-solid  text-center ${
-              category === item.text ? "bg-whiteBlue text-mainBlue border-mainBlue" : "bg-white"
+              category === item.text
+                ? "bg-whiteBlue text-mainBlue border-mainBlue"
+                : "bg-white"
             }`}
             key={i}
             onClick={() => handleButtonClick(item.text)}

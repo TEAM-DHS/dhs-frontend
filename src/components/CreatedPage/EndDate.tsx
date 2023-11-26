@@ -1,10 +1,5 @@
 import Question from "./Question";
 
-interface EndDateType {
-  deadline: string;
-  setDeadline: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const EndDate = ({ deadline, setDeadline }: EndDateType) => {
   const ConvertAndSaveDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     let convertedDate = e.target.value + ":00";

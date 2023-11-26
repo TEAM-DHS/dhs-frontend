@@ -1,11 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-interface NavigateProps {
-  message: string;
-  route: string;
-  url: string;
-}
-
 const Navigate: React.FC<NavigateProps> = ({ message, route, url }) => {
   const navigate = useNavigate();
 

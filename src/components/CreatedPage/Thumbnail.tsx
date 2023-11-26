@@ -1,21 +1,11 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Question from "./Question";
 
-interface Photos {
-  images: string[];
-  setImages: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-const Thumbnail: React.FC<Photos> = ({ images, setImages }) => {
+const Thumbnail = ({ images, setImages }: Photos) => {
   const handleImageUpload = () => {
     if (imgRef.current && imgRef.current.files) {
       const file = imgRef.current.files[0];
-
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setImages([reader.result as string]);
-      };
+      setImages([file]);
     }
   };
 

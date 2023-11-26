@@ -23,9 +23,6 @@ const CategoryBar = () => {
       setFilter(prev => ({ ...prev, category: "" }));
     else setFilter(prev => ({ ...prev, category: categoryFilter.join(",") }));
   }, [categoryFilter]);
-  useEffect(() => {
-    console.log(filter);
-  }, [filter]);
 
   return (
     <div className="w-auto flex flex-wrap gap-[10px]">

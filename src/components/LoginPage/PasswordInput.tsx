@@ -7,17 +7,11 @@ import {
 } from "../../utils/constants/errorMessage";
 import { useState, useEffect } from "react";
 
-type PasswordInputProps = {
-  password: string;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
-  setIsValidPassword: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const PasswordInput: React.FC<PasswordInputProps> = ({
+const PasswordInput = ({
   password,
   setPassword,
   setIsValidPassword,
-}) => {
+}: PasswordInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const validatePassword = (password: any) => {

@@ -1,4 +1,4 @@
-import client from "./client";
+import apiClient from ".";
 
 interface InfoType {
   username: string;
@@ -13,7 +13,7 @@ interface KaKaoOAuthType {
 // post signup
 export const postSignup = async (userInfo: InfoType) => {
   try {
-    const res = await client.post("/auth/signup", userInfo);
+    const res = await apiClient.post("/auth/signup", userInfo);
     return res.data;
   } catch (err) {
     throw err;
@@ -23,7 +23,7 @@ export const postSignup = async (userInfo: InfoType) => {
 // post login
 export const postLogin = async (userInfo: InfoType) => {
   try {
-    const res = await client.post("/auth/login", userInfo);
+    const res = await apiClient.post("/auth/login", userInfo);
     const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
     localStorage.setItem("authtoken", accessToken);
     return res.data;
@@ -35,7 +35,7 @@ export const postLogin = async (userInfo: InfoType) => {
 // post logout
 export const postLogout = async () => {
   try {
-    const res = await client.post("/auth/logout");
+    const res = await apiClient.post("/auth/logout");
     localStorage.removeItem("authtoken");
     return res.data;
   } catch (err) {
@@ -46,7 +46,7 @@ export const postLogout = async () => {
 // oauth kakao
 export const postKakaoSignUp = async (codeInfo: KaKaoOAuthType) => {
   try {
-    const res = await client.post("/oauth/kakao", codeInfo);
+    const res = await apiClient.post("/oauth/kakao", codeInfo);
     const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
     localStorage.setItem("authtoken", accessToken);
     return res.data;
@@ -58,11 +58,15 @@ export const postKakaoSignUp = async (codeInfo: KaKaoOAuthType) => {
 // post refresh token
 export const postRefreshToken = async () => {
   try {
-    const res = await client.post("/auth/refresh-token");
-    const accessToken = `${res.data.grantType} ${res.data.accessToken}`;
-    localStorage.setItem("authtoken", accessToken);
-    return res.data;
-  } catch (err) {
-    throw err;
+    const url = "/auth/refresh-token";
+    const authToken = localStorage.getItem("authtoken");
+
+    const headers = authToken ? { Authorization: authToken } : {};
+    const response = await apiClient.post(url, null, { headers });
+
+    return response;
+  } catch (error) {
+    console.log("재발급오류", error);
+    throw error;
   }
 };

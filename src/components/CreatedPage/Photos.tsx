@@ -1,13 +1,8 @@
-import React, { useCallback, useRef } from "react";
+import React, { useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import Question from "./Question";
 
-interface Photos {
-  images: string[];
-  setImages: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-const Photos: React.FC<Photos> = ({ images, setImages }) => {
+const Photos = ({ images, setImages }: Photos) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const openFilePicker = () => {
@@ -19,10 +14,8 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedImages = event.target.files;
     if (selectedImages) {
-      const newImageURLs = Array.from(selectedImages).map(file =>
-        URL.createObjectURL(file),
-      );
-      setImages(prevImages => [...prevImages, ...newImageURLs]);
+      const newImages = Array.from(selectedImages);
+      setImages(prevImages => [...prevImages, ...newImages]);
     }
   };
 
@@ -73,7 +66,7 @@ const Photos: React.FC<Photos> = ({ images, setImages }) => {
                   x
                 </button>
                 <img
-                  src={image}
+                  src={URL.createObjectURL(image)}
                   alt={`uploaded-${index}`}
                   className="w-[150px] h-[150px] rounded-md"
                 />

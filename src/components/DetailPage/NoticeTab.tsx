@@ -41,9 +41,9 @@ type Props = {
 const NoticeTab = ({ host, notices }: Props) => {
   return (
     <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex flex-col">
-      <div className="w-[116px] h-[28px] flex justify-center items-center gap-[4px] bg-[#FFF1F1] rounded-[4px]">
-        <PinIcon fill="#f96353" width={15} height={15} />
-        <div className="font-bold text-[12px] text-warningRed">
+      <div className="w-[116px] h-[28px] flex justify-center items-center gap-[4px] bg-whiteBlue rounded-[4px]">
+        <PinIcon fill="#185ADB" width={15} height={15} />
+        <div className="font-bold text-[12px] text-mainBlue">
           주인장 업데이트
         </div>
       </div>

@@ -1,10 +1,4 @@
-interface ButtonProps {
-  text: string;
-  isValid?: boolean;
-  clickFn?: () => void;
-}
-
-const Button: React.FC<ButtonProps> = ({ text, isValid, clickFn }) => {
+const Button = ({ text, isValid, clickFn }: ButtonProps) => {
   return (
     <button
       className={`w-[386px] h-[68px] ${

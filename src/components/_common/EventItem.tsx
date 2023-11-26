@@ -38,15 +38,16 @@ const EventItem = ({
 
   return (
     <div
-      className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] onecol:w-full${
+      className={`w-[calc((100%-60px)/3)] min-w-[310px] h-[250px] flex flex-col mb-[40px] twocol:w-[calc((100%-60px)/2)] cursor-pointer onecol:w-full${
         isRegist ? " h-[265px]" : ""
       }`}
       ref={refObject ? refObject : undefined}
+      onClick={navigateDetail}
     >
       <div className="flex gap-[20px]">
         <div
           className="w-[140px] h-[185px] flex-shrink-0 relative"
-          onClick={navigateDetail}
+       
         >
           <img src={thumbnailImage} className="w-full h-full object-cover" />
           {!isOpen && (
@@ -69,13 +70,11 @@ const EventItem = ({
           </div>
           <div
             className="font-bold text-smTitle text-slateBlack my-[13px] leading-tight line-clamp-3 cursor-default hover:cursor-pointer"
-            onClick={navigateDetail}
           >
             {title}
           </div>
           <div
-            className="font-regular text-p text-darkGray leading-tight line-clamp-3 cursor-default"
-            onClick={navigateDetail}
+            className="font-regular text-p text-darkGray leading-tight line-clamp-3 cursor-default cursor-pointer"
           >
             {content}
           </div>

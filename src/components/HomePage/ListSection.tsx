@@ -14,7 +14,7 @@ const ListSection = ({ isCategory }: Props) => {
   const listTopRef = useRef<HTMLDivElement>(null);
   const filter = useRecoilValue(filterState);
   const { pageLastItemRef, hasNextPage, data } = useProgramList(filter);
-  console.log(data);
+
   return (
     <div
       className={`w-full flex flex-col items-center${

@@ -29,18 +29,16 @@ const SearchForm = () => {
   const [depositAccount, setDepositAccount] = useState("");
   const [depositBank, setDepositBank] = useState("");
   const [depositName, setDepositName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [hostName, setHostName] = useState("");
   const [hostDescription, setHostDescription] = useState("");
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<File[]>([]);
   const [agree, setAgree] = useState(false);
-  const [thumbNail, setThumbNail] = useState<string[]>([]);
+  const [thumbNail, setThumbNail] = useState<File[]>([]);
 
   const navigate = useNavigate();
 
-  // 썸네일이랑 이미지 형식 다름!
-
-  const postProgramInfo = () => {
+  const validateForm = () => {
     if (
       !title ||
       !category ||
@@ -63,7 +61,15 @@ const SearchForm = () => {
       if (!agree) {
         alert("개인정보 수집 동의를 체크해주세요.");
       } else {
-        const res = {
+        postForm();
+      }
+    }
+  };
+
+  const postForm = async () => {
+    try {
+      const res = await postProgram({
+        data: {
           title: title,
           category: category,
           schedule: schedule,
@@ -78,31 +84,16 @@ const SearchForm = () => {
           price: price,
           hostName: hostName,
           hostDescription: hostDescription,
+        },
+        images: {
           images: [...thumbNail, ...images],
-        };
-        console.log(res);
-        alert("등록이 완료되었습니다.");
-        navigate("/mypage?category=created&page=0");
-      }
+        },
+      });
+      alert("등록이 완료되었습니다.");
+      navigate(`/detail/${res.programId}`);
+    } catch (err) {
+      console.log(err);
     }
-
-    // const res = postProgram({
-    //   title: title,
-    //   category: category,
-    //   schedule: schedule,
-    //   location: location,
-    //   postalCode: postalCode,
-    //   deadline: deadline,
-    //   targetNumber: targetNumber,
-    //   content: content,
-    //   depositAccount: depositAccount,
-    //   depositBank: depositBank,
-    //   depositName: depositName,
-    //   price: price,
-    //   hostName: hostName,
-    //   hostDescription: hostDescription,
-    //   images: [...thumbNail, ...images],
-    // });
   };
 
   return (
@@ -139,7 +130,7 @@ const SearchForm = () => {
       <PersonalInfo agree={agree} setAgree={setAgree} />
       <button
         className="text-white text-smTitle font-regular leading-6 bg-blue-700 w-[100%] mt-24 mb-36 px-5 py-7 rounded-xl text-center"
-        onClick={postProgramInfo}
+        onClick={validateForm}
       >
         등록하기
       </button>

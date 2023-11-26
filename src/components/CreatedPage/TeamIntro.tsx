@@ -1,10 +1,5 @@
 import Question from "./Question";
 
-interface TeamIntroType {
-  hostDescription: string;
-  setHostDescription: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const TeamIntro = ({ hostDescription, setHostDescription }: TeamIntroType) => {
   return (
     <>
