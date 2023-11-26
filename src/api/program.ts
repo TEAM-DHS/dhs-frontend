@@ -33,17 +33,23 @@ export const postProgram = async ({
   try {
     const formData = new FormData();
 
-    images.images.forEach((image, index) => {
-      formData.append(`image${index + 1}`, image);
-    });
+    //formData.append("data", JSON.stringify(data));
+    //  data: '{"title":"Program Title","category":"Performance","schedule":
+    formData.append(
+      "data",
+      new Blob([JSON.stringify(data)], { type: "application/json" }),
+    );
 
-    formData.append("data", JSON.stringify(data));
+    images.images.forEach((image, index) => {
+      formData.append("image", image, `logo${index + 1}.png`);
+    });
 
     const res = await apiClient.post("/programs", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
+
     return res.data;
   } catch (err) {
     throw err;
