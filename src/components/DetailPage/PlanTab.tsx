@@ -22,8 +22,10 @@ type NoticePreviewType = {
 
 const PlanTab = ({ content, notices, host, tabRef, setTab }: Props) => {
   const noticePreview: NoticePreviewType = {
-    title: notices.length !== 0 ? notices[0].title : "",
-    content: useParagraph(notices.length !== 0 ? notices[0].content : ""),
+    title: notices.length !== 0 ? notices[notices.length - 1].title : "",
+    content: useParagraph(
+      notices.length !== 0 ? notices[notices.length - 1].content : "",
+    ),
   };
   return (
     <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex middle:flex-col-reverse justify-between gap-[80px]">
