@@ -4,8 +4,10 @@ import { postProgramNotice } from "../../api/program";
 type Props = {
   closer: () => void;
   id: number;
+  trigger: number;
+  setTrigger: (value: number) => void;
 };
-const NoticeModal = ({ closer, id }: Props) => {
+const NoticeModal = ({ closer, id, trigger, setTrigger }: Props) => {
   const [noticeForm, setNoticeForm] = useState<{
     title: string;
     content: string;
@@ -29,6 +31,7 @@ const NoticeModal = ({ closer, id }: Props) => {
       .then(res => {
         alert("공지가 등록되었습니다.");
         closer();
+        setTrigger(trigger + 1);
       })
       .catch(err => console.log(err));
   };

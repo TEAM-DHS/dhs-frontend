@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getProgramDetail } from "../../api/program";
 import { postHeart } from "../../api/heart";
 import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
 
-const useHeart = (programId: number, hasLiked: boolean) => {
+const useHeart = (
+  programId: number,
+  hasLiked: boolean,
+  likeNumber?: number,
+) => {
   const nav = useNavigate();
   const isLogin = useRecoilValue(isLoginState);
 
   const [state, setState] = useState<boolean>(hasLiked);
+  const [likedNum, setLikedNum] = useState<number>(likeNumber ? likeNumber : 0);
   const [trigger, setTrigger] = useState<number>(0);
   const [id, setId] = useState<number>(0);
   useEffect(() => {
@@ -25,6 +31,9 @@ const useHeart = (programId: number, hasLiked: boolean) => {
         .then(res => {
           console.log(res);
           setState(!state);
+          getProgramDetail(id)
+            .then(res => setLikedNum(res.program.likeNumber))
+            .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
     } else {
@@ -33,7 +42,7 @@ const useHeart = (programId: number, hasLiked: boolean) => {
     }
   }, [trigger]);
 
-  return { state, toggle };
+  return { state, toggle, likedNum };
 };
 
 export default useHeart;
