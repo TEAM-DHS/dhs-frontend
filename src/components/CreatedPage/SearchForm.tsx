@@ -91,6 +91,7 @@ const SearchForm = () => {
       });
       console.log("등록 결과", res);
       alert("등록이 완료되었습니다.");
+      // 만든 행사로 이동
       navigate("/mypage?category=created&page=0");
     } catch (err) {
       console.log(err);

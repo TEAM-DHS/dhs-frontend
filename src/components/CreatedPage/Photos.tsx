@@ -1,13 +1,8 @@
-import React, { useCallback, useRef } from "react";
+import React, { useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import Question from "./Question";
 
-interface Photos {
-  images: File[];
-  setImages: React.Dispatch<React.SetStateAction<File[]>>;
-}
-
-const Photos: React.FC<Photos> = ({ images, setImages }) => {
+const Photos = ({ images, setImages }: Photos) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const openFilePicker = () => {

@@ -2,11 +2,7 @@ import { patchProgramClosed } from "../../api/program";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-interface CloseModalProps {
-  setIsClose: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const CloseModal: React.FC<CloseModalProps> = ({ setIsClose }) => {
+const CloseModal = ({ setIsClose }: CloseModalProps) => {
   const { programId } = useParams();
   const nav = useNavigate();
 

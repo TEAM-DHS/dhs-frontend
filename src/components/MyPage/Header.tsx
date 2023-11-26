@@ -5,11 +5,7 @@ import { useRecoilValue } from "recoil";
 import { isLoginState } from "../../services/store/auth";
 import { postLogout } from "../../api/auth";
 
-interface isCategoryProps {
-  isCategory?: boolean;
-}
-
-const Header: React.FC<isCategoryProps> = ({ isCategory }) => {
+const Header = ({ isCategory }: isCategoryProps) => {
   const nav = useNavigate();
   const isLogin = useRecoilValue<boolean>(isLoginState);
   const { search } = useLocation();

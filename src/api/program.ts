@@ -1,27 +1,6 @@
 import useInfiniteScroll from "../utils/hooks/useInfiniteScroll";
 import apiClient from ".";
 
-interface ProgramType {
-  title: string;
-  category: string;
-  schedule: string;
-  location: string;
-  postalCode: string;
-  deadline: string;
-  targetNumber: number;
-  content: string;
-  depositAccount: string;
-  depositBank: string;
-  depositName: string;
-  price: string;
-  hostName: string;
-  hostDescription: string;
-}
-
-interface ImgType {
-  images: File[];
-}
-
 // post program
 export const postProgram = async ({
   data,
@@ -32,24 +11,18 @@ export const postProgram = async ({
 }) => {
   try {
     const formData = new FormData();
-
-    //formData.append("data", JSON.stringify(data));
-    //  data: '{"title":"Program Title","category":"Performance","schedule":
     formData.append(
       "data",
       new Blob([JSON.stringify(data)], { type: "application/json" }),
     );
-
     images.images.forEach((image, index) => {
       formData.append("image", image, `logo${index + 1}.png`);
     });
-
     const res = await apiClient.post("/programs", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-
     return res.data;
   } catch (err) {
     throw err;

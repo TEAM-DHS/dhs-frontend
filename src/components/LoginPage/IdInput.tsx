@@ -1,16 +1,9 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { LENGTH_ERROR, TYPE_ERROR } from "../../utils/constants/errorMessage";
 import { useState, useEffect } from "react";
 
-type IdInputProps = {
-  id: string;
-  setId: React.Dispatch<React.SetStateAction<string>>;
-  setIsValidId: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const IdInput: React.FC<IdInputProps> = ({ id, setId, setIsValidId }) => {
+const IdInput = ({ id, setId, setIsValidId }: IdInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const validateId = (id: any) => {

@@ -4,17 +4,6 @@ import { getProgramLiked } from "../../api/program";
 import { getProgramCreated } from "../../api/program";
 import { getProgramRegistered } from "../../api/program";
 
-interface PageType {
-  itemsPerPage: number;
-  totalItems: number;
-  currentPage: number;
-  totalPages: number;
-  category: string;
-  getData: () => Promise<void>;
-  setData: React.Dispatch<React.SetStateAction<EventPreviewType[]>>;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-}
-
 const PageNation = ({
   itemsPerPage,
   currentPage,

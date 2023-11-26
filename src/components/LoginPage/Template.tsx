@@ -1,11 +1,6 @@
 import { ReactNode } from "react";
 
-interface TemplateProps {
-  // 다른 컴포넌트들을 props로 받아올 수 있음
-  children: ReactNode;
-}
-
-const Template: React.FC<TemplateProps> = ({ children }) => {
+const Template = ({ children }: TemplateProps) => {
   return (
     <div
       className="mt-[100px] ml-[8%] mr-[12%] flex justify-between items-start

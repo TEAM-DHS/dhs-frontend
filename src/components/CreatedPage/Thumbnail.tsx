@@ -1,12 +1,7 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Question from "./Question";
 
-interface Photos {
-  images: File[];
-  setImages: React.Dispatch<React.SetStateAction<File[]>>;
-}
-
-const Thumbnail: React.FC<Photos> = ({ images, setImages }) => {
+const Thumbnail = ({ images, setImages }: Photos) => {
   const handleImageUpload = () => {
     if (imgRef.current && imgRef.current.files) {
       const file = imgRef.current.files[0];
