@@ -179,19 +179,23 @@ const InfoSection = ({ program, member, trigger, setTrigger }: Props) => {
               </div>
               <div
                 className={`w-[calc(100%-86px)] h-[70px] rounded-[12px] flex justify-center items-center ${
-                  !isHost && hasRegistration ? "bg-darkGray" : "bg-mainBlue"
+                  (!isHost && hasRegistration) || !isOpen
+                    ? "bg-darkGray"
+                    : "bg-mainBlue"
                 } font-bold text-smTitle text-white${
-                  hasRegistration ? "" : " cursor-pointer"
+                  hasRegistration || !isOpen ? "" : " cursor-pointer"
                 } `}
                 onClick={() =>
-                  isHost
+                  isHost && isOpen
                     ? setNoticeModal(true)
-                    : hasRegistration
+                    : hasRegistration || !isOpen
                     ? null
                     : nav(`/detail/${programId}/register`)
                 }
               >
-                {isHost
+                {!isOpen
+                  ? "마감된 행사입니다"
+                  : isHost
                   ? "공지 등록하기"
                   : hasRegistration
                   ? "참가 신청 완료"
