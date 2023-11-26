@@ -53,9 +53,11 @@ const NoticeTab = ({ host, notices }: Props) => {
             아직 공지사항이 없습니다.
           </div>
         ) : (
-          notices.map((item: EventNoticeType) => (
-            <Notice {...item} name={host.name} key={item.noticeId} />
-          ))
+          [...notices]
+            .reverse()
+            .map((item: EventNoticeType) => (
+              <Notice {...item} name={host.name} key={item.noticeId} />
+            ))
         )}
       </div>
     </div>

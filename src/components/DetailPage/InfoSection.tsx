@@ -12,7 +12,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../../styles/swiper.css";
 
-const InfoSection = ({ program, member }: EventDetailType) => {
+interface Props extends EventDetailType {
+  trigger: number;
+  setTrigger: (value: number) => void;
+}
+const InfoSection = ({ program, member, trigger, setTrigger }: Props) => {
   const nav = useNavigate();
   const {
     programId,
@@ -29,7 +33,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
     isOpen,
   } = program;
   const { isHost, hasRegistration, hasLike } = member;
-  const { state, toggle } = useHeart(programId, hasLike);
+  const { state, toggle, likedNum } = useHeart(programId, hasLike, likeNumber);
 
   const [noticeModal, setNoticeModal] = useState<boolean>(false);
 
@@ -118,7 +122,7 @@ const InfoSection = ({ program, member }: EventDetailType) => {
               </div>
               <div className={subtitleClassName + " mt-[20px]"}>행사 일정</div>
               <div className="font-regular text-lgTitle">
-                {new Date(deadline).toLocaleString("ko", {
+                {new Date(schedule).toLocaleString("ko", {
                   year: "numeric",
                   month: "numeric",
                   day: "numeric",
@@ -171,23 +175,27 @@ const InfoSection = ({ program, member }: EventDetailType) => {
                   stroke={state ? "transparent" : "#B1CCFF"}
                   fill={state ? "#185ADB" : "#ffffff"}
                 />
-                <div className="font-regular text-sm">{likeNumber}</div>
+                <div className="font-regular text-sm">{likedNum}</div>
               </div>
               <div
                 className={`w-[calc(100%-86px)] h-[70px] rounded-[12px] flex justify-center items-center ${
-                  hasRegistration ? "bg-darkGray" : "bg-mainBlue"
-                } font-regulat text-smTitle text-white${
-                  hasRegistration ? "" : " cursor-pointer"
+                  (!isHost && hasRegistration) || !isOpen
+                    ? "bg-darkGray"
+                    : "bg-mainBlue"
+                } font-bold text-smTitle text-white${
+                  hasRegistration || !isOpen ? "" : " cursor-pointer"
                 } `}
                 onClick={() =>
-                  isHost
+                  isHost && isOpen
                     ? setNoticeModal(true)
-                    : hasRegistration
+                    : hasRegistration || !isOpen
                     ? null
                     : nav(`/detail/${programId}/register`)
                 }
               >
-                {isHost
+                {!isOpen
+                  ? "마감된 행사입니다"
+                  : isHost
                   ? "공지 등록하기"
                   : hasRegistration
                   ? "참가 신청 완료"
@@ -199,7 +207,12 @@ const InfoSection = ({ program, member }: EventDetailType) => {
       </div>
       {noticeModal && (
         <Modal isOpen={noticeModal} closer={() => setNoticeModal(false)}>
-          <NoticeModal closer={() => setNoticeModal(false)} id={programId} />
+          <NoticeModal
+            closer={() => setNoticeModal(false)}
+            id={programId}
+            trigger={trigger}
+            setTrigger={setTrigger}
+          />
         </Modal>
       )}
     </>

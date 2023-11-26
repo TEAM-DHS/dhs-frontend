@@ -45,10 +45,7 @@ const EventItem = ({
       onClick={navigateDetail}
     >
       <div className="flex gap-[20px]">
-        <div
-          className="w-[140px] h-[185px] flex-shrink-0 relative"
-       
-        >
+        <div className="w-[140px] h-[185px] flex-shrink-0 relative">
           <img src={thumbnailImage} className="w-full h-full object-cover" />
           {!isOpen && (
             <div className="w-full h-full top-0 left-0 absolute z-10 bg-black/50 flex justify-center items-center">
@@ -65,17 +62,16 @@ const EventItem = ({
               stroke={state ? "transparent" : "#B1CCFF"}
               fill={state ? "#185ADB" : "#ffffff"}
               className="cursor-pointer"
-              onClick={toggle}
+              onClick={e => {
+                e.stopPropagation();
+                toggle();
+              }}
             />
           </div>
-          <div
-            className="font-bold text-smTitle text-slateBlack my-[13px] leading-tight line-clamp-3 cursor-default hover:cursor-pointer"
-          >
+          <div className="font-bold text-smTitle text-slateBlack my-[13px] leading-tight line-clamp-3 cursor-default hover:cursor-pointer">
             {title}
           </div>
-          <div
-            className="font-regular text-p text-darkGray leading-tight line-clamp-3 cursor-default cursor-pointer"
-          >
+          <div className="font-regular text-p text-darkGray leading-tight line-clamp-3 cursor-default cursor-pointer">
             {content}
           </div>
         </div>

@@ -11,18 +11,23 @@ import { getProgramDetail } from "../api/program";
 const DetailPage = () => {
   const { id } = useParams();
   const [currentDetail, setCurrentDetail] = useState<EventDetailType>();
+  const [updateTrigger, setUpdateTrigger] = useState<number>(0);
   useEffect(() => {
     getProgramDetail(Number(id))
       .then(res => setCurrentDetail(res))
       .catch(err => console.log(err));
     setCurrentDetail(eventDetailData);
-  }, []);
+  }, [updateTrigger]);
   return (
     <>
       <CategoryNavBar />
       {currentDetail && (
         <div className="w-full flex flex-col items-center pt-[200px] gap-[70px]">
-          <InfoSection {...currentDetail} />
+          <InfoSection
+            {...currentDetail}
+            trigger={updateTrigger}
+            setTrigger={setUpdateTrigger}
+          />
           <TabSection {...currentDetail} />
           <OtherSection {...currentDetail} />
         </div>
