@@ -34,7 +34,6 @@ const InfoSection = ({ program, member, trigger, setTrigger }: Props) => {
   } = program;
   const { isHost, hasRegistration, hasLike } = member;
   const { state, toggle, likedNum } = useHeart(programId, hasLike, likeNumber);
-  console.log(likeNumber);
 
   const [noticeModal, setNoticeModal] = useState<boolean>(false);
 

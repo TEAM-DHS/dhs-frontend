@@ -13,10 +13,7 @@ const DetailPage = () => {
   const [updateTrigger, setUpdateTrigger] = useState<number>(0);
   useEffect(() => {
     getProgramDetail(Number(id))
-      .then(res => {
-        console.log(res.program);
-        setCurrentDetail(res);
-      })
+      .then(res => setCurrentDetail(res))
       .catch(err => console.log(err));
   }, [updateTrigger]);
   return (
