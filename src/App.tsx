@@ -21,7 +21,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/loading" element={<LoadingPage />} />
-      {/* 로그인 상태일 때만 접근 가능 (현재 로그인 상태 항상 true) */}
+      {/* 로그인 상태일 때만 접근 가능 */}
       <Route element={<AuthRoute login={true} />}>
         <Route path="/detail/:id/register" element={<RegisterPage />} />
         <Route path="/mypage" element={<MyPage />} />
