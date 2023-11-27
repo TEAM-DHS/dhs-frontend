@@ -27,7 +27,7 @@ const useParagraph = (content: string) => {
         ))
       ) : (
         <span>
-          {content.split(". ").map((sentence, idx) => (
+          {content.split(" ").map((sentence, idx) => (
             <Fragment key={sentence + idx}>{altURL(sentence)}</Fragment>
           ))}
         </span>
