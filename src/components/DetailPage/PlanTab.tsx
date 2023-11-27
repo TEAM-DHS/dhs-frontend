@@ -29,7 +29,7 @@ const PlanTab = ({ content, notices, host, tabRef, setTab }: Props) => {
   };
   return (
     <div className="w-[1160px] laptop:w-[calc(100%-100px)] mobile:w-[calc(100%-40px)] flex middle:flex-col-reverse justify-between gap-[80px]">
-      <div className="max-w-[600px] middle:max-w-full flex flex-col gap-[70px]">
+      <div className="w-[600px] middle:w-full flex flex-col gap-[70px]">
         <div className="font-bold text-mdTitle text-black">행사 소개</div>
         <div className="font-regular text-smTitle text-center text-black">
           {useParagraph(content)}
@@ -42,7 +42,7 @@ const PlanTab = ({ content, notices, host, tabRef, setTab }: Props) => {
             {host.name}
           </div>
           <div className="font-regular text-smTitle text-center text-black">
-            {host.description}
+            {useParagraph(host.description)}
           </div>
         </div>
       </div>
