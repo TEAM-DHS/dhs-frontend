@@ -9,7 +9,6 @@ const useHeart = (programId: number, hasLiked: boolean, likeNumber: number) => {
   const nav = useNavigate();
   const isLogin = useRecoilValue(isLoginState);
 
-  console.log(likeNumber);
   const [state, setState] = useState<boolean>(hasLiked);
   const [likedNum, setLikedNum] = useState<number>(likeNumber);
   const [trigger, setTrigger] = useState<number>(0);
@@ -26,7 +25,6 @@ const useHeart = (programId: number, hasLiked: boolean, likeNumber: number) => {
     if (isLogin) {
       postHeart(id)
         .then(res => {
-          console.log(res);
           setState(!state);
           getProgramDetail(id)
             .then(res => setLikedNum(res.program.likeNumber))
