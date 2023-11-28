@@ -117,7 +117,7 @@ const InfoSection = ({ program, member, trigger, setTrigger }: Props) => {
                 </div>
                 <div className="font-regular text-smTitle mb-[10px]">명</div>
                 <div className="font-bold text-[20px] mb-[8px] ml-[8px]">
-                  {goal.progressRate + "%"}
+                  {Math.round(goal.progressRate) + "%"}
                 </div>
               </div>
               <div className={subtitleClassName + " mt-[20px]"}>행사 일정</div>

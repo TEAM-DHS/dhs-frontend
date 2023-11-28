@@ -31,9 +31,9 @@ const EventItem = ({
 
   const navigateRegister = (event: React.MouseEvent) => {
     event.stopPropagation();
-    if(!isOpen){
-      alert('종료된 행사입니다.')
-    }else{
+    if (!isOpen) {
+      alert("종료된 행사입니다.");
+    } else {
       nav(`/register/${programId}`);
     }
   };
@@ -92,7 +92,7 @@ const EventItem = ({
                   isOpen ? "text-mainBlue" : "text-darkGray"
                 }`}
               >
-                {goal.progressRate + "%"}
+                {Math.round(goal.progressRate) + "%"}
               </div>
               <div className="font-regular text-sm text-darkGray mt-[5px]">
                 {"(" + goal.registrantNumber + "/" + goal.targetNumber + ")"}
@@ -114,7 +114,7 @@ const EventItem = ({
               className={`h-[5px] ${
                 isOpen ? "bg-mainBlue" : "bg-darkGray"
               } rounded-full`}
-              style={{ width: `${goal.progressRate}%` }}
+              style={{ width: `${goal.progressRate}%`, maxWidth: "100%" }}
             ></div>
           </div>
         </div>
