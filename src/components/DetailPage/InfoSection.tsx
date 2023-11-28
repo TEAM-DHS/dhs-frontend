@@ -113,7 +113,7 @@ const InfoSection = ({ program, member, trigger, setTrigger }: Props) => {
               <div className={subtitleClassName}>신청 인원</div>
               <div className="h-[40px] flex items-end mt-[16px]">
                 <div className="font-regular text-lgTitle">
-                  {goal.targetNumber}
+                  {goal.registrantNumber}
                 </div>
                 <div className="font-regular text-smTitle mb-[10px]">명</div>
                 <div className="font-bold text-[20px] mb-[8px] ml-[8px]">
