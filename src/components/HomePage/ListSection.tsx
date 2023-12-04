@@ -11,9 +11,10 @@ import { useProgramList } from "../../api/program";
 
 type Props = { isCategory?: boolean };
 const ListSection = ({ isCategory }: Props) => {
+  // const { pageLastItemRef, hasNextPage, data } = useProgramList(filter);
+  const pageLastItemRef = useRef<HTMLDivElement>(null);
   const listTopRef = useRef<HTMLDivElement>(null);
   const filter = useRecoilValue(filterState);
-  const { pageLastItemRef, hasNextPage, data } = useProgramList(filter);
 
   return (
     <div
@@ -34,21 +35,18 @@ const ListSection = ({ isCategory }: Props) => {
         }`}
         ref={listTopRef}
       >
-        {data && (
+        {eventData && (
           <div className="font-regular text-p text-darkGray">
             {filter.keyword === ""
-              ? `총 ${data.pages[0].data.pageInfo.totalElements}개의 행사`
-              : `'${filter.keyword}' 검색 결과 ${data.pages[0].data.pageInfo.totalElements}개`}
+              ? `총 ${eventData.pages[0].data.pageInfo.totalElements}개의 행사`
+              : `'${filter.keyword}' 검색 결과 ${eventData.pages[0].data.pageInfo.totalElements}개`}
           </div>
         )}
         {isCategory && <SortBar />}
       </div>
       <div className="w-[calc(100%-100px)] min-h-[100svh] flex flex-wrap gap-[30px] pb-[100px] mobile:w-[calc(100%-40px)]">
-        {/* {eventData.map(item => (
-          <EventItem {...item} key={item.programId} />
-        ))} */}
-        {data &&
-          data.pages.map(page =>
+        {eventData &&
+          eventData.pages.map(page =>
             page.data.programs.length === 0 ? (
               <div className="py-[30px] w-full flex justify-center">
                 <div className="font-regular text-smTitle text-slateBlack">
@@ -56,7 +54,7 @@ const ListSection = ({ isCategory }: Props) => {
                 </div>
               </div>
             ) : (
-              page.data.programs.map((item: EventPreviewType, idx: number) =>
+              page.data.programs.map((item, idx) =>
                 page.data.pageInfo.pageSize === idx + 1 ? (
                   <React.Fragment key={item.programId}>
                     <EventItem {...item} refObject={pageLastItemRef} />
@@ -68,20 +66,22 @@ const ListSection = ({ isCategory }: Props) => {
             ),
           )}
       </div>
-      {data && !hasNextPage && data.pages[0].data.programs.length !== 0 && (
-        <div
-          onClick={() =>
-            listTopRef.current?.scrollIntoView({
-              behavior: "auto",
-              block: "center",
-            })
-          }
-        >
-          <div className="py-[30px] font-regular text-p underline text-slateBlack cursor-pointer">
-            맨 위로 가기
+      {eventData &&
+        // && !hasNextPage
+        eventData.pages[0].data.programs.length !== 0 && (
+          <div
+            onClick={() =>
+              listTopRef.current?.scrollIntoView({
+                behavior: "auto",
+                block: "center",
+              })
+            }
+          >
+            <div className="py-[30px] font-regular text-p underline text-slateBlack cursor-pointer">
+              맨 위로 가기
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };

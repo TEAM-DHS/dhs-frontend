@@ -4,10 +4,13 @@ type SortType = "NEW" | "POPULAR" | "DEADLINE";
 interface TopFiveType {
   programId: number;
   title: string;
-  category: CategoryType;
+  category: string;
   content: string;
   thumbnailImage: string;
   remainingDays: number;
+  likeNumber: number;
+  isOpen: boolean;
+  hasLike: boolean;
   goal: {
     targetNumber: number;
     registrantNumber: number;
@@ -26,10 +29,11 @@ interface EventPreviewType {
   programId: number;
   title: string;
   thumbnailImage: string;
-  category: CategoryType;
+  category: string;
   content: string;
   isOpen: boolean;
   remainingDays: number;
+  likeNumber: number;
   goal: {
     targetNumber: number;
     registrantNumber: number;
@@ -43,7 +47,7 @@ interface EventRegisterInfoType {
   isHost: boolean;
   title: string;
   imageUrl: string;
-  category: CategoryType;
+  category: string;
   progressRate: number;
   remainingDays: number;
   date: string;
@@ -91,7 +95,7 @@ interface EventDetailType {
     programId: number;
     title: string;
     content: string;
-    category: CategoryType;
+    category: string;
     schedule: string;
     postalCode: string;
     location: string;
@@ -334,7 +338,7 @@ interface ListType {
   };
 }
 
-interface TableProps{
+interface TableProps {
   data: ListType[];
 }
 
@@ -344,4 +348,3 @@ type PasswordReInputProps = {
   setIsValidRePassword: React.Dispatch<React.SetStateAction<boolean>>;
   password: string;
 };
-

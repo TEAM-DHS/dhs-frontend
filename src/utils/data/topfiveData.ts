@@ -1,79 +1,91 @@
 export const topfiveData: TopFiveType[] = [
   {
-    programId: 1,
-    title: "외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다",
-    category: "PLAY",
-    content:
-      "교육의 자주성·전문성·정치적 중립성 및 대학의 자율성은 법률이 정하는 바에 의하여 보장된다. 대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다. 평화통일정책의 수립에 관한 대통령의 자문에 응하기 위하여 민주평화통일자문회의를 둘 수 있다. 연소자의 근로는 특별한 보호를 받는다. 국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다. 중앙선거관리위원회는 대통령이 임명하는 3인, 국회에서 선출하는 3인과 대법원장이 지명하는 3인의 위원으로 구성한다. 위원장은 위원중에서 호선한다.",
+    programId: 275,
+    title: "웹개발 백엔드 오픈세미나 퍼비톡",
+    category: "학술",
     thumbnailImage:
-      "https://images.unsplash.com/photo-1698764666403-79ab869d1348?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTc3ODIyOQ&ixlib=rb-4.0.3&q=80&w=1080",
-    remainingDays: 999,
-    goal: {
-      targetNumber: 1000,
-      registrantNumber: 750,
-      progressRate: 70,
-    },
-  },
-  {
-    programId: 2,
-    title:
-      "대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한 중요정책을 국민투표에 붙일 수 있다",
-    category: "EXHIBIT",
-    content:
-      "저작자·발명가·과학기술자와 예술가의 권리는 법률로써 보호한다. 대통령은 법률이 정하는 바에 의하여 훈장 기타의 영전을 수여한다. 국가는 평생교육을 진흥하여야 한다. 국회는 의장 1인과 부의장 2인을 선출한다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다. 국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다. 근로자는 근로조건의 향상을 위하여 자주적인 단결권·단체교섭권 및 단체행동권을 가진다. 국가안전보장회의는 대통령이 주재한다.",
-    thumbnailImage:
-      "https://images.unsplash.com/photo-1695997592672-61c82527afa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTc3ODQ5Ng&ixlib=rb-4.0.3&q=80&w=1080",
-    remainingDays: 1,
-    goal: {
-      targetNumber: 333,
-      registrantNumber: 222,
-      progressRate: 66,
-    },
-  },
-  {
-    programId: 3,
-    title: "국가는 청원에 대하여 심사할 의무를 진다",
-    category: "BAR",
-    content:
-      "대통령은 법률에서 구체적으로 범위를 정하여 위임받은 사항과 법률을 집행하기 위하여 필요한 사항에 관하여 대통령령을 발할 수 있다. 행정권은 대통령을 수반으로 하는 정부에 속한다. 나는 헌법을 준수하고 국가를 보위하며 조국의 평화적 통일과 국민의 자유와 복리의 증진 및 민족문화의 창달에 노력하여 대통령으로서의 직책을 성실히 수행할 것을 국민 앞에 엄숙히 선서합니다. 행정각부의 설치·조직과 직무범위는 법률로 정한다. 대통령은 국무회의의 의장이 되고, 국무총리는 부의장이 된다. 모든 국민은 언론·출판의 자유와 집회·결사의 자유를 가진다. 국회나 그 위원회의 요구가 있을 때에는 국무총리·국무위원 또는 정부위원은 출석·답변하여야 하며, 국무총리 또는 국무위원이 출석요구를 받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수 있다.",
-    thumbnailImage:
-      "https://images.unsplash.com/photo-1697529301347-7951a1ead066?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTc3ODUxMQ&ixlib=rb-4.0.3&q=80&w=1080",
-    remainingDays: 123,
+      "https://daehaengsa-s3.s3.ap-northeast-2.amazonaws.com/b73a82c8-6903-4c21-94c8-1fd9c8568ec6",
+    remainingDays: 13,
+    likeNumber: 5,
+    isOpen: true,
     goal: {
       targetNumber: 100,
-      registrantNumber: 50,
-      progressRate: 50,
+      registrantNumber: 90,
+      progressRate: 90,
     },
+    content:
+      "안녕하세요. 이화여자대학교 커리어클럽 소속 웹 개발 동아리 EFUB입니다.\n\nEFUB 백엔드 파트에서 스프링부트, 자바, 백엔드를 주제로 오픈 세미나♥퍼비톡을 무료로 진행합니다.\n\n주차별 세미나 주제는 첨부되는 카드 뉴스를 확인해주시길 부탁드립니다.\n\n많은 분들이 참석하셔서 EFUB의 백엔드 파트와 알찬 시간을 보내시길 바라겠습니다.\n\n감사합니다.",
+    hasLike: false,
   },
   {
-    programId: 4,
-    title: "대통령으로 선거될 수 있는 자는",
-    category: "ACADEMIC",
-    content:
-      "연소자의 근로는 특별한 보호를 받는다. 국무회의는 대통령·국무총리와 15인 이상 30인 이하의 국무위원으로 구성한다. 국회의원의 선거구와 비례대표제 기타 선거에 관한 사항은 법률로 정한다.",
+    programId: 299,
+    title: "이펍 2학기 프로젝트 최종 발표 세미나",
+    category: "기타",
     thumbnailImage:
-      "https://plus.unsplash.com/premium_photo-1675537843200-78c1a0ea1736?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTc3ODUyNA&ixlib=rb-4.0.3&q=80&w=1080",
-    remainingDays: 999,
+      "https://daehaengsa-s3.s3.ap-northeast-2.amazonaws.com/446ec6d1-d52f-4719-bf84-6473d2c0d08d",
+    remainingDays: 6,
+    likeNumber: 2,
+    isOpen: true,
     goal: {
-      targetNumber: 1000,
-      registrantNumber: 750,
+      targetNumber: 38,
+      registrantNumber: 100,
+      progressRate: 263.157895,
+    },
+    content: "모든 퍼비 여러분들 수고하셨습니다💚",
+    hasLike: false,
+  },
+  {
+    programId: 283,
+    title: "2023 이화여대 섬유예술전공 졸업전시",
+    category: "전시",
+    thumbnailImage:
+      "https://daehaengsa-s3.s3.ap-northeast-2.amazonaws.com/3a88c5b3-f896-49d4-a6d4-c60c874e8ab9",
+    remainingDays: 20,
+    likeNumber: 2,
+    isOpen: true,
+    goal: {
+      targetNumber: 300,
+      registrantNumber: 220,
+      progressRate: 73.33333333333333,
+    },
+    content:
+      "이화여대 섬유예술 전공 졸업전시 [WEAVE OUR WAY]가 12월 19일 오픈합니다 \n\nWEAVE OUR WAY 우리만의 길을 만들다 \n\n: 지난 4년동안 다양한 순간과 경험들이 세로와 가로의 실처럼 교차하며 ‘대학생활’ 이라는 직물을 만들어냈다. 어떤 순간은 패턴처럼 화려하기도 하고 또 어떤 순간은 유연하게 지나가기도 한다.\n\n과거의 수 많은 순간들과 현재의 경험들이 엮어나가면서 미래 우리의 모습을 형성한다. 끊임없이 진행되는 이 엮임의 과정은 우리를 성장하고 변화시키며 우리만의 길을 개척해 나아갈 수 있도록 한다. \n\n🧶Exhibition🧶\n2023.12.19(TUE)~2023.12.24(SUN)\n10:00AM~19:00PM\n이화여자대학교 조형예술대학 A동 4층, A동 2층 이화아트스텝\n\n섬유예술전공 학생들이 밤낮으로 열심히 준비했습니다! 벗들의 많은 관심 부탁드립니다🙏✨️",
+    hasLike: false,
+  },
+  {
+    programId: 271,
+    title: "[ASC EWHA] 1st AWS 오픈 테크톡",
+    category: "학술",
+    thumbnailImage:
+      "https://daehaengsa-s3.s3.ap-northeast-2.amazonaws.com/87362fd1-9422-44b5-abe4-bae105693915",
+    remainingDays: 0,
+    likeNumber: 2,
+    isOpen: true,
+    goal: {
+      targetNumber: 100,
+      registrantNumber: 70,
       progressRate: 70,
     },
+    content:
+      "안녕하세요. AWS Student Clubs EWHA 입니다.\n\nASC EWHA에서 다양한 클라우드 서비스를 주제로 모든 이화인들을 위한 오픈 테크톡을 진행합니다\n\n이번 테크톡은 애플리케이션 개발에 대한 세션들을 준비했습니다.\n웹프론트엔드/애플리케이션 백엔드에 관심있는 분이라면 망설이지 말고 놀러오세요:)",
+    hasLike: false,
   },
   {
-    programId: 5,
-    title:
-      "평화통일정책의 수립에 관한 대통령의 자문에 응하기 위하여 민주평화통일자문회의를 둘 수 있다",
-    category: "ETC",
-    content:
-      "대통령은 제4항과 제5항의 규정에 의하여 확정된 법률을 지체없이 공포하여야 한다. 제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다. 대통령은 조약을 체결·비준하고, 외교사절을 신임·접수 또는 파견하며, 선전포고와 강화를 한다. 대법관은 대법원장의 제청으로 국회의 동의를 얻어 대통령이 임명한다. 모든 국민은 법률이 정하는 바에 의하여 공무담임권을 가진다. 행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 교육의 자주성·전문성·정치적 중립성 및 대학의 자율성은 법률이 정하는 바에 의하여 보장된다.",
+    programId: 282,
+    title: "제40회 이향회전",
+    category: "전시",
     thumbnailImage:
-      "https://images.unsplash.com/photo-1696883849017-347630efdf78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTc3ODU1MA&ixlib=rb-4.0.3&q=80&w=1080",
-    remainingDays: 10,
+      "https://daehaengsa-s3.s3.ap-northeast-2.amazonaws.com/532054d7-ed70-4a85-b28d-fff0a3c502a4",
+    remainingDays: 19,
+    likeNumber: 2,
+    isOpen: true,
     goal: {
-      targetNumber: 30,
-      registrantNumber: 10,
-      progressRate: 33,
+      targetNumber: 200,
+      registrantNumber: 135,
+      progressRate: 67.5,
     },
+    content:
+      "🍀 제40회 이향회전에 여러분을 초대합니다! 🍀\n\n중앙서예동아리 이향회에서 무려 🔥40번째🔥 전시회를 개최합니다! 👏👏\n\n🍀 12월 20일 (수) - 12월 23일 (토)\n🍀 11시 - 5시 30분\n🍀 학문관 4층 전시실 (신한은행 옆 엘리베이터를 타고 올라오시면 됩니다!)\n\n올 한 해 동안 부원들이 열심히 준비한 서예 작품들을 선보입니다! 한글 궁체 정자체, 흘림체, 한자 해서체와 같이 다양한 서체의 작품들과 대동제 때 판매했던 스티커도 준비되어 있으니 잠깐 들러서 구경하시고 예쁜 스티커도 받아가세요~💗\n\n🍀 이향회는 모든 벗들의 방문을 환영합니다! 🍀",
+    hasLike: false,
   },
 ];

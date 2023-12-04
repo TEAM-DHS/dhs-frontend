@@ -1,4 +1,4 @@
-import { RefObject } from "react";
+import { RefObject, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryBlock from "./CategoryBlock";
 import useHeart from "../../utils/hooks/useHeart";
@@ -38,7 +38,8 @@ const EventItem = ({
     }
   };
 
-  const { state, toggle } = useHeart(programId, hasLike, 0);
+  // const { state, toggle } = useHeart(programId, hasLike, 0);
+  const [state, setState] = useState<boolean>(hasLike);
 
   return (
     <div
@@ -68,7 +69,7 @@ const EventItem = ({
               className="cursor-pointer"
               onClick={e => {
                 e.stopPropagation();
-                toggle();
+                setState(!state);
               }}
             />
           </div>
@@ -104,7 +105,9 @@ const EventItem = ({
               </div>
               {isOpen && (
                 <div className="font-regular text-p text-slateBlack">
-                  {"D-" + remainingDays}
+                  {remainingDays < 0
+                    ? `D-${-remainingDays}`
+                    : `D-${remainingDays}`}
                 </div>
               )}
             </div>

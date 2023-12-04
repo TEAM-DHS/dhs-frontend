@@ -3,6 +3,7 @@ import EmptyMessage from "./EmptyMessage";
 import { useState, useEffect } from "react";
 import { getProgramRegistered } from "../../api/program";
 import PageNation from "./PageNation";
+import { myRegisteredData } from "../../utils/data/myPageData";
 
 const RegisteredList = () => {
   const [data, setData] = useState<EventPreviewType[]>([]);
@@ -18,14 +19,17 @@ const RegisteredList = () => {
   }, []);
 
   const getRegisteredData = async () => {
-    try {
-      const res = await getProgramRegistered(currentPage);
-      const d = res.programs;
-      setData(d);
-      setTotalPages(res.pageInfo.totalPages);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const res = await getProgramRegistered(currentPage);
+    //   const d = res.programs;
+    //   setData(d);
+    //   setTotalPages(res.pageInfo.totalPages);
+    //   console.log(res);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    setData(myRegisteredData.programs);
+    setTotalPages(myRegisteredData.pageInfo.totalPages);
   };
 
   return (

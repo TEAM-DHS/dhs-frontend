@@ -1,6 +1,7 @@
 import EventItem from "../_common/EventItem";
 import EmptyMessage from "./EmptyMessage";
 import { useState, useEffect } from "react";
+import { myLikedData1, myLikedData2 } from "../../utils/data/myPageData";
 import { getProgramLiked } from "../../api/program";
 import PageNation from "./PageNation";
 
@@ -18,13 +19,20 @@ const LikedList = () => {
   }, []);
 
   const getLikedData = async () => {
-    try {
-      const res = await getProgramLiked(currentPage);
-      const d = res.programs;
-      setData(d);
-      setTotalPages(res.pageInfo.totalPages);
-    } catch (err) {
-      console.log(err);
+    // try {
+    //   const res = await getProgramLiked(currentPage);
+    //   console.log(res);
+    //   const d = res.programs;
+    //   setData(d);
+    //   setTotalPages(res.pageInfo.totalPages);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    setTotalPages(myLikedData1.pageInfo.totalPages);
+    if (currentPage === 0) {
+      setData(myLikedData1.programs);
+    } else if (currentPage === 1) {
+      setData(myLikedData2.programs);
     }
   };
 

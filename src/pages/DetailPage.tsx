@@ -6,16 +6,19 @@ import TabSection from "../components/DetailPage/TabSection";
 import OtherSection from "../components/DetailPage/OtherSection";
 
 import { getProgramDetail } from "../api/program";
+import { eventDetailData } from "../utils/data/eventData";
 
 const DetailPage = () => {
   const { id } = useParams();
-  const [currentDetail, setCurrentDetail] = useState<EventDetailType>();
+  const [currentDetail, setCurrentDetail] = useState<EventDetailType>(
+    Number(id) === 275 ? eventDetailData[0] : eventDetailData[Number(id) % 2],
+  );
   const [updateTrigger, setUpdateTrigger] = useState<number>(0);
-  useEffect(() => {
-    getProgramDetail(Number(id))
-      .then(res => setCurrentDetail(res))
-      .catch(err => console.log(err));
-  }, [updateTrigger]);
+  // useEffect(() => {
+  //   getProgramDetail(Number(id))
+  //     .then(res => setCurrentDetail(res))
+  //     .catch(err => console.log(err));
+  // }, [updateTrigger]);
   return (
     <>
       <CategoryNavBar />

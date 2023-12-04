@@ -10,14 +10,15 @@ import FormSection from "../components/RegisterPage/FormSection";
 const RegisterPage = () => {
   const nav = useNavigate();
   const { id } = useParams();
-  const [currentDetail, setCurrentDetail] =
-    useState<EventDetailType>(eventDetailData);
+  const [currentDetail, setCurrentDetail] = useState<EventDetailType>(
+    eventDetailData.filter(item => item.program.programId === Number(id))[0],
+  );
   const [info, setInfo] = useState<EventRegisterInfoType>();
-  useEffect(() => {
-    getProgramDetail(Number(id))
-      .then(res => setCurrentDetail(res))
-      .catch(err => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   getProgramDetail(Number(id))
+  //     .then(res => setCurrentDetail(res))
+  //     .catch(err => console.log(err));
+  // }, []);
   useEffect(() => {
     if (currentDetail)
       setInfo({

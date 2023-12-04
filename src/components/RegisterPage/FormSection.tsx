@@ -63,13 +63,14 @@ const FormSection = () => {
 
   const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    postProgramRegister(Number(id), {
-      ...registerForm,
-      depositAmount: `${registerForm.depositAmount!.toLocaleString()}원`,
-      depositDate: String(registerForm.depositDate),
-    })
-      .then(res => nav(-1))
-      .catch(err => console.log(err));
+    nav(-1);
+    // postProgramRegister(Number(id), {
+    //   ...registerForm,
+    //   depositAmount: `${registerForm.depositAmount!.toLocaleString()}원`,
+    //   depositDate: String(registerForm.depositDate),
+    // })
+    //   .then(res => nav(-1))
+    //   .catch(err => console.log(err));
   };
 
   return (

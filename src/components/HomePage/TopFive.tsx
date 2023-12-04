@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import useCategoryText from "../../utils/hooks/useCategoryText";
+import { useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -13,7 +12,6 @@ import "react-circular-progressbar/dist/styles.css";
 import ProgressProvider from "./ProgressProvider";
 
 import { topfiveData } from "../../utils/data/topfiveData";
-import { getProgramTopFive } from "../../api/program";
 
 interface Props extends TopFiveType {
   index: number;
@@ -60,7 +58,9 @@ const TopItem = ({
         </div>
         <div className="flex mobile:flex-col items-center mobile:items-start mobile:pt-[50px] mobile:pb-[60px] font-regular text-smTitle text-white">
           <div>신청 마감까지</div>
-          <div className="font-bold text-[24px] ml-[7px] mobile:ml-0">{`D-${remainingDays}`}</div>
+          <div className="font-bold text-[24px] ml-[7px] mobile:ml-0">{`D-${
+            remainingDays < 0 ? -remainingDays : remainingDays
+          }`}</div>
         </div>
       </div>
       <div className="absolute bottom-[-70px] right-[-20px] mobile:bottom-[50px] mobile:right-[80px] flex flex-col items-end gap-[10px]">
@@ -69,7 +69,7 @@ const TopItem = ({
             {(value: number) => (
               <CircularProgressbar
                 value={value}
-                text={`${goal.progressRate}%`}
+                text={`${Math.round(goal.progressRate)}%`}
                 strokeWidth={12}
                 counterClockwise={true}
                 styles={buildStyles({
@@ -91,13 +91,7 @@ const TopItem = ({
 };
 
 const TopFive = () => {
-  const [topFiveList, setTopFiveList] = useState<TopFiveType[]>([]);
-  useEffect(() => {
-    getProgramTopFive()
-      .then(res => setTopFiveList(res))
-      .catch(err => console.log(err));
-  }, []);
-
+  const [topFiveList, setTopFiveList] = useState<TopFiveType[]>(topfiveData);
   const [index, setIndex] = useState<number>(0);
 
   return (

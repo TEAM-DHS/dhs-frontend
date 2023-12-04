@@ -22,19 +22,26 @@ const useHeart = (programId: number, hasLiked: boolean, likeNumber: number) => {
   useEffect(() => {
     if (typeof hasLiked !== "boolean") return;
     if (trigger === 0) return;
-    if (isLogin) {
-      postHeart(id)
-        .then(res => {
-          setState(!state);
-          getProgramDetail(id)
-            .then(res => setLikedNum(res.program.likeNumber))
-            .catch(err => console.log(err));
-        })
-        .catch(err => console.log(err));
-    } else {
-      alert("로그인 후 사용하실 수 있습니다.");
-      nav("/login");
+    if (state && likeNumber > 0) {
+      setState(false);
+      setLikedNum(likedNum - 1);
+    } else if (state === false) {
+      setState(true);
+      setLikedNum(likedNum + 1);
     }
+    // if (isLogin) {
+    //   postHeart(id)
+    //     .then(res => {
+    //       setState(!state);
+    //       getProgramDetail(id)
+    //         .then(res => setLikedNum(res.program.likeNumber))
+    //         .catch(err => console.log(err));
+    //     })
+    //     .catch(err => console.log(err));
+    // } else {
+    //   alert("로그인 후 사용하실 수 있습니다.");
+    //   nav("/login");
+    // }
   }, [trigger]);
 
   return { state, toggle, likedNum };

@@ -9,24 +9,24 @@ const RegisterListPage = () => {
   const [data, setData] = useState<ListType[]>([]);
   const { programId } = useParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await getProgramRegistrators(Number(programId));
-        setData(res);
-        localStorage.setItem('amount',res.length)
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [programId]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await getProgramRegistrators(Number(programId));
+  //       setData(res);
+  //       localStorage.setItem('amount',res.length)
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [programId]);
 
   return (
     <>
       <Header />
       {data ? (
-        <Table data={data}/>
+        <Table data={data} />
       ) : (
         <EmptyMessage message="신청자가 없습니다!" />
       )}

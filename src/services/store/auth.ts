@@ -7,7 +7,8 @@ export const accessTokenState = atom<string>({
 
 export const isLoginState = atom<boolean>({
   key: "isLoginState",
-  default: !!localStorage.getItem("authtoken"),
+  // default: !!localStorage.getItem("authtoken"),
+  default: true,
 });
 
 export const memberInfoState = atom<any>({
